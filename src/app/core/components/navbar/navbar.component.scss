@@ -12,10 +12,13 @@
   position: fixed;
   height: var(--navbar-height);
   @include display-flex(space-between);
+  background: transparent;
   padding: 0 20px;
-  background: var(--navbar-bg);
   z-index: 110;
+  transition: background .5s;
 }
+
+.navbar-ctn--active { background: var(--navbar-bg); }
 
 // logo
 .logo {
@@ -104,9 +107,7 @@
 .sub-menu-li {
   position: relative;
   &:hover > .menu__link,
-  &:hover > .fas {
-      color: #C4E0FF;
-  }
+  &:hover > .fas { color: #C4E0FF; }
 
   .fas {
     font-size: 13px;
@@ -140,7 +141,7 @@
     cursor: pointer;
     text-decoration: none;
     color: #fff;
-    padding-left: 35px;
+    padding-left: 13%;
     transition: color .3s;
     &:hover { color: #C4E0FF; }
     margin-top: 10px;
@@ -159,7 +160,6 @@
   border-radius: 50%;
   @include display-flex;
   background: var(--main-color);
-
   .button-icon { font-size: $menu-button-size / 2; }
 }
 
@@ -177,5 +177,4 @@
   .logo__title { font-size: $logo-size; }
   .logo__icon { font-size: $logo-size; }
   .topbar { width: 65%; }
-  // .search-input::placeholder { opacity: 0; }
 }

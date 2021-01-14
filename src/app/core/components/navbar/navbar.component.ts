@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +9,15 @@ export class NavbarComponent implements OnInit {
   public  menuActivated:    boolean = false;
   public  gendersActivated: boolean = false;
   public  moviesActivated:  boolean = false;
+  public  scrollActivated:  boolean = false;
   public  word: string;
+
+  @HostListener("window: scroll")
+  onScroll() {
+    const top: number = document.documentElement.scrollTop
+    if(top == 0) return this.scrollActivated = false;
+    if(top > 40) return this.scrollActivated = true;
+  }
 
   constructor() { }
 

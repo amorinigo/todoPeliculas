@@ -1,4 +1,4 @@
-<div class="navbar-ctn">
+<div class="navbar-ctn" [ngClass]="{'navbar-ctn--active': scrollActivated}">
   <div class="logo" (click)="menuActivated = false">
     <i class="fas fa-video logo__icon"></i>
     <h1 class="logo__title">Todo películas!</h1>

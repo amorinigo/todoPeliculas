@@ -17,6 +17,7 @@
       "dom"
     ],
     "paths": {
+      "@assets": ["assets/*"],
       "@core/*": ["app/core/*"],
       "@core/components/*" : ["app/core/components/*"],
       "@pages/*": ["app/pages/*"],

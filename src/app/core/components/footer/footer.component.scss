@@ -1,0 +1,21 @@
+@import '../../../../assets/scss/global-mixins';
+
+.footer {
+  @include position-abs-bottom;
+  @include display-flex;
+  flex-direction: column;
+  z-index: -1;
+}
+
+.logo {
+  font-size: 90px;
+  color: #fff;
+}
+
+.copiright-ctn { @include display-flex; }
+
+// media queries
+@media (max-width: 400px) {
+  .copiright { font-size: 13px; }
+  .logo { font-size: 70px; }
+}

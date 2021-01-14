@@ -1,13 +1,21 @@
 :root {
-  // global-variables.scss
+  --bg-color: #080F28;
+  --main-color: #007AFF;
+  --text-color: #A9A9A9;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: white;
 }
 
 body {
-  width: 100vw;
-  min-height: 900px;
+  width: 100%;
+  min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-color);
+  position: relative;
+  user-select: none;
 }

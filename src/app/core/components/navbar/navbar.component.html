@@ -1,1 +1,89 @@
-<p>navbar works!</p>
+<div class="navbar-ctn">
+  <div class="logo" (click)="menuActivated = false">
+    <i class="fas fa-video logo__icon"></i>
+    <h1 class="logo__title">Todo películas!</h1>
+  </div>
+  <nav class="topbar" [ngClass]="{'topbar-active': menuActivated}">
+    <div class="search">
+      <input
+        type="text" id="search" class="search-input"
+        placeholder="Buscar..."
+        [(ngModel)]="word"
+        (keyup.enter)="search()"
+      >
+      <label for="search" class="search-label" (click)="search()">
+        <i class="fas fa-search"></i>
+      </label>
+    </div>
+    <ul class="menu">
+
+      <li class="menu__item">
+        <a class="menu__link fw-bold" (click)="menuOnOff()">Inicio</a>
+      </li>
+
+      <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': gendersActivated}">
+        <a class="menu__link" (click)="gendersOnOff()">Géneros</a>
+        <i class="fas fa-chevron-right"></i>
+        <ul class="sub-menu">
+
+          <li class="sub-menu__item">
+            <a class="sub-menu__link" (click)="menuOnOff()">Acción</a>
+          </li>
+
+          <li class="sub-menu__item">
+            <a class="sub-menu__link" (click)="menuOnOff()">Comedia</a>
+          </li>
+
+          <li class="sub-menu__item">
+            <a class="sub-menu__link" (click)="menuOnOff()">Aventura</a>
+          </li>
+
+          <li class="sub-menu__item">
+            <a class="sub-menu__link" (click)="menuOnOff()">Drama</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': moviesActivated}">
+        <a class="menu__link" (click)="moviesOnOff()">Películas</a>
+        <i class="fas fa-chevron-right"></i>
+        <ul class="sub-menu">
+
+          <li class="sub-menu__item">
+            <a class="sub-menu__link" (click)="menuOnOff()">Estrenos</a>
+          </li>
+
+          <li class="sub-menu__item">
+            <a class="sub-menu__link" (click)="menuOnOff()">Más vistas</a>
+          </li>
+
+          <li class="sub-menu__item">
+            <a class="sub-menu__link" (click)="menuOnOff()">Ranking</a>
+          </li>
+
+          <li class="sub-menu__item">
+            <a class="sub-menu__link" (click)="menuOnOff()">Películas</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="menu__item">
+        <a class="menu__link" (click)="menuOnOff()">Series & TV</a>
+      </li>
+
+    </ul>
+  </nav>
+  <button class="menu-button" type="button" (click)="menuOnOff()">
+    <i class="fas fa-bars button-icon"  *ngIf="!menuActivated"></i>
+    <i class="fas fa-times button-icon" *ngIf="menuActivated"></i>
+  </button>
+</div>
+
+<div
+  class="shadow animate__animated animate__fadeIn animate__faster"
+  *ngIf="menuActivated"
+  (click)="menuActivated = false"
+>
+</div>

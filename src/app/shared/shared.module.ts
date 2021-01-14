@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { TitleComponent } from './components/title/title.component';
 import { DynamicSubtitleComponent } from './components/dynamic-subtitle/dynamic-subtitle.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
@@ -14,7 +17,15 @@ import { CastSliderComponent } from './components/cast-slider/cast-slider.compon
 @NgModule({
   declarations: [TitleComponent, DynamicSubtitleComponent, SpinnerComponent, HeaderComponent, MainSliderComponent, MoviesGridComponent, MovieComponent, CastSliderComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class SharedModule { }

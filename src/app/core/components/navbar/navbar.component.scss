@@ -1,36 +1,37 @@
 @import '../../../../assets/scss/global-mixins';
 
 :host {
-  --navbar-height: 100px;
-  --logo-font-size: 23px;
+  --logo-font-size: 21px;
   --navbar-bg: #2A2F42;
+  --hover-color: #C4E0FF;
+  --sub-menu-bg: #373E55;
 }
 
 // navbar
 .navbar-ctn {
-  width: 100%;
   position: fixed;
-  height: var(--navbar-height);
+  @include width-and-height(100%, var(--navbar-height));
   @include display-flex(space-between);
-  background: transparent;
+  background-color: transparent;
   padding: 0 20px;
   z-index: 110;
-  transition: background .5s;
-}
+  transition: background-color .5s;
 
-.navbar-ctn--active { background: var(--navbar-bg); }
+  &--active { background-color: var(--navbar-bg); }
+}
 
 // logo
 .logo {
   @include display-flex;
   cursor: pointer;
+  outline: none;
   z-index: 1;
 
   &__title {
     display: inline-block;
     font-size: var(--logo-font-size);
-    margin-left: 15px;
-    margin-top: 10px;
+    margin: 10px 0 10px 15px;
+    text-align: center;
   }
 
   &__icon { font-size: var(--logo-font-size); }
@@ -41,8 +42,7 @@
   position: fixed;
   left: -113%;
   top: 0;
-  width: 315px;
-  height: 100%;
+  @include width-and-height(315px, 100%);
   background-color: var(--bg-color);
   padding-top: var(--navbar-height);
   transition: left .5s;
@@ -55,32 +55,28 @@
   position: relative;
 
   &-input {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    width: 80%;
-    border: 1px solid rgba(82, 91, 125, .9);
     outline: none;
-    background-color: var(--bg-color);
+    display: block;
+    width: 80%;
+    margin: 10px auto 0 auto;
     border-radius: 30px;
+    border: 1px solid rgba(82, 91, 125, .9);
+    background-color: var(--bg-color);
     padding: 9px 20px;
     font-size: 14px;
     &::placeholder { color: var(--text-color); }
   }
 
   &-label {
-    position: absolute;
-    top: 50%;
-    right: 13%;
+    @include position-abs-top-right(50%, 13%);
     transform: translate(-50%, -50%);
+  }
 
-    .fa-search {
-      font-size: 15px;
-      transition: font-size .3s;
-      cursor: pointer;
-      &:hover { font-size: 16px; }
-    }
+  .fa-search {
+    cursor: pointer;
+    font-size: 15px;
+    transition: font-size .3s;
+    &:hover { font-size: 16px; }
   }
 }
 
@@ -99,7 +95,7 @@
     padding-left: 10%;
     cursor: pointer;
     transition: color .3s;
-    &:hover { color: #C4E0FF; }
+    &:hover { color: var(--hover-color); }
   }
 }
 
@@ -107,16 +103,14 @@
 .sub-menu-li {
   position: relative;
   &:hover > .menu__link,
-  &:hover > .fas { color: #C4E0FF; }
+  &:hover > .fas { color: var(--hover-color); }
 
   .fas {
+    @include position-abs-top-right(11px, 10%);
     font-size: 13px;
-    position: absolute;
-    top: 11px;
-    right: 10%;
+    z-index: -1;
     transform: translate(-50%, -50%);
     transition: color .3s, transform .3s;
-    z-index: -1;
   }
 }
 
@@ -126,27 +120,26 @@
 }
 
 .sub-menu {
+  list-style: none;
   position: relative;
   top: 100%;
   width: 100%;
-  list-style: none;
   max-height: 0;
-  transition: max-height .3s;
-  overflow: hidden;
   padding-left: 0;
+  overflow: hidden;
+  transition: max-height .3s;
 
   &__link {
-    display: block;
-    width: 100%;
     cursor: pointer;
     text-decoration: none;
-    color: #fff;
+    display: block;
+    width: 100%;
+    margin: 10px 0 4px 0;
     padding-left: 13%;
-    transition: color .3s;
-    &:hover { color: #C4E0FF; }
-    margin-top: 10px;
-    margin-bottom: 4px;
+    color: #fff;
     font-size: 15px;
+    transition: color .3s;
+    &:hover { color: var(--hover-color); }
   }
 }
 
@@ -155,11 +148,10 @@
   $menu-button-size: 50px;
   border: none;
   outline: none;
-  width: $menu-button-size;
-  height: $menu-button-size;
   border-radius: 50%;
+  @include width-and-height($menu-button-size, $menu-button-size);
   @include display-flex;
-  background: var(--main-color);
+  background-color: var(--main-color);
   .button-icon { font-size: $menu-button-size / 2; }
 }
 
@@ -168,7 +160,7 @@
   position: absolute;
   min-width: 100vw;
   min-height: 100%;
-  background: rgba(0,0,0,.7);
+  background-color: rgba(0,0,0,.7);
 }
 
 // media queries
@@ -177,4 +169,80 @@
   .logo__title { font-size: $logo-size; }
   .logo__icon { font-size: $logo-size; }
   .topbar { width: 65%; }
+}
+
+@media (min-width: 1000px) {
+  .navbar-ctn  { padding: 0 90px; }
+  .logo__title { margin-top: 0; }
+  .menu-button { display: none; }
+  .shadow      { display: none; }
+  .topbar {
+    position: relative;
+    top: initial;
+    left: initial;
+    width: 100%;
+    background: none;
+    padding-top: 0;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .menu {
+    width: 100%;
+    margin-top: 0;
+    @include display-flex(space-evenly);
+
+    .menu__item {
+      cursor: pointer;
+      margin-bottom: 0;
+      padding: 15px 0;
+      &:hover .sub-menu { display: block; }
+      &:hover > .menu__link { color: var(--hover-color); }
+    }
+
+    .menu__link { padding-left: 0; }
+  }
+  .search {
+    @include display-flex;
+    min-width: 200px;
+    &-input { margin: 0; width: 100%; }
+    &-label { right: 4%; }
+  }
+  .sub-menu-li {
+    & > .menu__link { padding-right: 20px; }
+
+    .fas {
+      font-size: 12px;
+      top: 50%;
+      right: 0;
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+  .sub-menu {
+    @include position-abs-top-left(100%, 0);
+    width: 250%;
+    max-height: 900px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--sub-menu-bg);
+    display: none;
+    overflow: visible;
+
+    &:after {
+      display: block;
+      content: "";
+      @include position-abs-top-left(-5px, 15px);
+      @include width-and-height(15px, 15px);
+      background-color: var(--sub-menu-bg);
+      transform: rotate(45deg);
+    }
+
+    &__link {
+      margin-top: 0;
+      padding: 8px 15px;
+      border-radius: 5px;
+      &:hover { background: var(--navbar-bg); }
+    }
+
+    &--active { & > .sub-menu { max-height: 900px; } }
+  }
 }

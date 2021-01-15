@@ -1,5 +1,5 @@
 <div class="navbar-ctn" [ngClass]="{'navbar-ctn--active': scrollActivated}">
-  <div class="logo" (click)="menuActivated = false">
+  <div class="logo" (click)="menuActivated = false" routerLink="home">
     <i class="fas fa-video logo__icon"></i>
     <h1 class="logo__title">Todo películas!</h1>
   </div>
@@ -18,13 +18,13 @@
     <ul class="menu">
 
       <li class="menu__item">
-        <a class="menu__link fw-bold" (click)="menuOnOff()">Inicio</a>
+        <a class="menu__link fw-bold" (click)="menuOnOff()" routerLink="home">Inicio</a>
       </li>
 
       <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': gendersActivated}">
         <a class="menu__link" (click)="gendersOnOff()">Géneros</a>
         <i class="fas fa-chevron-right"></i>
-        <ul class="sub-menu">
+        <ul class="sub-menu animate__animated animate__bounceIn animate__faster	">
 
           <li class="sub-menu__item">
             <a class="sub-menu__link" (click)="menuOnOff()">Acción</a>
@@ -48,7 +48,7 @@
       <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': moviesActivated}">
         <a class="menu__link" (click)="moviesOnOff()">Películas</a>
         <i class="fas fa-chevron-right"></i>
-        <ul class="sub-menu">
+        <ul class="sub-menu animate__animated animate__bounceIn animate__faster">
 
           <li class="sub-menu__item">
             <a class="sub-menu__link" (click)="menuOnOff()">Estrenos</a>
@@ -70,7 +70,7 @@
       </li>
 
       <li class="menu__item">
-        <a class="menu__link" (click)="menuOnOff()">Series & TV</a>
+        <a class="menu__link" (click)="menuOnOff()" routerLink="serie">Series & TV</a>
       </li>
 
     </ul>

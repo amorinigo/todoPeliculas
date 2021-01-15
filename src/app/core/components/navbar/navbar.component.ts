@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -19,23 +20,23 @@ export class NavbarComponent implements OnInit {
     if(top > 40) return this.scrollActivated = true;
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   menuOnOff(): void {
-    this.menuActivated = !this.menuActivated;
+    this.menuActivated    = !this.menuActivated;
     this.gendersActivated = false;
-    this.moviesActivated = false;
+    this.moviesActivated  = false;
   }
 
-  search() {
+  search(): void {
     if(!this.word) return;
+    this.router.navigate(["busqueda", this.word]);
     this.word = "";
     this.menuOnOff();
   }
 
   gendersOnOff(): boolean { return this.gendersActivated = !this.gendersActivated; }
-
-  moviesOnOff(): boolean { return this.moviesActivated = !this.moviesActivated; }
+  moviesOnOff():  boolean { return this.moviesActivated = !this.moviesActivated; }
 }

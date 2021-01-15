@@ -1,7 +1,7 @@
 @import '../../../../assets/scss/global-mixins';
 
 .footer {
-  @include position-abs-bottom;
+  @include position-abs-bottom-left;
   @include display-flex;
   flex-direction: column;
   z-index: -1;

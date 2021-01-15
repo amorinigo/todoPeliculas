@@ -2,6 +2,7 @@
   --bg-color: #080F28;
   --main-color: #007AFF;
   --text-color: #A9A9A9;
+  --navbar-height: 100px;
 }
 
 * {
@@ -18,4 +19,5 @@ body {
   background-color: var(--bg-color);
   position: relative;
   user-select: none;
+  overflow-x: hidden;
 }

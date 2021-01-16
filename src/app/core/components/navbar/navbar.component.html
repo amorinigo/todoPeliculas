@@ -24,22 +24,12 @@
       <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': gendersActivated}">
         <a class="menu__link" (click)="gendersOnOff()">Géneros</a>
         <i class="fas fa-chevron-right"></i>
-        <ul class="sub-menu animate__animated animate__bounceIn animate__faster	">
+        <ul class="sub-menu animate__animated animate__bounceIn animate__faster">
 
-          <li class="sub-menu__item">
-            <a class="sub-menu__link" (click)="menuOnOff()">Acción</a>
-          </li>
-
-          <li class="sub-menu__item">
-            <a class="sub-menu__link" (click)="menuOnOff()">Comedia</a>
-          </li>
-
-          <li class="sub-menu__item">
-            <a class="sub-menu__link" (click)="menuOnOff()">Aventura</a>
-          </li>
-
-          <li class="sub-menu__item">
-            <a class="sub-menu__link" (click)="menuOnOff()">Drama</a>
+          <li class="sub-menu__item" *ngFor="let genre of genres">
+            <a class="sub-menu__link" [id]="genre.id" (click)="menuOnOff()">
+              {{ genre.name }}
+            </a>
           </li>
 
         </ul>
@@ -48,18 +38,18 @@
       <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': moviesActivated}">
         <a class="menu__link" (click)="moviesOnOff()">Películas</a>
         <i class="fas fa-chevron-right"></i>
-        <ul class="sub-menu animate__animated animate__bounceIn animate__faster">
+        <ul class="sub-menu movies-ul animate__animated animate__bounceIn animate__faster">
 
           <li class="sub-menu__item">
             <a class="sub-menu__link" (click)="menuOnOff()">Estrenos</a>
           </li>
 
           <li class="sub-menu__item">
-            <a class="sub-menu__link" (click)="menuOnOff()">Más vistas</a>
+            <a class="sub-menu__link" (click)="menuOnOff()">Ranking</a>
           </li>
 
           <li class="sub-menu__item">
-            <a class="sub-menu__link" (click)="menuOnOff()">Ranking</a>
+            <a class="sub-menu__link" (click)="menuOnOff()">Más vistas</a>
           </li>
 
           <li class="sub-menu__item">

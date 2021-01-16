@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { Genre } from '@shared/interfaces/genres-response.interface';
+import { MoviesService } from '@shared/services/movies.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +14,7 @@ export class NavbarComponent implements OnInit {
   public  moviesActivated:  boolean = false;
   public  scrollActivated:  boolean = false;
   public  word: string;
+  public  genres: Genre[];
 
   @HostListener("window: scroll")
   onScroll() {
@@ -20,9 +23,18 @@ export class NavbarComponent implements OnInit {
     if(top > 40) return this.scrollActivated = true;
   }
 
-  constructor(private router: Router) { }
+  constructor( private router: Router,
+               private moviesService: MoviesService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.moviesService.getGenres().subscribe( genres => {
+      this.genres = genres.sort( (genreA, genreB) => {
+        if (genreA.name > genreB.name) return 1;
+        if (genreA.name < genreB.name) return -1;
+        return 0;
+      });
+    });
+  }
 
   menuOnOff(): void {
     this.menuActivated    = !this.menuActivated;

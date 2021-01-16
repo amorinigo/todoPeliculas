@@ -11,10 +11,10 @@ import { SerieComponent } from '@pages/serie/serie.component';
 const routes: Routes = [
   {path: "inicio",                component: HomeComponent},
   {path: "serie",                 component: SerieComponent},
-  {path: "busqueda/:term",        component: SearchComponent},
-  {path: "genero/:genreType",     component: GenreComponent},
-  {path: "peliculas/:moviesType", component: MoviesComponent},
-  {path: "pelicula-detalles/:id", component: MovieDetailsComponent},
+  {path: "búsqueda/:term",        component: SearchComponent},
+  {path: "género/:genreType",     component: GenreComponent},
+  {path: "películas/:rating",     component: MoviesComponent},
+  {path: "película-detalles/:id", component: MovieDetailsComponent},
   {path: "**", pathMatch: "full", redirectTo: "inicio"},
 ];
 

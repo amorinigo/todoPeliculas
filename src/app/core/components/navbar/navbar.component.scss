@@ -127,10 +127,7 @@
   flex-wrap: wrap;
   padding-left: 15%;
 
-  &__item {
-    width: 100%;
-    cursor: pointer;
-  }
+  &__item { width: 100%; }
 
   &__link {
     text-decoration: none;
@@ -139,6 +136,7 @@
     color: grey;
     font-size: 14px;
     transition: color .3s;
+    cursor: pointer;
     &:hover { color: var(--hover-color); }
   }
 
@@ -254,6 +252,7 @@
     background-color: var(--sub-menu-bg);
     display: none;
     overflow: visible;
+    cursor: default;
 
     &:after {
       display: block;
@@ -282,3 +281,6 @@
     .sub-menu__item { width: 100%; }
   }
 }
+
+// animate
+.animate__animated.animate__pulse { --animate-duration: 0.3s; }

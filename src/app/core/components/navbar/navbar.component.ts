@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   public  scrollActivated:  boolean = false;
   public  word: string;
   public  genres: Genre[];
+  public  moviesRatings: string[];
 
   @HostListener("window: scroll")
   onScroll() {
@@ -24,7 +25,9 @@ export class NavbarComponent implements OnInit {
   }
 
   constructor( private router: Router,
-               private moviesService: MoviesService) { }
+               private moviesService: MoviesService ) {
+    this.moviesRatings = ['Estrenos', 'Ranking', 'Más vistas', 'Películas'];
+  }
 
   ngOnInit(): void {
     this.moviesService.getGenres().subscribe( genres => {
@@ -36,6 +39,9 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  gendersOnOff(): boolean { return this.gendersActivated = !this.gendersActivated; }
+  moviesOnOff():  boolean { return this.moviesActivated = !this.moviesActivated; }
+
   menuOnOff(): void {
     this.menuActivated    = !this.menuActivated;
     this.gendersActivated = false;
@@ -44,11 +50,22 @@ export class NavbarComponent implements OnInit {
 
   search(): void {
     if(!this.word) return;
-    this.router.navigate(["busqueda", this.word]);
+    this.router.navigate(["búsqueda", this.word]);
     this.word = "";
     this.menuOnOff();
   }
 
-  gendersOnOff(): boolean { return this.gendersActivated = !this.gendersActivated; }
-  moviesOnOff():  boolean { return this.moviesActivated = !this.moviesActivated; }
+  showGenre( genre: Genre ) {
+    this.menuOnOff();
+    this.router.navigate(["género", genre.name.toLowerCase()]);
+    // LLAMO AL SERVICIO QUE MOSTRARÁ LAS PELÍCULAS DEL GÉNERO ESPECIFICADO. LA FUNCIÓN QUE SE CREE PARA ESTE PROPÓSITO, RECIBE POR PARÁMETRO EL GENRE.ID. EN BASE A ESE ID HACE LA PETICIÓN Y LUEGO UN RESPONSE.FILTER(), DONDE SE FILTRARÁN LAS PELÍCULAS CUYO GENRE.ID SEA IGUAL AL DEL PARÁMETRO GENRE.
+    console.log(genre.id);
+  }
+
+  showMovies( rating: string ) {
+    this.menuOnOff();
+    this.router.navigate(["películas", rating.toLowerCase()]);
+    // LLAMO AL SERVICIO QUE MUESTRA PELÍCULAS DE LA CLASIFICACIÓN ELEGIDA. LA FUNCIÓN DEL SERVICIO RECIBIRÁ POR PARÁMETRO EL RATING.TOLOWERCASE, PARA REALIZAR LA PETICIÓN EN BASE A ESE STRING.
+    console.log( rating.toLowerCase() );
+  }
 }

@@ -13,9 +13,7 @@ export class MainSliderComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.films);
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
     const mySwiper = new Swiper('.swiper-container', {

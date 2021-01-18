@@ -1,112 +1,121 @@
+@import '../../../../assets/scss/global-mixins';
+
+:host {
+  --highlighted-color: orange;
+  --overview-color: #A9A9A9;
+  --overview-font-size: 14px;
+  --release-date-size: 13px;
+  --title-font-size: 25px;
+}
+
+@mixin overview-font {
+  color: var(--overview-color);
+  font-weight: 900;
+}
+
 .swiper-container {
   position: relative;
-  width: 100%;
-  height: 530px;
+  @include width-and-height(100%, 560px);
+
 }
 
-.swiper-slide {
-  position: relative;
-}
+.swiper-slide { position: relative; }
 
 .content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  @include position-abs-top-left;
+  @include width-and-height(100%, 100%);
+  overflow: hidden;
 }
 
 .slider-img {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  @include width-and-height(100%, 100%);
 }
 
 .info-ctn {
-  // background: red;
-  position: absolute;
-  top: 25%;
-  left: 0;
+  @include position-abs-top-left(20%, 0);
   width: 100%;
   padding: 0 10%;
   z-index: 1;
 
   .info-title {
     display: inline-block;
-    // font-size: 40px;
-    font-size: 30px;
     font-weight: 900;
+    font-size: var(--title-font-size);
     padding-right: 10px;
   }
 
   .type {
-    text-transform: uppercase;
     display: inline-block;
+    text-transform: uppercase;
     font-size: 10px;
     font-weight: bold;
-    background: orange;
     border-radius: 50px;
+    background: var(--highlighted-color);
     color: #000;
     padding: 3px;
     transform: translateY(-6px);
   }
 
-  .rating {
+  .rating,
+  .max-rating {
     display: inline-block;
-    color: orange;
-    padding-right: 20px;
+    color: var(--highlighted-color);
     font-weight: 900;
-
-    .max-rating {
-      font-size: 13px;
-      color: orange;
-      font-weight: 900;
-    }
   }
 
-  .extra-info {
-    margin: 8px 0 10px 0;
+  .rating {
+    padding-right: 20px;
+    .max-rating { font-size: var(--release-date-size); }
   }
+
+  .extra-info { margin: 8px 0 10px 0; }
 
   .release-date {
-    font-size: 13px;
-    color: grey;
-    font-weight: 900;
+    font-size: var(--release-date-size);
+    @include overview-font;
   }
 
   .overview-ctn {
     max-height: 220px;
     overflow: auto;
-    // background: orange;
-
     .overview {
-      font-size: 14px;
-      color: grey;
-      font-weight: 900;
+      @include overview-font;
+      font-size: var(--overview-font-size);
+    }
+  }
+
+  .button {
+    border: none;
+    outline: none;
+    background: var(--main-color);
+    font-weight: bold;
+    font-size: var(--overview-font-size);
+    border-radius: 50px;
+    padding: 8px 30px;
+    transition: transform .3s, opacity .3s;
+
+    &:hover {
+      transform: scale(1.05);
+      opacity: 0.8;
     }
   }
 }
 
-.button {
-  border: none;
-  outline: none;
-  background: var(--main-color);
-  font-weight: bold;
-  border-radius: 50px;
-  padding: 8px 30px;
-}
-
 .shadow {
-  display: block;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  @include position-abs-top-left;
+  @include width-and-height(100%, 100%);
   background: rgb(8,15,40);
-  background: linear-gradient(180deg, rgba(8,15,40,0.5690651260504201) 0%, rgba(255,255,255,0) 14%, rgba(8,15,40,1) 98%);
+  background: linear-gradient(
+    180deg, rgba(8,15,40,0.57)
+    0%, rgba(255,255,255,0)
+    14%,rgba(8,15,40,1) 98%
+  );
 }
 
-
-// FUNCIONA TODO. FALTA MEJORAR EL CÓDIGO DEL HTML Y EL CSS. TAMBIÉN FALTA USAR MEDIA QUERIES PARA MEDIANAS Y GRANDES PANTALLAS, AGRANDAR LA FUENTE DEL H2 Y DEL OVERVIEW EN MIN-WIDTH 330PX O 400PX. FALTA ACLARAR UN POCO LOS QUE TIENEN COLOR GREY Y FALTA PONER HOVER SOBRE EL BOTÓN. Y ALGUNAS COSAS MÁS. TIENE QUE QUEDAR IGUAL QUE CUEVANA.
+// media queries
+@media (min-width: 291px) { :host { --title-font-size: 30px; --overview-font-size: 16px; } }
+@media (min-width: 350px) { :host { --title-font-size: 40px; } }
+@media (min-width: 450px) { :host { --overview-font-size: 20px; } .rating { font-size: 20px; } }
+@media (min-width: 570px) { :host { --title-font-size: 45px; } }
+@media (min-width: 770px) { .info-ctn { top: 25%; } }

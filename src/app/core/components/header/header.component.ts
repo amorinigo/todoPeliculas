@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this.moviesService.getPremieres().subscribe( movies => { this.videos = movies; });
+    this.moviesService.getPremieres().subscribe( movies => { this.videos = movies.splice(0, 10) });
   }
 
 

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { GenresResponse, Genre } from '@shared/interfaces/genres-response.interface';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Movie, PremieresResponse } from '@shared/interfaces/premieres-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,11 @@ export class MoviesService {
   getGenres(): Observable<Genre[]> {
     return  this.http.get<GenresResponse>(`${this.url}genre/movie/list`, {params: this.params})
               .pipe( map( response => response.genres ) );
+  }
+
+  getPremieres(): Observable<Movie[]> {
+    return  this.http.get<PremieresResponse>(`${this.url}movie/now_playing`, {
+      params: this.params
+    }).pipe( map( response => response.results ) );
   }
 }

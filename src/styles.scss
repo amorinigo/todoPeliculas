@@ -1,3 +1,5 @@
+@import "~swiper/swiper-bundle";
+
 :root {
   --bg-color: #080F28;
   --main-color: #007AFF;
@@ -20,5 +22,5 @@ body {
   position: relative;
   user-select: none;
   overflow-x: hidden;
-  min-height: 1500px;
+  // min-height: 1500px;
 }

@@ -12,6 +12,7 @@ import { MoviesGridComponent } from './components/movies-grid/movies-grid.compon
 import { MovieComponent } from './components/movie/movie.component';
 import { CastSliderComponent } from './components/cast-slider/cast-slider.component';
 import { OriginalImagePipe } from './pipes/original-image.pipe';
+import { PosterImagePipe } from './pipes/poster-image.pipe';
 
 
 
@@ -25,7 +26,8 @@ import { OriginalImagePipe } from './pipes/original-image.pipe';
     MoviesGridComponent,
     MovieComponent,
     CastSliderComponent,
-    OriginalImagePipe
+    OriginalImagePipe,
+    PosterImagePipe
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { OriginalImagePipe } from './pipes/original-image.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MainSliderComponent
+    MainSliderComponent,
+    PosterImagePipe
   ]
 })
 export class SharedModule { }

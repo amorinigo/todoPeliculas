@@ -6,12 +6,18 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarSectionComponent } from './components/sidebar-section/sidebar-section.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    MainContentComponent,
+    SidebarComponent,
+    SidebarSectionComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +27,8 @@ import { HeaderComponent } from './components/header/header.component';
   exports: [
     NavbarComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    MainContentComponent
   ]
 
 })

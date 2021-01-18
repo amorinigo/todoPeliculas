@@ -1,0 +1,10 @@
+<div class="sidebar-section-ctn">
+  <h3 class="title">
+    {{ title }}
+  </h3>
+  <div class="movie-section" *ngFor="let movie of movies">
+    <div class="img-ctn">
+      <img [src]="movie.poster_path | posterImage" [alt]="movie.title" class="img">
+    </div>
+  </div>
+</div>

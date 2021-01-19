@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { GenresResponse, Genre } from '@shared/interfaces/genres-response.interface';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Movie, PremieresResponse } from '@shared/interfaces/premieres-response.interface';
+import { Movie, MoviesResponse } from '@shared/interfaces/movies-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,19 @@ export class MoviesService {
   }
 
   getPremieres(): Observable<Movie[]> {
-    return  this.http.get<PremieresResponse>(`${this.url}movie/now_playing`, {
+    return  this.http.get<MoviesResponse>(`${this.url}movie/now_playing`, {
+      params: this.params
+    }).pipe( map( response => response.results ) );
+  }
+
+  getPopular(): Observable<Movie[]> {
+    return  this.http.get<MoviesResponse>(`${this.url}movie/popular`, {
+      params: this.params
+    }).pipe( map( response => response.results ) );
+  }
+
+  getTopRated(): Observable<Movie[]> {
+    return  this.http.get<MoviesResponse>(`${this.url}movie/top_rated`, {
       params: this.params
     }).pipe( map( response => response.results ) );
   }

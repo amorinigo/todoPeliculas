@@ -1,3 +1,91 @@
+@import '../../../../assets/scss/global-mixins';
+
+:host {
+  --release-date-font-size: 14px;
+  --sidebar-title: #4461CA;
+  --rating-color: orange;
+}
+
+.title {
+  background-color: var(--navbar-bg);
+  text-transform: uppercase;
+  color: var(--sidebar-title);
+  text-align: center;
+  font-size: 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  padding: 12px 0;
+  margin: 0;
+}
+
 .movie-section {
-  background: orange;
+  position: relative;
+  @include width-and-height(100%, 130px);
+  display: flex;
+  margin-top: 25px;
+
+  &:hover {
+    cursor: pointer;
+    .img { transform: scale(1.04); opacity: 0.7; }
+    .info-title { color: var(--sidebar-title); }
+    .number { transform: scale(1.04); }
+  }
+
+  .number {
+    --number-displacement: -4px;
+    --number-size: 35px;
+    display: inline-block;
+    @include position-abs-top-left(var(--number-displacement), var(--number-displacement));
+    @include width-and-height(var(--number-size), var(--number-size));
+    @include display-flex;
+    background: var(--main-color);
+    box-shadow: 0 0 0 5px var(--bg-color);
+    font-weight: bold;
+    border-radius: 50%;
+    z-index: 1;
+    transition: transform .3s;
+  }
+
+  .img-ctn {
+    @include width-and-height(90px, 100%);
+    margin-right: 25px;
+
+    .img {
+      @include img-format;
+      border-radius: 4px;
+      transition: transform .3s, opacity .3s;
+    }
+  }
+
+  .info-ctn {
+    .info-title {
+      font-size: 16px;
+      font-weight: bold;
+      transition: color .3s;
+    }
+    .rating {
+      color: var(--rating-color);
+      .max-rating {
+        color: var(--rating-color);
+        font-size: var(--release-date-font-size);
+      }
+    }
+    .release-date {
+      font-size: var(--release-date-font-size);
+      color: var(--text-color);
+      margin: 0 15px;
+    }
+    .type {
+      display: inline-block;
+      font-size: 10px;
+      color: #000;
+      text-transform: uppercase;
+      font-weight: bold;
+      background: var(--rating-color);
+      border-radius: 50px;
+      padding: 3px;
+    }
+  }
+
+  &:last-child { margin-bottom: 60px; }
 }

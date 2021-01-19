@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Movie } from '@shared/interfaces/premieres-response.interface';
+import { Movie } from '@shared/interfaces/movies-response.interface';
 import Swiper, { Pagination, Autoplay } from 'swiper';
 Swiper.use([Pagination, Autoplay]);
 

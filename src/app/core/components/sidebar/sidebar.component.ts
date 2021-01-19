@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '@shared/interfaces/premieres-response.interface';
+import { Movie } from '@shared/interfaces/movies-response.interface';
 import { MoviesService } from '@shared/services/movies.service';
 
 @Component({
@@ -8,13 +8,27 @@ import { MoviesService } from '@shared/services/movies.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  title: string = "Top estrenos"
-  movies: Movie[] = [];
+  public title1:  string = "Top estrenos"
+  public title2:  string = "Películas destacadas"
+  public title3:  string = "Más películas"
+  public premieres: Movie[] = [];
+  public populars:  Movie[] = [];
+  public topRated:  Movie[] = [];
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this.moviesService.getPremieres().subscribe(movies => { this.movies = movies.splice(0,5) });
+    this.moviesService.getPremieres().subscribe( premieres => {
+      this.premieres = premieres.splice(0, 5);
+    });
+
+    this.moviesService.getPopular().subscribe( populars => {
+      this.populars = populars.splice(5, 5);
+    })
+
+    this.moviesService.getTopRated().subscribe( topRated => {
+      this.topRated = topRated.splice(0, 5);
+    })
   }
 
 }

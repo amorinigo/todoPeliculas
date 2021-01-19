@@ -1,4 +1,4 @@
-export interface PremieresResponse {
+export interface MoviesResponse {
   dates:         Dates;
   page:          number;
   results:       Movie[];

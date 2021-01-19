@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from '@shared/interfaces/premieres-response.interface';
+import { Movie } from '@shared/interfaces/movies-response.interface';
 
 @Component({
   selector: 'app-sidebar-section',
@@ -12,9 +12,6 @@ export class SidebarSectionComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.movies);
-    console.log(this.title);
-  }
+  ngOnInit(): void { }
 
 }

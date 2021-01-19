@@ -13,9 +13,7 @@ import { MovieComponent } from './components/movie/movie.component';
 import { CastSliderComponent } from './components/cast-slider/cast-slider.component';
 import { OriginalImagePipe } from './pipes/original-image.pipe';
 import { PosterImagePipe } from './pipes/poster-image.pipe';
-
-
-
+import { SeriesSliderComponent } from './components/series-slider/series-slider.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +25,8 @@ import { PosterImagePipe } from './pipes/poster-image.pipe';
     MovieComponent,
     CastSliderComponent,
     OriginalImagePipe,
-    PosterImagePipe
+    PosterImagePipe,
+    SeriesSliderComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +40,10 @@ import { PosterImagePipe } from './pipes/poster-image.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     MainSliderComponent,
-    PosterImagePipe
+    PosterImagePipe,
+    TitleComponent,
+    DynamicSubtitleComponent,
+    SeriesSliderComponent
   ]
 })
 export class SharedModule { }

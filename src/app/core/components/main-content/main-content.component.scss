@@ -5,31 +5,13 @@
   gap: 20px;
 }
 
-.router-outlet-ctn {
-  background: orange;
-  height: 600px;
-}
-
-.sidebar-ctn {
-  // background: lightcoral;
-  height: 300px;
-}
-
 // media queries
-@media (min-width: 576px) {
-  .main-content-container { margin: 60px 8%; }
-}
-
+@media (min-width: 576px) { .main-content-container { margin: 60px 8%; } }
 @media (max-width: 768px) {
   .main-content-container {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
   }
 }
-
-@media (min-width: 769px) {
-  .main-content-container {
-    margin: 60px 20px;
-  }
-}
+@media (min-width: 769px) { .main-content-container { margin: 60px 20px; } }
 

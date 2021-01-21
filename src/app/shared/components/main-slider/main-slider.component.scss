@@ -13,13 +13,17 @@
   font-weight: 900;
 }
 
-.swiper-container {
+.main-swiper {
   position: relative;
   @include width-and-height(100%, 560px);
 
 }
 
 .swiper-slide { position: relative; }
+
+.main-swiper-pagination {
+  transform: translate(250%, -40px) scale(1.5) !important;
+}
 
 .content {
   @include position-abs-top-left;

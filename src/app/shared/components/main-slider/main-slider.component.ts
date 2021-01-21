@@ -16,10 +16,10 @@ export class MainSliderComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    const mySwiper = new Swiper('.swiper-container', {
+    const mySwiper = new Swiper('.main-swiper', {
       loop: true,
       pagination: {
-        el: '.swiper-pagination',
+        el: '.main-swiper-pagination',
         clickable: true,
         dynamicBullets: true
       },

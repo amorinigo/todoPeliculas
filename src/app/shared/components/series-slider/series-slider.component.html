@@ -3,5 +3,13 @@
     <app-title [title]="title"></app-title>
     <button class="button">Ver más series</button>
   </div>
-  <!-- // SWIPER CON LA PAGINACIÓN -->
+
+  <div class="swiper-container series-swiper-container" *ngIf="series.length > 0">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide series-swiper-slide" *ngFor="let serie of series">
+          Slide 3
+        </div>
+    </div>
+    <div class="swiper-pagination series-swiper-pagination"></div>
+</div>
 </div>

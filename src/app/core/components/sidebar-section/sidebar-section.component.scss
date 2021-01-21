@@ -2,14 +2,12 @@
 
 :host {
   --release-date-font-size: 14px;
-  --sidebar-title: #4461CA;
-  --rating-color: orange;
 }
 
 .title {
   background-color: var(--navbar-bg);
   text-transform: uppercase;
-  color: var(--sidebar-title);
+  color: var(--sidebar-title-color);
   text-align: center;
   font-size: 12px;
   border-radius: 4px;
@@ -27,7 +25,7 @@
   &:hover {
     cursor: pointer;
     .img { transform: scale(1.04); opacity: 0.7; }
-    .info-title { color: var(--sidebar-title); }
+    .info-title { color: var(--sidebar-title-color); }
     .number { transform: scale(1.04); }
   }
 
@@ -64,9 +62,9 @@
       transition: color .3s;
     }
     .rating {
-      color: var(--rating-color);
+      color: var(--highlighted-color);
       .max-rating {
-        color: var(--rating-color);
+        color: var(--highlighted-color);
         font-size: var(--release-date-font-size);
       }
     }
@@ -81,7 +79,7 @@
       color: #000;
       text-transform: uppercase;
       font-weight: bold;
-      background: var(--rating-color);
+      background: var(--highlighted-color);
       border-radius: 50px;
       padding: 3px;
     }

@@ -11,7 +11,7 @@ Swiper.use([ Pagination, Autoplay ]);
 })
 export class SeriesSliderComponent implements OnInit, AfterViewInit {
   public title: string = "Series populares";
-  public series: Serie[];
+  public series: Serie[] = [];
 
   constructor(private seriesService: SeriesService) { }
 
@@ -23,13 +23,14 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const mySwiper = new Swiper('.series-swiper-container', {
+    let mySwiper = new Swiper('.series-swiper-container', {
+      spaceBetween: 10,
       pagination: {
         el: '.series-swiper-pagination',
         clickable: true,
         dynamicBullets: true
       },
-      slidesPerView: 2
+      slidesPerView: 3
     })
   }
 

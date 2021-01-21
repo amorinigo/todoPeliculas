@@ -6,6 +6,9 @@
   --text-color: #A9A9A9;
   --navbar-height: 100px;
   --navbar-bg: #2A2F42;
+  --series-swiper-height: 190px;
+  --sidebar-title-color: #4461CA;
+  --highlighted-color: orange;
 }
 
 * {
@@ -23,5 +26,4 @@ body {
   position: relative;
   user-select: none;
   overflow-x: hidden;
-  // min-height: 1500px;
 }

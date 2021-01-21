@@ -12,6 +12,10 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
   }
+  .sidebar-ctn {
+    position: relative;
+    top: var(--series-swiper-height);
+  }
 }
 @media (min-width: 769px) { .main-content-container { margin: 60px 20px; } }
 

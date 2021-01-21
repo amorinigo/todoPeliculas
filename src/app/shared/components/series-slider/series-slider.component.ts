@@ -9,7 +9,7 @@ import { SeriesService } from '@shared/services/series.service';
 })
 export class SeriesSliderComponent implements OnInit {
   public title: string = "Series populares";
-  public series: Serie[] = [];
+  public series: Serie[];
 
   constructor(private seriesService: SeriesService) { }
 

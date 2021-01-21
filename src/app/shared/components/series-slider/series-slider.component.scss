@@ -1,0 +1,16 @@
+.title-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background: var(--main-color);
+  text-transform: uppercase;
+  border-radius: 50px;
+  padding: 5px 10px;
+  font-size: 12px;
+}

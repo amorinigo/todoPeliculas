@@ -1,10 +1,11 @@
 <div class="dynamic-subtitle">
-  <div class="menu">
+  <div #menu class="menu">
 
     <li
+      #item
       class="menu__item"
-      *ngFor="let rating of ratings; let i = index"
-      (click)="activateItem( i )"
+      *ngFor="let rating of ratings"
+      (click)="activateItem( item )"
     >
       <a class="dynamic__link"> {{ rating }} </a>
     </li>

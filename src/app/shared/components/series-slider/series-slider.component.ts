@@ -14,15 +14,6 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
   public series: Serie[] = [];
   public mySwiper: Swiper;
 
-  // @HostListener("window:resize")
-  // onResize() {
-  //   let currentWidth = document.documentElement.clientWidth;
-  //   if(currentWidth < 350) return this.mySwiper.params.slidesPerView = 1;
-  //   if(currentWidth > 1100) return this.mySwiper.params.slidesPerView = 4;
-  //   if(currentWidth > 550) return this.mySwiper.params.slidesPerView = 3;
-  //   if(currentWidth > 350) return this.mySwiper.params.slidesPerView = 2;
-  // }
-
   constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {

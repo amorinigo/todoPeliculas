@@ -1,0 +1,18 @@
+.top { overflow: hidden; }
+.title {
+  // background: orange;
+  flex-shrink: 0;
+}
+.subtitle {
+  // background: lime;
+  width: 100%;
+}
+
+@media (min-width: 1000px) {
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}

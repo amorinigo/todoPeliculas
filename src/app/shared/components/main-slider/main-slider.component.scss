@@ -21,7 +21,7 @@
 .main-swiper-slide { position: relative; }
 
 .main-swiper-pagination {
-  transform: translate(250%, -40px) scale(1.5) !important;
+  transform: translate(-50%, -5px) scale(1.5) !important;
 }
 
 .content {
@@ -80,11 +80,12 @@
   }
 
   .overview-ctn {
-    max-height: 220px;
+    max-height: 170px;
     overflow: auto;
     .overview {
       @include overview-font;
       font-size: var(--overview-font-size);
+      margin: 0;
     }
   }
 
@@ -93,6 +94,7 @@
     outline: none;
     background: var(--main-color);
     border-radius: 50px;
+    margin-top: 10px;
     // text-transform: uppercase;
     // padding: 5px 10px;
     // font-size: 12px;

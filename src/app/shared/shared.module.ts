@@ -14,6 +14,7 @@ import { CastSliderComponent } from './components/cast-slider/cast-slider.compon
 import { OriginalImagePipe } from './pipes/original-image.pipe';
 import { PosterImagePipe } from './pipes/poster-image.pipe';
 import { SeriesSliderComponent } from './components/series-slider/series-slider.component';
+import { ContentSelectorComponent } from './components/content-selector/content-selector.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SeriesSliderComponent } from './components/series-slider/series-slider.
     CastSliderComponent,
     OriginalImagePipe,
     PosterImagePipe,
-    SeriesSliderComponent
+    SeriesSliderComponent,
+    ContentSelectorComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { SeriesSliderComponent } from './components/series-slider/series-slider.
     PosterImagePipe,
     TitleComponent,
     DynamicSubtitleComponent,
-    SeriesSliderComponent
+    SeriesSliderComponent,
+    ContentSelectorComponent
   ]
 })
 export class SharedModule { }

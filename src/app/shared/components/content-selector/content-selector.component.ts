@@ -1,24 +1,36 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '@shared/interfaces/movies-response.interface';
-import { Serie } from '@shared/interfaces/series-response.interface';
+import { Component, Input, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-content-selector',
   templateUrl: './content-selector.component.html',
   styleUrls: ['./content-selector.component.scss']
 })
-export class ContentSelectorComponent implements OnInit {
-  @Input() showInSlider: boolean;
-  @Input() showMovies:   boolean;
-  public   films: Movie[] | Serie[];
+export class ContentSelectorComponent implements OnInit, AfterViewInit {
+  @Input() isMovieTitle:   boolean;
+  @ViewChild( "menu" ) menu: ElementRef;
+  public ratings: string[];
 
-  constructor() { }
+  constructor() { this.ratings = ["Últimas", "Estrenos", "Ranking", "Más vistas"]; }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void { this.menu.nativeElement.firstElementChild.classList.add("active"); }
 
   showTitle(): string {
-    if(this.showMovies) return "Películas online";
-    return "Series online"
+    if(this.isMovieTitle) return "Películas online";
+    return "Series online";
+  }
+
+  disableCurrentItem(): void {
+    const currentItem = Array.from( this.menu.nativeElement.children )
+            .find( (element: HTMLElement) => element.classList.contains("active") );
+
+    currentItem["classList"].remove("active");
+  }
+
+  activateItem( item: HTMLElement ): void {
+    this.disableCurrentItem();
+    item.classList.add("active");
+    console.log( item.innerText ); // Output
   }
 }

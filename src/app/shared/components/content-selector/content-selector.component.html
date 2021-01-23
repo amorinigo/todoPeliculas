@@ -1,6 +1,22 @@
-<div class="content-selector-ctn">
-  <div class="top">
+<div class="content-selector">
+
     <app-title [title]="showTitle()" class="title"></app-title>
-    <app-dynamic-subtitle class="subtitle"></app-dynamic-subtitle>
-  </div>
+
+    <div class="subtitle">
+      <div class="dynamic-subtitle">
+        <div #menu class="menu">
+
+          <li
+            #item
+            class="menu__item"
+            *ngFor="let rating of ratings"
+            (click)="activateItem( item )"
+          >
+            <a class="dynamic__link"> {{ rating }} </a>
+          </li>
+
+        </div>
+      </div>
+    </div>
+
 </div>

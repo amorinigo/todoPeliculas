@@ -16,10 +16,23 @@ export class SeriesService {
       page: this.page.toString()
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getPopularSeries(): Observable<Serie[]> {
+  getSeriesAiringToday(): Observable<Serie[]> {
+    return this.http.get<SeriesResponse>(`${this.url}tv/airing_today`, { params: this.params })
+              .pipe( map( response => response.results ) );
+  }
+  getSeriesOnTheAir(): Observable<Serie[]> {
+    return this.http.get<SeriesResponse>(`${this.url}tv/on_the_air`, { params: this.params })
+              .pipe( map( response => response.results ) );
+  }
+  getSeriesPopular(): Observable<Serie[]> {
     return this.http.get<SeriesResponse>(`${this.url}tv/popular`, { params: this.params })
+              .pipe( map( response => response.results ) );
+  }
+
+  getSeriesTopRated(): Observable<Serie[]> {
+    return this.http.get<SeriesResponse>(`${this.url}tv/top_rated`, { params: this.params })
               .pipe( map( response => response.results ) );
   }
 }

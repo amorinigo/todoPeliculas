@@ -11,7 +11,7 @@ export interface Serie {
   genre_ids:         number[];
   id:                number;
   name:              string;
-  origin_country:    string[];
+  origin_country:    OriginCountry[];
   original_language: OriginalLanguage;
   original_name:     string;
   overview:          string;
@@ -26,4 +26,14 @@ export enum OriginalLanguage {
   Es = "es",
   Fr = "fr",
   Ja = "ja",
+  Ko = "ko"
+}
+
+export enum OriginCountry {
+  GB = "GB",
+  Jp = "JP",
+  Kr = "KR",
+  Us = "US",
+  CA = "CA",
+  Fr = "FR",
 }

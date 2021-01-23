@@ -41,4 +41,10 @@ export class MoviesService {
       params: this.params
     }).pipe( map( response => response.results ) );
   }
+
+  getUpcoming(): Observable<Movie[]> {
+    return  this.http.get<MoviesResponse>(`${this.url}movie/upcoming`, {
+      params: this.params
+    }).pipe( map( response => response.results ) );
+  }
 }

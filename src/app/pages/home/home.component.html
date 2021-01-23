@@ -1,7 +1,9 @@
 <div class="home-container">
   <app-series-slider></app-series-slider>
   <div class="main-content-ctn">
-    <app-content-selector [showInSlider]="false" [showMovies]="true"></app-content-selector>
-    <app-content-selector [showInSlider]="true" [showMovies]="false"></app-content-selector>
+    <!-- <app-content-selector [isMovieTitle]="true"></app-content-selector>
+    <app-movies-grid [movies]="movies"></app-movies-grid> -->
+    <app-content-selector [isMovieTitle]="false"></app-content-selector>
+    <app-secondary-series-slider [series]="series"></app-secondary-series-slider>
   </div>
 </div>

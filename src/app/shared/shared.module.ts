@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
 
 import { TitleComponent } from './components/title/title.component';
-import { DynamicSubtitleComponent } from './components/dynamic-subtitle/dynamic-subtitle.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { MainSliderComponent } from './components/main-slider/main-slider.component';
 import { MoviesGridComponent } from './components/movies-grid/movies-grid.component';
@@ -15,11 +14,11 @@ import { OriginalImagePipe } from './pipes/original-image.pipe';
 import { PosterImagePipe } from './pipes/poster-image.pipe';
 import { SeriesSliderComponent } from './components/series-slider/series-slider.component';
 import { ContentSelectorComponent } from './components/content-selector/content-selector.component';
+import { SecondarySeriesSliderComponent } from './components/secondary-series-slider/secondary-series-slider.component';
 
 @NgModule({
   declarations: [
     TitleComponent,
-    DynamicSubtitleComponent,
     SpinnerComponent,
     MainSliderComponent,
     MoviesGridComponent,
@@ -28,7 +27,8 @@ import { ContentSelectorComponent } from './components/content-selector/content-
     OriginalImagePipe,
     PosterImagePipe,
     SeriesSliderComponent,
-    ContentSelectorComponent
+    ContentSelectorComponent,
+    SecondarySeriesSliderComponent
   ],
   imports: [
     CommonModule,
@@ -44,9 +44,10 @@ import { ContentSelectorComponent } from './components/content-selector/content-
     MainSliderComponent,
     PosterImagePipe,
     TitleComponent,
-    DynamicSubtitleComponent,
     SeriesSliderComponent,
-    ContentSelectorComponent
+    ContentSelectorComponent,
+    MoviesGridComponent,
+    SecondarySeriesSliderComponent
   ]
 })
 export class SharedModule { }

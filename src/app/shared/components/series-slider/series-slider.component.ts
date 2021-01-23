@@ -17,7 +17,7 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
   constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {
-    this.seriesService.getPopularSeries().subscribe( popularSeries => {
+    this.seriesService.getSeriesPopular().subscribe( popularSeries => {
       this.series = popularSeries.splice(0, 10);
     });
   }
@@ -45,7 +45,7 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
           spaceBetween: 10,
         }
       }
-    })
+    });
   }
 
 }

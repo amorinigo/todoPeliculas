@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Movie } from '@shared/interfaces/movies-response.interface';
 
 @Component({
   selector: 'app-movies-grid',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies-grid.component.scss']
 })
 export class MoviesGridComponent implements OnInit {
+  @Input() movies: Movie[];
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.movies);
   }
 
 }

@@ -47,4 +47,13 @@ export class MoviesService {
       params: this.params
     }).pipe( map( response => response.results ) );
   }
+
+  getMoviesObservable( term: string ): Observable<Movie[]> {
+    switch( term ) {
+      case 'últimas'    :  return this.getUpcoming();
+      case 'estrenos'   :  return this.getPremieres();
+      case 'ranking'    :  return this.getTopRated();
+      case 'más vistas' :  return this.getPopular();
+    };
+  }
 }

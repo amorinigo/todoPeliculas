@@ -35,4 +35,13 @@ export class SeriesService {
     return this.http.get<SeriesResponse>(`${this.url}tv/top_rated`, { params: this.params })
               .pipe( map( response => response.results ) );
   }
+
+  getSeriesObservable( term: string ): Observable<Serie[]> {
+    switch( term ) {
+      case 'últimas'    :  return this.getSeriesAiringToday();
+      case 'estrenos'   :  return this.getSeriesOnTheAir();
+      case 'ranking'    :  return this.getSeriesTopRated();
+      case 'más vistas' :  return this.getSeriesPopular();
+    };
+  }
 }

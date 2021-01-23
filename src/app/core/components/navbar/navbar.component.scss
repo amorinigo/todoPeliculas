@@ -10,7 +10,7 @@
 .navbar-ctn {
   position: fixed;
   @include width-and-height(100%, var(--navbar-height));
-  @include display-flex(space-between);
+  @include display-flex(center, space-between);
   background-color: transparent;
   padding: 0 8px;
   z-index: 110;
@@ -215,7 +215,7 @@
   .menu {
     width: 100%;
     margin-top: 0;
-    @include display-flex(space-evenly);
+    @include display-flex(center, space-evenly);
 
     .menu__item {
       cursor: pointer;

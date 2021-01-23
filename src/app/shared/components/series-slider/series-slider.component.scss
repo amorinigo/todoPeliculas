@@ -5,7 +5,7 @@
 .series-slider-ctn { position: relative; }
 
 .title-section {
-  @include display-flex(space-between); // querie
+  @include display-flex(center, space-between); // querie
   display: block;
   margin-bottom: 15px;
 
@@ -34,9 +34,7 @@
 .img-ctn {
   @include position-abs-top-left;
   @include width-and-height(100%, var(--img-ctn-height));
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  @include display-flex(flex-start, center);
   transition: transform .3s, opacity .3s;
 
   .serie-img {

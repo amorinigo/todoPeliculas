@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '@shared/interfaces/movies-response.interface';
+import { MoviesService } from '@shared/services/movies.service';
 
 @Component({
   selector: 'app-movies-grid',
@@ -9,7 +10,7 @@ import { Movie } from '@shared/interfaces/movies-response.interface';
 export class MoviesGridComponent implements OnInit {
   @Input() movies: Movie[];
 
-  constructor() { }
+  constructor( private moviesService: MoviesService ) { }
 
   ngOnInit(): void {
     console.log(this.movies);

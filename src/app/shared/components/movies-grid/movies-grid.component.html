@@ -1,4 +1,7 @@
-<p>movies-grid works!</p>
-<p *ngFor="let movie of movies">
-  {{ movie.title }}
-</p>
+<div class="movies-grid-container">
+  <app-movie class="movie" *ngFor="let movie of movies" [movie]="movie"></app-movie>
+</div>
+
+<button type="button" class="button d-block text-dark w-100 mt-4 mb-4">
+  Cargar más películas
+</button>

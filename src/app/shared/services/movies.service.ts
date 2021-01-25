@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GenresResponse, Genre } from '@shared/interfaces/genres-response.interface';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Movie, MoviesResponse } from '@shared/interfaces/movies-response.interface';
 
 @Injectable({
@@ -45,7 +45,10 @@ export class MoviesService {
   getUpcoming(): Observable<Movie[]> {
     return  this.http.get<MoviesResponse>(`${this.url}movie/upcoming`, {
       params: this.params
-    }).pipe( map( response => response.results ) );
+    }).pipe(
+      tap( () => this.page += 1 ),
+      map( response => response.results )
+    );
   }
 
   getMoviesObservable( term: string ): Observable<Movie[]> {

@@ -15,7 +15,7 @@ export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.series);
+    // console.log(this.series);
   }
 
   ngAfterViewInit() {

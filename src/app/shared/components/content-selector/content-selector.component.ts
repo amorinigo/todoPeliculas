@@ -19,9 +19,7 @@ export class ContentSelectorComponent implements OnInit, AfterViewInit {
     this.currentRating = this.ratings[0].toLowerCase();
   }
 
-  ngOnInit(): void {
-    this.typeOfQuery.emit( this.currentRating );
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void { this.menu.nativeElement.firstElementChild.classList.add("active"); }
 

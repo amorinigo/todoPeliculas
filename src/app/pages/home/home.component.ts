@@ -12,20 +12,29 @@ import { SeriesService } from '@shared/services/series.service';
 export class HomeComponent implements OnInit {
   public movies: Movie[] = [];
   public series: Serie[] = [];
+  private queryWord: string = "últimas";
 
   constructor( private moviesService: MoviesService,
                private seriesService: SeriesService ) {}
 
   ngOnInit(): void {
-    // 60 movies in total after executing this command. The first 20 come from the event sent by the app-content-selector child.
-    this.get40UpcomingMovies();
-    // console.log( this.movies );
+    for(let i = 1; i <= 3; i++) {
+      this.runMoviesQuery( this.queryWord );
+    }
   }
 
   runMoviesQuery( typeOfQuery: string ) {
     this.moviesService.getMoviesObservable( typeOfQuery ).subscribe( movies => {
+      if(typeOfQuery != this.queryWord) {
+        this.queryWord = typeOfQuery;
+        this.movies = [];
+        for(let i = 1; i <= 3; i++) {
+          this.moviesService.getMoviesObservable( typeOfQuery ).subscribe( movies => {
+            this.movies.push( ...movies );
+          })
+        }
+      }
       this.movies.push( ...movies );
-      // this.movies = movies;
       // console.log( this.movies );
     });
   }
@@ -37,15 +46,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  get40UpcomingMovies() {
-    for( let i = 0; i < 2; i++ ) {
-      this.moviesService.getUpcoming().subscribe( movies => {
-        this.movies.push( ...movies );
-      });
-    }
-  }
-
   loadMoreMovies() {
     // HACE LA PETICIÓN A CADA GET SEGÚN EL VALOR DEL TYPE OF QUERY. TENGO QUE CREAR UNA PROPIEDAD PARA SABER EL TYPE OF QUERYS DE MOVIES ACTUAL. Y HACER LA PETICIÓN SEGÚN ESE PARÁMETRO. PERO TENGO QUE PONER EL TAP EN CADA GET DEL MOVIE SERVICES. Y TENGO QUE FIJARME QUE RETORNE BIEN LAS PÁGINAS Y NO RETORNE SIEMPRE LAS MISMAS PÁGINAS. FIJARME BIEN CON EL CONSOLE.LOG();
+    this.runMoviesQuery( this.queryWord );
   }
 }

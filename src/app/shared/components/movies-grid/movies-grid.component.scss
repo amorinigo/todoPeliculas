@@ -5,8 +5,6 @@
   grid-auto-rows: minmax(330px, 1fr);
 }
 
-.movie { background: orange; }
-
 @media (min-width: 368px) {
   .movies-grid-container {
     grid-template-columns: repeat( 2, 1fr );

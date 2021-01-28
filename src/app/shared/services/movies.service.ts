@@ -14,7 +14,7 @@ export class MoviesService {
   private params = {
       api_key: "9b4d5ebc3b73e91f4e05a59de0179a5d",
       language: "es-ES",
-      page: this.page.toString()
+      page: String( this.page )
   }
 
   constructor(private http: HttpClient) { }
@@ -25,6 +25,7 @@ export class MoviesService {
   }
 
   getPremieres(): Observable<Movie[]> {
+
     return  this.http.get<MoviesResponse>(`${this.url}movie/now_playing`, {
       params: this.params
     }).pipe( map( response => response.results ) );
@@ -43,12 +44,9 @@ export class MoviesService {
   }
 
   getUpcoming(): Observable<Movie[]> {
-    return  this.http.get<MoviesResponse>(`${this.url}movie/upcoming`, {
-      params: this.params
-    }).pipe(
-      tap( () => this.page += 1 ),
-      map( response => response.results )
-    );
+    const params = { ... this.params, page: String(this.page++) }
+    return  this.http.get<MoviesResponse>(`${this.url}movie/upcoming`, { params })
+                .pipe( map( response => response.results ) );
   }
 
   getMoviesObservable( term: string ): Observable<Movie[]> {

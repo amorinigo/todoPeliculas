@@ -10,42 +10,41 @@ import { Movie, MoviesResponse } from '@shared/interfaces/movies-response.interf
 })
 export class MoviesService {
   private url: string = "https://api.themoviedb.org/3/";
-  private page: number = 1;
-  private params = {
+  public page: number = 1;
+
+  get params() {
+    return {
       api_key: "9b4d5ebc3b73e91f4e05a59de0179a5d",
       language: "es-ES",
       page: String( this.page )
+    }
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getGenres(): Observable<Genre[]> {
     return  this.http.get<GenresResponse>(`${this.url}genre/movie/list`, {params: this.params})
-              .pipe( map( response => response.genres ) );
+                .pipe( map( response => response.genres ) );
   }
 
   getPremieres(): Observable<Movie[]> {
 
-    return  this.http.get<MoviesResponse>(`${this.url}movie/now_playing`, {
-      params: this.params
-    }).pipe( map( response => response.results ) );
+    return  this.http.get<MoviesResponse>(`${this.url}movie/now_playing`, {params: this.params})
+                .pipe( map( response => response.results ) );
   }
 
   getPopular(): Observable<Movie[]> {
-    return  this.http.get<MoviesResponse>(`${this.url}movie/popular`, {
-      params: this.params
-    }).pipe( map( response => response.results ) );
+    return  this.http.get<MoviesResponse>(`${this.url}movie/popular`, {params: this.params})
+                .pipe( map( response => response.results ) );
   }
 
   getTopRated(): Observable<Movie[]> {
-    return  this.http.get<MoviesResponse>(`${this.url}movie/top_rated`, {
-      params: this.params
-    }).pipe( map( response => response.results ) );
+    return  this.http.get<MoviesResponse>(`${this.url}movie/top_rated`, {params: this.params})
+                .pipe( map( response => response.results ) );
   }
 
   getUpcoming(): Observable<Movie[]> {
-    const params = { ... this.params, page: String(this.page++) }
-    return  this.http.get<MoviesResponse>(`${this.url}movie/upcoming`, { params })
+    return  this.http.get<MoviesResponse>(`${this.url}movie/upcoming`, {params: this.params})
                 .pipe( map( response => response.results ) );
   }
 

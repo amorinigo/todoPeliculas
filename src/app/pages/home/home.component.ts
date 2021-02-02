@@ -17,7 +17,10 @@ export class HomeComponent implements OnInit {
   constructor( private moviesService: MoviesService,
                private seriesService: SeriesService ) {}
 
-  ngOnInit(): void { this.loadTheFirst60Movies(); }
+  ngOnInit(): void {
+    this.loadTheFirst60Movies();
+    this.runSeriesQuery( this.queryWord );
+  }
 
   runMoviesQuery( typeOfQuery: string ) {
     this.queryWord = typeOfQuery;

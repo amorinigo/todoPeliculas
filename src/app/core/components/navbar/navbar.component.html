@@ -17,11 +17,11 @@
     </div>
     <ul class="menu">
 
-      <li class="menu__item">
+      <li class="menu__item" routerLinkActive="activo">
         <a class="menu__link fw-bold" (click)="menuOnOff()" routerLink="home">Inicio</a>
       </li>
 
-      <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': gendersActivated}">
+      <li class="menu__item sub-menu-li" routerLinkActive="activo" [ngClass]="{'sub-menu--active': gendersActivated}">
         <a class="menu__link" (click)="gendersOnOff()">Géneros</a>
         <i class="fas fa-chevron-right"></i>
         <ul class="sub-menu animate__animated animate__pulse">
@@ -39,7 +39,7 @@
         </ul>
       </li>
 
-      <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': moviesActivated}">
+      <li class="menu__item sub-menu-li" routerLinkActive="activo" [ngClass]="{'sub-menu--active': moviesActivated}">
         <a class="menu__link" (click)="moviesOnOff()">Películas</a>
         <i class="fas fa-chevron-right"></i>
         <ul class="sub-menu movies-ul animate__animated animate__pulse">
@@ -51,7 +51,7 @@
         </ul>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item" routerLinkActive="activo">
         <a class="menu__link" (click)="menuOnOff()" routerLink="serie">Series & TV</a>
       </li>
 

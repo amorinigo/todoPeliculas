@@ -1,16 +1,15 @@
 @import '../../../../assets/scss/global-mixins';
 
-:host { --img-ctn-height: 94px; }
+:host { --img-ctn-height: 120px; }
 
 .series-slider-ctn { position: relative; }
 
 .title-section {
-  @include display-flex(center, space-between); // querie
   display: block;
   margin-bottom: 15px;
 
   .button {
-    @include button(12px);
+    @include button(10px);
     text-transform: uppercase;
     padding: 5px 10px;
     margin-top: 15px; // querie margin-top: 0;
@@ -58,5 +57,12 @@
   .serie-date {
     font-size: 11px;
     text-align: center;
+    color: var(--overview-color);
   }
+}
+
+// media queries
+@media (min-width: 420px) {
+  .title-section { @include display-flex(center, space-between); }
+  .button { display: block; margin-top: 0 !important; }
 }

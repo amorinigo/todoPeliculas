@@ -1,1 +1,17 @@
+@import "../../../assets/scss/global-mixins";
 
+.button {
+  @include button(16px);
+  display: block;
+  width: 100%;
+  margin: 70px auto;
+  padding: 10px 0;
+  &:hover { transform: scale(1); }
+}
+
+.spinner-ctn {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

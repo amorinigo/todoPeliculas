@@ -37,7 +37,6 @@
   outline: none;
   background: var(--main-color);
   border-radius: 50px;
-  font-weight: bold;
   font-size: $font-size;
   transition: transform .3s, opacity .3s;
 
@@ -45,4 +44,15 @@
     transform: scale(1.05);
     opacity: 0.8;
   }
+}
+
+@mixin pill($font-size: 10px, $padding: 3px) {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 50px;
+  color: #000;
+  background: var(--highlighted-color);
+  font-size: $font-size;
+  padding: $padding;
 }

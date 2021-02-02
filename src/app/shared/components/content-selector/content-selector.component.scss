@@ -1,10 +1,14 @@
 @import "../../../../assets/scss/global-mixins";
 
+.content-selector {
+  margin: 50px 0 20px 0;
+}
+
 .title { flex-shrink: 0; }
 
 .menu {
   width: 100%;
-  margin: 10px 0 8px 0;
+  margin: 10px 0 10px 3px;
   max-width: 383px;
   @include display-flex(flex-start, space-between);
   flex-direction: column;
@@ -19,6 +23,7 @@
   text-transform: uppercase;
   font-size: 14px;
   transition: transform .2s;
+  margin-bottom: 17px;
 
   &:hover {
     color: var(--sidebar-title-color);
@@ -31,15 +36,19 @@
     @include position-abs-top-left(100%, 0);
     @include width-and-height(100%, 3px);
     background: var(--highlighted-color);
+    margin-top: 5px;
   }
 }
 
 .active { &:after { display: block; } }
 
 // media queries
-@media (min-width: 380px) { .menu { flex-direction: row; } }
+@media (min-width: 380px) {
+  .menu { flex-direction: row; margin: 10px 0; }
+  .item { margin-bottom: 8px; }
+}
 
 @media (min-width: 1000px) {
   .content-selector { @include display-flex(center, flex-start); }
-  .menu { margin: 0; justify-content: space-evenly;}
+  .menu { margin: 15px 0 0 0; justify-content: space-evenly;}
 }

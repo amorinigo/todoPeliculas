@@ -4,6 +4,10 @@
   --release-date-font-size: 14px;
 }
 
+.sidebar-section-ctn {
+  // max-width: 100%;
+}
+
 .title {
   background-color: var(--navbar-bg);
   text-transform: uppercase;
@@ -69,6 +73,8 @@
     }
     .rating {
       color: var(--highlighted-color);
+      display: inline-block;
+      margin-bottom: 5px;
       .max-rating {
         color: var(--highlighted-color);
         font-size: var(--release-date-font-size);
@@ -79,21 +85,13 @@
       color: var(--text-color);
       margin: 0 15px;
     }
-    .type {
-      display: inline-block;
-      font-size: 10px;
-      color: #000;
-      text-transform: uppercase;
-      font-weight: bold;
-      background: var(--highlighted-color);
-      border-radius: 50px;
-      padding: 3px;
-    }
+    .type { display: none; }
   }
 
   &:last-child { margin-bottom: 60px; }
 }
 
 @media (min-width: 280px) {
+  .type { @include pill(); display: inline-block !important; }
   .movie-section { overflow: visible; }
 }

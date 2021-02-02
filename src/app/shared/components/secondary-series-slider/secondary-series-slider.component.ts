@@ -10,7 +10,6 @@ Swiper.use([ Pagination ]);
 })
 export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
   @Input() series: Serie[];
-  public swiper: Swiper;
 
   constructor() { }
 
@@ -19,8 +18,8 @@ export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.swiper = new Swiper('.swiper3-container', {
-      slidesPerView: 1,
+    const swiper = new Swiper('.swiper3-container', {
+      observer: true,
       spaceBetween: 10,
       pagination: {
         el: '.swiper3-pagination',
@@ -28,18 +27,12 @@ export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
         dynamicBullets: true
       },
       breakpoints: {
-        350: {
-          slidesPerView: 2,
-          spaceBetween: 10,
-        },
-        550: {
-          slidesPerView: 3,
-          spaceBetween: 10,
-        },
-        1100: {
-          slidesPerView: 4,
-          spaceBetween: 10,
-        }
+        0:    { slidesPerView: 1 },
+        350:  { slidesPerView: 2 },
+        550:  { slidesPerView: 3 },
+        769:  { slidesPerView: 2 },
+        845:  { slidesPerView: 3 },
+        1100: { slidesPerView: 4 }
       }
     });
   }

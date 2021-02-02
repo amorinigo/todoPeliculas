@@ -12,7 +12,6 @@ Swiper.use([ Pagination ]);
 export class SeriesSliderComponent implements OnInit, AfterViewInit {
   public title: string = "Series populares";
   public series: Serie[] = [];
-  public seriesSwiper: Swiper;
 
   constructor(private seriesService: SeriesService) { }
 
@@ -23,8 +22,8 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.seriesSwiper = new Swiper('.series-swiper-container', {
-      slidesPerView: 1,
+    const seriesSwiper = new Swiper('.series-swiper-container', {
+      observer: true,
       spaceBetween: 10,
       pagination: {
         el: '.series-swiper-pagination',
@@ -32,20 +31,11 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
         dynamicBullets: true
       },
       breakpoints: {
-        350: {
-          slidesPerView: 2,
-          spaceBetween: 10,
-        },
-        550: {
-          slidesPerView: 3,
-          spaceBetween: 10,
-        },
-        1100: {
-          slidesPerView: 4,
-          spaceBetween: 10,
-        }
+        0:    { slidesPerView: 1 },
+        350:  { slidesPerView: 2 },
+        550:  { slidesPerView: 3 },
+        1100: { slidesPerView: 4 }
       }
     });
   }
-
 }

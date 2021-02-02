@@ -47,7 +47,8 @@ import { SecondarySeriesSliderComponent } from './components/secondary-series-sl
     SeriesSliderComponent,
     ContentSelectorComponent,
     MoviesGridComponent,
-    SecondarySeriesSliderComponent
+    SecondarySeriesSliderComponent,
+    SpinnerComponent
   ]
 })
 export class SharedModule { }

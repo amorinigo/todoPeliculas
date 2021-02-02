@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
                private seriesService: SeriesService ) {}
 
   ngOnInit(): void {
+    // this.moviesService.isValidPage = true;
     this.loadTheFirst60Movies();
     this.runSeriesQuery( this.queryWord );
   }

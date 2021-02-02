@@ -10,7 +10,7 @@ import { SerieComponent } from '@pages/serie/serie.component';
 
 const routes: Routes = [
   {path: "inicio",                component: HomeComponent},
-  {path: "serie",                 component: SerieComponent},
+  {path: "series",                component: SerieComponent},
   {path: "búsqueda/:term",        component: SearchComponent},
   {path: "género/:genreType",     component: GenreComponent},
   {path: "películas/:rating",     component: MoviesComponent},

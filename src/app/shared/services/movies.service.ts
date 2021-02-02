@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GenresResponse, Genre } from '@shared/interfaces/genres-response.interface';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Movie, MoviesResponse } from '@shared/interfaces/movies-response.interface';
+import { MovieDetails } from '@shared/interfaces/movie-details-response.interface';
+import { Cast, CastResponse } from '@shared/interfaces/cast-response.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
+  public isValidPage: boolean = true;
   private url: string = "https://api.themoviedb.org/3/";
   public page: number = 1;
 
@@ -55,5 +58,16 @@ export class MoviesService {
       case 'ranking'    :  return this.getTopRated();
       case 'más vistas' :  return this.getPopular();
     };
+  }
+
+  getCast( id: number ): Observable<Cast[]> {
+    return this.http.get<CastResponse>(`${ this.url }movie/${ id }/credits`, {
+      params: this.params
+    })
+    .pipe( map( resp => resp.cast ) );
+  }
+
+  getMovieDetails( id: number ): Observable<MovieDetails> {
+    return this.http.get<MovieDetails>(`${ this.url }movie/${ id }`, { params: this.params });
   }
 }

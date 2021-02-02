@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from '@shared/interfaces/movies-response.interface';
 import Swiper, { Pagination, Autoplay } from 'swiper';
 Swiper.use([Pagination, Autoplay]);
@@ -11,7 +12,7 @@ Swiper.use([Pagination, Autoplay]);
 export class MainSliderComponent implements OnInit, AfterViewInit {
   @Input() films: Movie[];    // Movie[] || Serie[];
 
-  constructor() {}
+  constructor( private router: Router ) {}
 
   ngOnInit(): void {
     // console.log( this.films );
@@ -31,4 +32,6 @@ export class MainSliderComponent implements OnInit, AfterViewInit {
       }
     })
   }
+
+  showDetails( id: number ) { this.router.navigate(['película-detalles', id]); }
 }

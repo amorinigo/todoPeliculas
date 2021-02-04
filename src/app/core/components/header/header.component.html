@@ -1,2 +1,3 @@
 <app-navbar></app-navbar>
-<app-main-slider *ngIf="isValidPage() && videos.length > 0" [films]="videos"></app-main-slider>
+<app-main-slider *ngIf="moviesService.showMainSlider && videos.length > 0" [films]="videos">
+</app-main-slider>

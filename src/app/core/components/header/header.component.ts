@@ -9,23 +9,23 @@ import { MoviesService } from '@shared/services/movies.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  // public isValidPage: boolean = true;
+  // public isValidPage: boolean = this.moviesService.isValidPage;
   public videos: Movie[] = [];  // Movie[] || Serie[].
 
-  constructor( private moviesService: MoviesService,
+  constructor( public moviesService: MoviesService,
                private router: Router ) { }
 
   ngOnInit(): void {
     this.moviesService.getPremieres().subscribe( movies => { this.videos = movies.splice(0, 10) });
   }
 
-  isValidPage(): boolean {
-    const route: string = this.router.url.slice(1, 50);
+  // isValidPage(): boolean {
+  //   const route: string = this.router.url.slice(1, 50);
 
-    if( route === "inicio" ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  //   if( route === "inicio" ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 }

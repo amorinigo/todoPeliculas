@@ -15,10 +15,11 @@ export class HomeComponent implements OnInit {
   private queryWord = "últimas";
 
   constructor( private moviesService: MoviesService,
-               private seriesService: SeriesService ) {}
+               private seriesService: SeriesService ) {
+    this.moviesService.showMainSlider = true;
+  }
 
   ngOnInit(): void {
-    // this.moviesService.isValidPage = true;
     this.loadTheFirst60Movies();
     this.runSeriesQuery( this.queryWord );
   }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 import { TitleComponent } from './components/title/title.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
@@ -15,6 +16,7 @@ import { PosterImagePipe } from './pipes/poster-image.pipe';
 import { SeriesSliderComponent } from './components/series-slider/series-slider.component';
 import { ContentSelectorComponent } from './components/content-selector/content-selector.component';
 import { SecondarySeriesSliderComponent } from './components/secondary-series-slider/secondary-series-slider.component';
+import { MinutesToHourPipe } from './pipes/minutes-to-hour.pipe';
 
 @NgModule({
   declarations: [
@@ -28,27 +30,32 @@ import { SecondarySeriesSliderComponent } from './components/secondary-series-sl
     PosterImagePipe,
     SeriesSliderComponent,
     ContentSelectorComponent,
-    SecondarySeriesSliderComponent
+    SecondarySeriesSliderComponent,
+    MinutesToHourPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SwiperModule
+    SwiperModule,
+    NgCircleProgressModule.forRoot()
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgCircleProgressModule,
     MainSliderComponent,
+    OriginalImagePipe,
     PosterImagePipe,
     TitleComponent,
     SeriesSliderComponent,
     ContentSelectorComponent,
     MoviesGridComponent,
     SecondarySeriesSliderComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    MinutesToHourPipe
   ]
 })
 export class SharedModule { }

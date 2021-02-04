@@ -11,7 +11,7 @@ import { Cast, CastResponse } from '@shared/interfaces/cast-response.interface';
   providedIn: 'root'
 })
 export class MoviesService {
-  public isValidPage: boolean = true;
+  public showMainSlider: boolean = true;
   private url: string = "https://api.themoviedb.org/3/";
   public page: number = 1;
 
@@ -60,11 +60,8 @@ export class MoviesService {
     };
   }
 
-  getCast( id: number ): Observable<Cast[]> {
-    return this.http.get<CastResponse>(`${ this.url }movie/${ id }/credits`, {
-      params: this.params
-    })
-    .pipe( map( resp => resp.cast ) );
+  getCast( id: number ): Observable<CastResponse> {
+    return this.http.get<CastResponse>(`${ this.url }movie/${ id }/credits`, { params: this.params })
   }
 
   getMovieDetails( id: number ): Observable<MovieDetails> {

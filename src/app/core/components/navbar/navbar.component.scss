@@ -9,6 +9,7 @@
 // navbar
 .navbar-ctn {
   position: fixed;
+  top: 0;
   @include width-and-height(100%, var(--navbar-height));
   @include display-flex(center, space-between);
   background-color: transparent;

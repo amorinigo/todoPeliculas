@@ -1,3 +1,4 @@
 <div class="movies-grid-container">
-  <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
+  <app-movie *ngFor="let movie of movies" [movie]="movie" (click)="showDetails( movie.id )">
+  </app-movie>
 </div>

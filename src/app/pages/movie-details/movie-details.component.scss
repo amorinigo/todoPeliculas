@@ -1,7 +1,5 @@
 .movie-details-ctn {
   position: relative;
-  display: flex;
-  flex-direction: column;
 
   &:after {
     display: block;
@@ -80,6 +78,7 @@
 
 .overview-title {
   font-weight: 400;
+  font-size: 20px;
 }
 
 .overview {
@@ -102,7 +101,22 @@
   .director,
   .writters {
     margin-bottom: 15px;
+
+    h5, h6 {
+      font-size: 15px;
+    }
+
+    h5 { font-weight: 900 }
   }
+}
+
+.extra-info-container {
+  margin: 0 20px;
+}
+
+.super-container {
+  // background: red;
+  overflow: hidden;
 }
 
 @media (min-width: 306px) {
@@ -111,6 +125,57 @@
 
 @media (min-width: 530px) {
   .movie-details-ctn {
+    // flex-direction: row;
+  }
+
+  .super-container {
+    display: flex;
+    overflow: visible;
+  }
+
+  .overview-ctn {
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 600px) {
+  .crew-ctn {
     flex-direction: row;
   }
+}
+
+@media (min-width: 769px) {
+  .super-container,
+  .crew-ctn {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 900px) {
+  .super-container,
+  .crew-ctn {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1050px) { // font-size
+  .tagline,
+  .overview,
+  .general-info-ctn {
+    font-size: 16px;
+  }
+
+  .director,
+  .writters {
+    h5, h6 {
+      font-size: 16px;
+    }
+  }
+
+  .overview-title {
+    font-size: 22px;
+  }
+
+  .title-info { font-size: 25px; }
 }

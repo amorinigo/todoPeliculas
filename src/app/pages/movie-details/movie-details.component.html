@@ -3,52 +3,57 @@
   <section class="movie-details-ctn">
     <img [src]="details.backdrop_path | originalImage" [alt]="details.title" class="background-img">
 
-    <figure class="movie-img-ctn">
-      <img [src]="details.poster_path | posterImage" [alt]="details.title" class="movie-img">
-    </figure>
+    <div class="super-container">
+      <figure class="movie-img-ctn">
+        <img [src]="details.poster_path | posterImage" [alt]="details.title" class="movie-img">
+      </figure>
 
-    <div class="movie-info">
-      <div>
-        <h3 class="title-info">
-          {{ details.title }}
-          <span class="year"> ({{ details.release_date | slice:0:4 }}) </span>
-        </h3>
+      <div class="movie-info">
+        <div>
+          <h3 class="title-info">
+            {{ details.title }}
+            <span class="year"> ({{ details.release_date | slice:0:4 }}) </span>
+          </h3>
+        </div>
+
+        <div class="general-info-ctn">
+          <span> {{ details.release_date | date: 'dd/MM/yyyy' }} </span>
+          <span> {{ genres | slice:0:-2 }} </span>
+          <span> {{ details.runtime | minutesToHour }} </span>
+        </div>
+
+        <div>
+          <circle-progress
+          [percent]= "details.vote_average * 10"
+          [radius]= "20"
+          [backgroundColor]="'#032541'"
+          [toFixed]= "0"
+          [maxPercent]= "100"
+          [outerStrokeWidth]= "4"
+          [innerStrokeWidth]= "4"
+          [outerStrokeColor]= "'orange'"
+          [innerStrokeColor]= "'grey'"
+          [animation]= "true"
+          [animationDuration]= "0"
+          [space]= "-4"
+          [titleFontSize]= "15"
+          [unitsFontSize]= "9"
+          [titleColor]= "'orange'"
+          [unitsColor]= "'orange'"
+          [showSubtitle]= "false"
+          [showBackground]= "true"
+          [startFromZero]= "false"
+        >
+          </circle-progress>
+
+          <span class="punctuation"> Puntuación </span>
+        </div>
+
+        <h5 class="tagline"> {{ details.tagline }} </h5>
       </div>
+    </div>
 
-      <div class="general-info-ctn">
-        <span> {{ details.release_date | date: 'dd/MM/yyyy' }} </span>
-        <span> {{ genres | slice:0:-2 }} </span>
-        <span> {{ details.runtime | minutesToHour }} </span>
-      </div>
-
-      <div>
-        <circle-progress
-        [percent]= "details.vote_average * 10"
-        [radius]= "20"
-        [backgroundColor]="'#032541'"
-        [toFixed]= "0"
-        [maxPercent]= "100"
-        [outerStrokeWidth]= "4"
-        [innerStrokeWidth]= "4"
-        [outerStrokeColor]= "'orange'"
-        [innerStrokeColor]= "'grey'"
-        [animation]= "true"
-        [animationDuration]= "0"
-        [space]= "-4"
-        [titleFontSize]= "15"
-        [unitsFontSize]= "9"
-        [titleColor]= "'orange'"
-        [unitsColor]= "'orange'"
-        [showSubtitle]= "false"
-        [showBackground]= "true"
-        [startFromZero]= "false"
-      >
-        </circle-progress>
-
-        <span class="punctuation"> Puntuación </span>
-      </div>
-
-      <h5 class="tagline"> {{ details.tagline }} </h5>
+    <div class="extra-info-container">
 
       <div class="overview-ctn">
         <h4 class="overview-title"> Vista general </h4>
@@ -66,7 +71,9 @@
           <h6> {{ writer.job }} </h6>
         </div>
       </div>
+
     </div>
+
   </section>
 
   <!-- <section class="cast-details-ctn">

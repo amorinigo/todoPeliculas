@@ -1,5 +1,8 @@
+@import "../../../assets/scss/global-mixins";
+
 .movie-details-ctn {
   position: relative;
+  padding: 15px 0;
 
   &:after {
     display: block;
@@ -117,6 +120,145 @@
 .super-container {
   // background: red;
   overflow: hidden;
+}
+
+.swiper-cast-container {
+  height: 300px;
+}
+
+.cast-title,
+.recommendations-title {
+  margin: 40px 0;
+  font-weight: bold;
+}
+
+.swiper-cast-container {
+  // overflow: visible;
+}
+
+.swiper-cast-slide {
+  border-radius: 8px;
+  // box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  background: var(--navbar-bg);
+  // padding: 15px 0;
+  cursor: pointer;
+  transition: opacity .3s;
+  overflow: hidden;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:hover .actor-img {
+    transform: scale(1.04);
+  }
+
+  &:hover .actor-name,
+  &:hover .actor-character {
+    color: var(--sidebar-title-color);
+  }
+
+  div {
+    width: 100%;
+    // background: orange;
+    text-align: center;
+
+    .actor-name,
+    .actor-character {
+      font-size: 14px;
+      margin: 0 5px;
+      transition: color .3s;
+    }
+
+    .actor-name {
+      font-size: 15px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.actor-img-ctn {
+  width: 100%;
+  height: 70%;
+  margin: 0 0 10px 0;
+
+  .actor-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    transition: transform .3s;
+  }
+}
+
+.swiper-recMovies-container {
+  height: 300px;
+}
+
+.swiper-recMovies-slide {
+  // background: orange;
+  // border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover .swiper-movie-img {
+    transform: scale(1.04);
+    opacity: .8;
+  }
+
+  &:hover .swiper-movie-title {
+    color: var(--sidebar-title-color);
+  }
+}
+
+.swiper-movie-img-ctn {
+  // width: 100%;
+  max-width: 100%;
+  height: 80%;
+  position: relative;
+  border-radius: 8px;
+  // background: blue;
+  margin: 0;
+  overflow: hidden;
+
+  div {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    // border-radius: 8px 8px 0 0;
+    justify-content: space-between;
+
+    .type {
+      @include pill(10px, 1px 5px);
+      text-transform: capitalize;
+    }
+
+    .date {
+      @include pill(10px, 1px 5px);
+      color: #fff;
+      background: var(--main-color);
+    }
+  }
+}
+
+.swiper-movie-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform .3s, opacity .3s;
+}
+
+.swiper-movie-title {
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 5px;
+  transition: color .3s;
 }
 
 @media (min-width: 306px) {

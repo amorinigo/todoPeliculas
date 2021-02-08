@@ -1,0 +1,120 @@
+.person-details-ctn {
+  // background: rgba(0,0,0,.5);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.biography-paragraph {
+  max-height: 200px;
+  overflow: hidden;
+  transition: max-height .5s;
+}
+
+.visible {
+  max-height: 2000px;
+}
+
+.none {
+  display: none;
+}
+
+h3, h5, h6, p {
+  margin: 0;
+}
+
+.person-img-ctn {
+  margin: 0;
+  width: 100%;
+  height: 350px;
+
+  .person-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}
+
+.actor-name {
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.biography-title {
+  margin-bottom: 8px;
+}
+
+.main-info {
+  margin-bottom: 20px;
+}
+
+.biography-paragraph {
+  font-size: 15px;
+  line-height: 20px;
+  padding: 20px;
+}
+
+.button-ctn {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.biography-button {
+  border: none;
+  outline: none;
+  background: none;
+  font-weight: bold;
+  transition: color .3s;
+  margin-right: 10px;
+
+  &:hover {
+    color: var(--sidebar-title-color);
+    text-decoration: underline;
+  }
+}
+
+.personal-info-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.personal-info-section {
+  margin-bottom: 20px;
+
+  h6 {
+    font-weight: bold;
+  }
+}
+
+// media queries
+@media (min-width: 330px) {
+  .person-img-ctn {
+    width: 255px;
+    height: 450px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 500px) {
+  .biography-paragraph {
+    // max-height: 223px;
+  }
+}
+
+@media (min-width: 550px) {
+  .person-img-ctn {
+    width: 330px;
+  }
+}
+
+@media (min-width: 715px) {
+  .main-info {
+    // display: flex;
+  }
+
+  .person-img-ctn {
+    // flex-shrink: 0;
+  }
+}

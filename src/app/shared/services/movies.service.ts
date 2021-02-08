@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Movie, MoviesResponse } from '@shared/interfaces/movies-response.interface';
 import { MovieDetails } from '@shared/interfaces/movie-details-response.interface';
-import { Cast, CastResponse } from '@shared/interfaces/cast-response.interface';
+import { CreditsResponse } from '@shared/interfaces/credits-response.interface';
+import { Router } from '@angular/router';
+import { PersonResponse } from '@shared/interfaces/person-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,8 @@ export class MoviesService {
     }
   }
 
-  constructor(private http: HttpClient) {}
+  constructor( private http: HttpClient,
+               private router: Router ) {}
 
   getGenres(): Observable<Genre[]> {
     return  this.http.get<GenresResponse>(`${this.url}genre/movie/list`, {params: this.params})
@@ -60,11 +63,33 @@ export class MoviesService {
     };
   }
 
-  getCast( id: number ): Observable<CastResponse> {
-    return this.http.get<CastResponse>(`${ this.url }movie/${ id }/credits`, { params: this.params })
+  getCredits( id: number ): Observable<CreditsResponse> {
+    return this.http.get<CreditsResponse>(`${ this.url }movie/${ id }/credits`, {
+      params: this.params
+    });
   }
 
   getMovieDetails( id: number ): Observable<MovieDetails> {
     return this.http.get<MovieDetails>(`${ this.url }movie/${ id }`, { params: this.params });
+  }
+
+  showMovieDetails( id: number ) {
+    this.router.navigate(['película-detalles', id]);
+    window.scrollTo(0,0);
+  }
+
+  getRecommendedMovies( id: number ): Observable<Movie[]> {
+    return this.http.get<MoviesResponse>(`${ this.url }movie/${ id }/recommendations`, {
+      params: this.params
+    }).pipe( map( resp => resp.results ) );
+  }
+
+  showActorInfo( id: number ) {
+    this.router.navigate(['persona', id]);
+    window.scrollTo(0, 0);
+  }
+
+  getPersonDetails( id: number ): Observable<PersonResponse> {
+    return this.http.get<PersonResponse>(`${ this.url }person/${ id }`, { params: this.params });
   }
 }

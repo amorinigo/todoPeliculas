@@ -2,7 +2,12 @@
   <h3 class="title">
     {{ title }}
   </h3>
-  <div class="movie-section" *ngFor="let movie of movies; let i = index">
+
+  <div
+    class="movie-section"
+    *ngFor="let movie of movies; let i = index"
+    (click)="showDetails( movie.id )"
+  >
 
     <span class="number"> #{{ i + 1 }} </span>
 

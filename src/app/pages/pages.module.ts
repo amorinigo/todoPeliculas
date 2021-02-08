@@ -8,6 +8,7 @@ import { SerieComponent } from './serie/serie.component';
 import { SearchComponent } from './search/search.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { GenreComponent } from './genre/genre.component';
+import { PersonComponent } from './person/person.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { GenreComponent } from './genre/genre.component';
     SerieComponent,
     SearchComponent,
     MovieDetailsComponent,
-    GenreComponent
+    GenreComponent,
+    PersonComponent
   ],
   imports: [
     CommonModule,

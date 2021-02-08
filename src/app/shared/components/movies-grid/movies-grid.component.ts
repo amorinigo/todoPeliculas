@@ -19,7 +19,6 @@ export class MoviesGridComponent implements OnInit {
   }
 
   showDetails( id: number ) {
-    this.router.navigate(['película-detalles', id]);
-    window.scrollTo(0,0);
+    this.moviesService.showMovieDetails( id );
   }
 }

@@ -7,7 +7,11 @@
   <!-- <div class="swiper-container series-swiper-container" *ngIf="series.length > 0"> -->
   <div class="swiper-container series-swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide series-swiper-slide" *ngFor="let serie of series">
+        <div
+          class="swiper-slide series-swiper-slide"
+          *ngFor="let serie of series"
+          (click)="showSerieDetails( serie.id )"
+        >
           <div class="content">
             <div class="img-ctn">
               <img [src]="serie.backdrop_path | posterImage" [alt]="serie.name" class="serie-img">

@@ -17,10 +17,10 @@
       <div class="general-info-ctn">
         <span> {{ details.release_date | date: 'dd/MM/yyyy' }} </span>
         <span> {{ genres | slice:0:-2 }} </span>
-        <span> {{ details.runtime | minutesToHour }} </span>
+        <span *ngIf="details.runtime !== 0"> {{ details.runtime | minutesToHour }} </span>
       </div>
 
-      <div>
+      <div *ngIf="details.vote_average !== 0">
         <circle-progress
         [percent]= "details.vote_average * 10"
         [radius]= "20"
@@ -73,7 +73,7 @@
   </div>
 </section>
 
-<h4 class="cast-title"> Reparto principal </h4>
+<h4 class="cast-title" *ngIf="credits?.cast.length > 0"> Reparto principal </h4>
 
 <div class="swiper-container swiper-cast-container">
   <div class="swiper-wrapper">
@@ -93,7 +93,7 @@
   </div>
 </div>
 
-<h4 class="recommendations-title"> Recomendaciones </h4>
+<h4 class="recommendations-title" *ngIf="recommendedMovies?.length > 0"> Recomendaciones </h4>
 
 <div class="swiper-container swiper-recMovies-container">
   <div class="swiper-wrapper">

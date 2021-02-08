@@ -7,6 +7,7 @@ import { MovieDetailsComponent } from '@pages/movie-details/movie-details.compon
 import { MoviesComponent } from '@pages/movies/movies.component';
 import { PersonComponent } from '@pages/person/person.component';
 import { SearchComponent } from '@pages/search/search.component';
+import { SerieDetailsComponent } from '@pages/serie-details/serie-details.component';
 import { SerieComponent } from '@pages/serie/serie.component';
 
 const routes: Routes = [
@@ -16,8 +17,9 @@ const routes: Routes = [
   {path: "género/:genreType",     component: GenreComponent},
   {path: "películas/:rating",     component: MoviesComponent},
   {path: "película-detalles/:id", component: MovieDetailsComponent},
+  {path: "serie-detalles/:id",    component: SerieDetailsComponent },
   {path: "persona/:id",           component: PersonComponent},
-  {path: "**", pathMatch: "full", redirectTo: "inicio"},
+  {path: "**", pathMatch: "full", redirectTo: "inicio"}
 ];
 
 @NgModule({

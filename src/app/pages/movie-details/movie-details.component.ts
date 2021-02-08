@@ -30,22 +30,16 @@ export class MovieDetailsComponent implements OnInit {
 
     this.activatedRoute.params.subscribe( params => {
       id = params.id;
-      this.getInfo( id )
+      this.getInfo( id );
 
+      this.moviesService.page = 1;
       this.moviesService.getRecommendedMovies( id ).subscribe(
         movies => {
-          this.recommendedMovies = movies
-          console.log("HOLA")
+          this.recommendedMovies = movies;
+          console.log(this.recommendedMovies);
         }
       );
     });
-
-    // this.moviesService.getRecommendedMovies( id ).subscribe(
-    //   movies => {
-    //     this.recommendedMovies = movies
-    //     console.log("HOLA")
-    //   }
-    // );
   }
 
   ngAfterViewInit() {
@@ -97,9 +91,7 @@ export class MovieDetailsComponent implements OnInit {
       // console.log( this.writters );
     });
 
-    this.moviesService.getRecommendedMovies( id ).subscribe(
-      movies => this.recommendedMovies = movies
-    );
+
   }
 
   showDetails( id: number ) {

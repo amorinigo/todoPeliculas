@@ -38,4 +38,8 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  showSerieDetails( id: number ) {
+    this.seriesService.showSerieDetails( id );
+  }
 }

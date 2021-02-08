@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Serie, SeriesResponse } from '@shared/interfaces/series-response.interface';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { SerieDetailsResponse } from '@shared/interfaces/serie-details-response.interface';
+import { CreditsResponse } from '@shared/interfaces/credits-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,8 @@ export class SeriesService {
       page: this.page.toString()
   }
 
-  constructor(private http: HttpClient) {}
+  constructor( private http: HttpClient,
+               private router: Router ) {}
 
   getSeriesAiringToday(): Observable<Serie[]> {
     return this.http.get<SeriesResponse>(`${this.url}tv/airing_today`, { params: this.params })
@@ -43,5 +47,18 @@ export class SeriesService {
       case 'ranking'    :  return this.getSeriesTopRated();
       case 'más vistas' :  return this.getSeriesPopular();
     };
+  }
+
+  showSerieDetails( id: number ) {
+    this.router.navigate( ['serie-detalles', id] );
+    window.scrollTo(0, 0);
+  }
+
+  getSerieDetails( id: number ): Observable<SerieDetailsResponse> {
+    return this.http.get<SerieDetailsResponse>(`${ this.url }tv/${ id }`, { params: this.params });
+  }
+
+  getSerieCredits( id: number ): Observable<CreditsResponse> {
+    return this.http.get<CreditsResponse>(`${ this.url }tv/${ id }/credits`, { params: this.params })
   }
 }

@@ -11,7 +11,11 @@ export class MinutesToHourPipe implements PipeTransform {
     let minute = Math.floor( time % 60 );
     minute = Number( (minute < 10)? `0${ minute }` : minute );
 
-    return `${ hour }h ${ minute }m`;
+    if( hour === 0 ) {
+      return `${ minute }m`;
+    } else {
+      return `${ hour }h ${ minute }m`;
+    }
   }
 
 }

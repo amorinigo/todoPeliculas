@@ -12,11 +12,13 @@ import { CreditsResponse } from '@shared/interfaces/credits-response.interface';
 })
 export class SeriesService {
   private url: string = "https://api.themoviedb.org/3/";
-  private page: number = 1;
-  private params = {
+  public page: number = 1;
+  get params() {
+    return {
       api_key: "9b4d5ebc3b73e91f4e05a59de0179a5d",
       language: "es-ES",
       page: this.page.toString()
+    }
   }
 
   constructor( private http: HttpClient,
@@ -60,5 +62,11 @@ export class SeriesService {
 
   getSerieCredits( id: number ): Observable<CreditsResponse> {
     return this.http.get<CreditsResponse>(`${ this.url }tv/${ id }/credits`, { params: this.params })
+  }
+
+  getRecommendedSeries( id: number ): Observable<Serie[]>{
+    return this.http.get<SeriesResponse>(`${ this.url }tv/${ id }/recommendations`, {
+      params: this.params
+    }).pipe( map( resp => resp.results ) );
   }
 }

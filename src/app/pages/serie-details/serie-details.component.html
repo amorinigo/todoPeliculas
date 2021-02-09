@@ -1,5 +1,10 @@
-<section>
+<app-film-details [serieDetails]="serieDetails" [credits]="serieCredits" *ngIf="serieDetails && serieCredits"></app-film-details>
 
-</section>
+<app-cast-slider [credits]="serieCredits" *ngIf="serieCredits?.cast.length > 0"></app-cast-slider>
 
-<!-- <p> {{ serieCredits | json }} </p> -->
+<app-recommended-slider
+  [films]="recommendedSeries"
+  [type]="type"
+  *ngIf="recommendedSeries?.length > 0"
+>
+</app-recommended-slider>

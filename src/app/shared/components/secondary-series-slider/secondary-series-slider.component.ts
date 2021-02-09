@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { Serie } from '@shared/interfaces/series-response.interface';
+import { SeriesService } from '@shared/services/series.service';
 import Swiper, { Pagination } from 'swiper';
 Swiper.use([ Pagination ]);
 
@@ -11,7 +12,7 @@ Swiper.use([ Pagination ]);
 export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
   @Input() series: Serie[];
 
-  constructor() { }
+  constructor( private seriesService: SeriesService ) { }
 
   ngOnInit(): void {
     // console.log(this.series);
@@ -37,4 +38,7 @@ export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
     });
   }
 
+  showSerieDetails( id: number ) {
+    this.seriesService.showSerieDetails( id );
+  }
 }

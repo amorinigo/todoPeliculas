@@ -19,6 +19,12 @@ import { SecondarySeriesSliderComponent } from './components/secondary-series-sl
 import { MinutesToHourPipe } from './pipes/minutes-to-hour.pipe';
 import { GenderPipe } from './pipes/gender.pipe';
 import { AgePipe } from './pipes/age.pipe';
+import { RecommendedSliderComponent } from './components/recommended-slider/recommended-slider.component';
+import { FilmDetailsComponent } from './components/film-details/film-details.component';
+import { GenresPipe } from './pipes/genres.pipe';
+import { DirectorPipe } from './pipes/director.pipe';
+import { WritersPipe } from './pipes/writers.pipe';
+import { CreatorsPipe } from './pipes/creators.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,13 @@ import { AgePipe } from './pipes/age.pipe';
     SecondarySeriesSliderComponent,
     MinutesToHourPipe,
     GenderPipe,
-    AgePipe
+    AgePipe,
+    RecommendedSliderComponent,
+    FilmDetailsComponent,
+    GenresPipe,
+    DirectorPipe,
+    WritersPipe,
+    CreatorsPipe
   ],
   imports: [
     CommonModule,
@@ -62,7 +74,10 @@ import { AgePipe } from './pipes/age.pipe';
     MinutesToHourPipe,
     SwiperModule,
     GenderPipe,
-    AgePipe
+    AgePipe,
+    CastSliderComponent,
+    RecommendedSliderComponent,
+    FilmDetailsComponent
   ]
 })
 export class SharedModule { }

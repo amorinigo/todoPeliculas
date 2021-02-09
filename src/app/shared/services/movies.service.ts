@@ -78,8 +78,8 @@ export class MoviesService {
     window.scrollTo(0,0);
   }
 
-  getRecommendedMovies( id: number ): Observable<Movie[]> {
-    return this.http.get<MoviesResponse>(`${ this.url }movie/${ id }/recommendations`, {
+  getRecommendedMovies( id: number ): Observable<any> {
+    return this.http.get<any>(`${ this.url }movie/${ id }/recommendations`, {
       params: this.params
     }).pipe( map( resp => resp.results ) );
   }

@@ -16,7 +16,9 @@ export class HeaderComponent implements OnInit {
                private router: Router ) { }
 
   ngOnInit(): void {
-    this.moviesService.getPremieres().subscribe( movies => { this.videos = movies.splice(0, 10) });
+    this.moviesService.getNowPlaying().subscribe( movies => {
+      this.videos = movies.filter( movie => movie.poster_path ).splice(0, 10)
+    });
   }
 
   // isValidPage(): boolean {

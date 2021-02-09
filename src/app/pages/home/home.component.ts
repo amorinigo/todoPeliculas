@@ -37,14 +37,14 @@ export class HomeComponent implements OnInit {
 
   loadMoreMovies() {
     this.moviesService.getMoviesObservable( this.queryWord ).subscribe(
-      movies => this.movies.push( ...movies )
+      movies => this.movies.push( ... movies.filter( movie => movie.poster_path ) )
     );
     this.moviesService.page++;
   }
 
   runSeriesQuery( typeOfQuery: string ) {
     this.seriesService.getSeriesObservable( typeOfQuery ).subscribe(
-      series => this.series = series.splice(0, 12)
+      series => this.series = series.filter( serie => serie.poster_path ).splice(0, 12)
     );
   }
 }

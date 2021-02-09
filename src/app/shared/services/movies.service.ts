@@ -33,7 +33,7 @@ export class MoviesService {
                 .pipe( map( response => response.genres ) );
   }
 
-  getPremieres(): Observable<Movie[]> {
+  getNowPlaying(): Observable<Movie[]> {
 
     return  this.http.get<MoviesResponse>(`${this.url}movie/now_playing`, {params: this.params})
                 .pipe( map( response => response.results ) );
@@ -56,10 +56,10 @@ export class MoviesService {
 
   getMoviesObservable( term: string ): Observable<Movie[]> {
     switch( term ) {
-      case 'últimas'    :  return this.getUpcoming();
-      case 'estrenos'   :  return this.getPremieres();
-      case 'ranking'    :  return this.getTopRated();
-      case 'más vistas' :  return this.getPopular();
+      case 'últimas'    :  return this.getNowPlaying(); // LOS CASE DEBEN SER NÚMEROS.
+      case 'estrenos'   :  return this.getUpcoming(); // LOS CASE DEBEN SER NÚMEROS.
+      case 'ranking'    :  return this.getTopRated(); // LOS CASE DEBEN SER NÚMEROS.
+      case 'más vistas' :  return this.getPopular(); // LOS CASE DEBEN SER NÚMEROS.
     };
   }
 

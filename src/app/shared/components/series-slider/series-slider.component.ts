@@ -17,7 +17,7 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.seriesService.getSeriesPopular().subscribe( popularSeries => {
-      this.series = popularSeries.splice(0, 10);
+      this.series = popularSeries.filter( serie => serie.poster_path ).splice(0, 10);
     });
   }
 

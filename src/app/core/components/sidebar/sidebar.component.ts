@@ -8,26 +8,26 @@ import { MoviesService } from '@shared/services/movies.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  public title1:  string = "Top estrenos"
-  public title2:  string = "Películas destacadas"
-  public title3:  string = "Más películas"
-  public premieres: Movie[] = []; // CREO UNA SOLA PROPIEDAD, HAGO UN PUSH Y LUEGO UN | SLICE.
-  public populars:  Movie[] = []; // CREO UNA SOLA PROPIEDAD, HAGO UN PUSH Y LUEGO UN | SLICE.
-  public topRated:  Movie[] = []; // CREO UNA SOLA PROPIEDAD, HAGO UN PUSH Y LUEGO UN | SLICE.
+  public titles: string[];
+  public nowPlaying: Movie[];
+  public populars:   Movie[];
+  public upcoming:   Movie[];
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService) {
+    this.titles = ['Top estrenos', 'Películas destacadas', 'Más películas'];
+  }
 
   ngOnInit(): void {
-    this.moviesService.getNowPlaying().subscribe( premieres => {
-      this.premieres = premieres.filter( movie => movie.poster_path ).splice(0, 5);
+    this.moviesService.getNowPlaying().subscribe( movies => {
+      this.nowPlaying = movies.filter( movie => movie.poster_path ).splice(5, 5);
     });
 
-    this.moviesService.getPopular().subscribe( populars => {
-      this.populars = populars.filter( movie => movie.poster_path ).splice(5, 5);
+    this.moviesService.getUpcoming().subscribe( movies => {
+      this.upcoming = movies.filter( movie => movie.poster_path ).splice(5, 5);
     })
 
-    this.moviesService.getTopRated().subscribe( topRated => {
-      this.topRated = topRated.filter( movie => movie.poster_path ).splice(0, 5);
+    this.moviesService.getPopular().subscribe( movies => {
+      this.populars = movies.filter( movie => movie.poster_path ).splice(5, 5);
     })
   }
 

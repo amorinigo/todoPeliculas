@@ -1,38 +1,28 @@
 @import "../../../../assets/scss/global-mixins";
 
-.swiper3-container {
-  width: 100%;
-  height: 360px;
-}
+.second-series-swiper { @include width-and-height(100%, 360px); }
 
-.swiper3-slide {
+.second-series-swiper-slide {
+  cursor: pointer;
   border-radius: 4px;
   position: relative;
-  cursor: pointer;
   transition: transform .3s, opacity .3s;
 
   &:hover {
     transform: scale(1.02);
     opacity: 0.6;
+    .serie-name { color: var(--sidebar-title-color); }
   }
-
-  &:hover .serie-name {
-    color: var(--sidebar-title-color);
-  }
-
 }
 
 .serie-img {
+  @include width-and-height(100%, 80%);
   object-fit: cover;
   border-radius: 4px;
-  width: 100%;
-  height: 80%;
 }
 
 .data {
-  display: flex;
-  align-items:center;
-  justify-content: space-between;
+  @include display-flex(center, space-between);
   transform: translateY(-30px);
   padding: 0 15px;
 

@@ -1,29 +1,40 @@
 <div class="navbar-ctn" [ngClass]="{'navbar-ctn--active': scrollActivated}">
+
   <div class="logo" (click)="menuActivated = false" routerLink="home">
     <i class="fas fa-video logo__icon"></i>
     <h1 class="logo__title">Todo películas!</h1>
   </div>
+
   <nav class="topbar" [ngClass]="{'topbar-active': menuActivated}">
     <div class="search">
+
       <input
-        type="text" id="search" class="search-input"
+        type="text" class="search-input"
         placeholder="Buscar..."
         [(ngModel)]="word"
         (keyup.enter)="search()"
       >
+
       <label for="search" class="search-label" (click)="search()">
         <i class="fas fa-search"></i>
       </label>
+
     </div>
+
     <ul class="menu">
 
       <li class="menu__item" routerLinkActive="activo">
         <a class="menu__link fw-bold" (click)="menuOnOff()" routerLink="home">Inicio</a>
       </li>
 
-      <li class="menu__item sub-menu-li" routerLinkActive="activo" [ngClass]="{'sub-menu--active': gendersActivated}">
+      <li
+        class="menu__item sub-menu-li"
+        routerLinkActive="activo"
+        [ngClass]="{'sub-menu--active': gendersActivated}"
+      >
         <a class="menu__link" (click)="gendersOnOff()">Géneros</a>
         <i class="fas fa-chevron-right"></i>
+
         <ul class="sub-menu animate__animated animate__pulse">
 
           <li class="sub-menu__item" *ngFor="let genre of genres">
@@ -57,10 +68,12 @@
 
     </ul>
   </nav>
+
   <button class="menu-button" type="button" (click)="menuOnOff()">
     <i class="fas fa-bars button-icon"  *ngIf="!menuActivated"></i>
     <i class="fas fa-times button-icon" *ngIf="menuActivated"></i>
   </button>
+
 </div>
 
 <div

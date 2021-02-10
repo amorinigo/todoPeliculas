@@ -21,10 +21,12 @@ export class ContentSelectorComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
 
-  ngAfterViewInit(): void { this.menu.nativeElement.firstElementChild.classList.add("active"); }
+  ngAfterViewInit(): void {
+    this.menu.nativeElement.firstElementChild.classList.add("active");
+  }
 
   showTitle(): string {
-    if(this.isMovieTitle) return "Películas online";
+    if( this.isMovieTitle ) return "Películas online";
     return "Series online";
   }
 
@@ -32,14 +34,18 @@ export class ContentSelectorComponent implements OnInit, AfterViewInit {
     const currentItem = Array.from( this.menu.nativeElement.children ).find(
       (element: HTMLElement) => element.classList.contains("active")
     );
+
     currentItem["classList"].remove("active");
   }
 
-  activateItem( item: HTMLElement ): void { // CAMBIAR NOMBRE.
-    this.disableCurrentItem();  // CAMBIAR NOMBRE.
-    item.classList.add("active");  // VA EN LA FUNCIÓN DISABLECURRENTITEM;
+  activateItem( item: HTMLElement ): void {
+    this.disableCurrentItem();
+    item.classList.add("active");
+    this.emitCurrentRating( item );
+  }
 
-    const word: string = item.innerText.toLowerCase().trim();  // TODO ESTO EN UNA FUNCIÓN.
+  emitCurrentRating( item: HTMLElement ) {
+    const word: string = item.innerText.toLowerCase().trim();
     if(word == this.currentRating) return;
     this.currentRating = word;
     this.typeOfQuery.emit( this.currentRating );

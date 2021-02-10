@@ -4,16 +4,18 @@ import { GenresResponse, Genre } from '@shared/interfaces/genres-response.interf
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Movie, MoviesResponse } from '@shared/interfaces/movies-response.interface';
-import { MovieDetails } from '@shared/interfaces/movie-details-response.interface';
-import { CreditsResponse } from '@shared/interfaces/credits-response.interface';
+import { MovieDetails } from '@shared/interfaces/movie-details.interface';
+import { Credits } from '@shared/interfaces/credits.interface';
 import { Router } from '@angular/router';
-import { PersonResponse } from '@shared/interfaces/person-response.interface';
+import { Person } from '@shared/interfaces/person.interface';
+import { SwiperOptions } from 'swiper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
   public showMainSlider: boolean = true;
+  public queryWord = "últimas";
   private url: string = "https://api.themoviedb.org/3/";
   public page: number = 1;
 
@@ -24,6 +26,47 @@ export class MoviesService {
       page: String( this.page )
     }
   }
+
+  public castSwiperOptions: SwiperOptions = {
+    observer: true,
+    freeMode: true,
+    spaceBetween: 20,
+    breakpoints: {
+      0:    { slidesPerView: 1.5 },
+      350:  { slidesPerView: 2.5 },
+      550:  { slidesPerView: 3.5 },
+      769:  { slidesPerView: 2.5 },
+      845:  { slidesPerView: 3.5 },
+      1100: { slidesPerView: 4.5 }
+    }
+  };
+
+  public mainSwiperOptions: SwiperOptions = {
+    loop: true,
+    pagination: {
+      el: '.main-swiper-pagination',
+      clickable: true,
+      dynamicBullets: true
+    },
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false
+    }
+  };
+
+  public recommendedSwiperOptions: SwiperOptions = {
+    observer: true,
+    freeMode: true,
+    spaceBetween: 20,
+    breakpoints: {
+      0:    { slidesPerView: 1.3 },
+      350:  { slidesPerView: 2.3 },
+      550:  { slidesPerView: 3.3 },
+      769:  { slidesPerView: 2.3 },
+      845:  { slidesPerView: 3.3 },
+      1100: { slidesPerView: 4.3 }
+    }
+  };
 
   constructor( private http: HttpClient,
                private router: Router ) {}
@@ -63,8 +106,8 @@ export class MoviesService {
     };
   }
 
-  getCredits( id: number ): Observable<CreditsResponse> {
-    return this.http.get<CreditsResponse>(`${ this.url }movie/${ id }/credits`, {
+  getCredits( id: number ): Observable<Credits> {
+    return this.http.get<Credits>(`${ this.url }movie/${ id }/credits`, {
       params: this.params
     });
   }
@@ -89,7 +132,27 @@ export class MoviesService {
     window.scrollTo(0, 0);
   }
 
-  getPersonDetails( id: number ): Observable<PersonResponse> {
-    return this.http.get<PersonResponse>(`${ this.url }person/${ id }`, { params: this.params });
+  getPerson( id: number ): Observable<Person> {
+    return this.http.get<Person>(`${ this.url }person/${ id }`, { params: this.params });
+  }
+
+  loadMoreMovies( movies: Movie[] ): Movie[] {
+    this.getMoviesObservable( this.queryWord ).subscribe(
+      resp => movies.push( ... resp.filter( movie => movie.poster_path ) )
+    );
+
+    this.page++;
+
+    return movies;
+  }
+
+  loadTheFirst60Movies( movies: Movie[] ) { // retorno
+    this.page = 1;
+    for(let i = 1; i <= 3; i++) this.loadMoreMovies( movies );
+  }
+
+  runMoviesQuery( word: string, movies: Movie[] ) { // retorno
+    this.queryWord = word;
+    this.loadTheFirst60Movies( movies );
   }
 }

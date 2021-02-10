@@ -1,27 +1,25 @@
 @import "~swiper/swiper-bundle";
 
 :root {
-  --bg-color: #080F28;
-  --main-color: #007AFF;
-  --text-color: #A9A9A9;
-  --navbar-height: 100px;
-  --navbar-bg: #2A2F42;
+  --bg-color:             #080F28;
+  --navbar-bg:            #2A2F42;
+  --sidebar-title-color:  #4461CA;
+  --main-color:           #007AFF;
+  --text-color:           #A9A9A9;
+  --overview-color:       #BFBFBF;
+  --highlighted-color:    orange;
+
+  --navbar-height:        100px;
   --series-swiper-height: 230px;
-  --sidebar-title-color: #4461CA;
-  --highlighted-color: orange;
-  --overview-color: #BFBFBF;
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   color: white;
 }
 
 body {
   width: 100%;
-  min-height: 100vh;
   font-family: sans-serif, 'Roboto', 'Montserrat';
   background-color: var(--bg-color);
   position: relative;

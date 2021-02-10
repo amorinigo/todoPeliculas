@@ -8,10 +8,10 @@
     <app-content-selector [isMovieTitle]="true" (typeOfQuery)="runMoviesQuery( $event )">
     </app-content-selector>
 
-    <app-movies-grid [movies]="movies" *ngIf="movies.length > 0">
+    <app-movies-grid [movies]="movies" *ngIf="movies?.length > 0">
     </app-movies-grid>
 
-    <div class="spinner-ctn" *ngIf="movies.length == 0">
+    <div class="spinner-ctn" *ngIf="movies?.length == 0">
       <app-spinner></app-spinner>
     </div>
 
@@ -21,7 +21,7 @@
     <app-content-selector [isMovieTitle]="false" (typeOfQuery)="runSeriesQuery( $event )">
     </app-content-selector>
 
-    <app-secondary-series-slider [series]="series" *ngIf="series.length > 0">
+    <app-secondary-series-slider [series]="series" *ngIf="series?.length > 0">
     </app-secondary-series-slider>
   </div>
 

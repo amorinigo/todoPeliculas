@@ -12,7 +12,5 @@ export class MoviesComponent implements OnInit {
     this.moviesService.showMainSlider = false;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -8,6 +8,8 @@ import { Movie } from '@shared/interfaces/movies-response.interface';
 })
 export class MovieComponent implements OnInit {
   @Input() movie: Movie;
+
   constructor() {}
+
   ngOnInit(): void {}
 }

@@ -1,7 +1,6 @@
 @import '../../../../assets/scss/global-mixins';
 
 :host {
-  // --overview-color: #A9A9A9;
   --overview-font-size: 14px;
   --release-date-size: 14px;
   --title-font-size: 25px;
@@ -10,7 +9,6 @@
 .main-swiper {
   position: relative;
   @include width-and-height(100%, 600px);
-
 }
 
 .main-swiper-slide { position: relative; }

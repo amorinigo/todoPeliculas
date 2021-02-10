@@ -1,17 +1,19 @@
-<div class="swiper-container swiper3-container">
+<div class="swiper-container second-series-swiper">
   <div class="swiper-wrapper">
       <div
-        class="swiper-slide swiper3-slide"
+        class="swiper-slide second-series-swiper-slide"
         *ngFor="let serie of series"
         (click)="showSerieDetails( serie.id )"
       >
         <img [src]="serie.poster_path | posterImage" [alt]="serie.name" class="serie-img">
+
         <div class="data">
           <span class="type">Serie</span>
           <span class="date"> {{ serie.first_air_date | slice:0:4 }} </span>
         </div>
+
         <h6 class="serie-name"> {{ serie.name }} </h6>
       </div>
   </div>
-  <div class="swiper-pagination swiper3-pagination"></div>
+  <div class="swiper-pagination second-series-swiper-pagination"></div>
 </div>

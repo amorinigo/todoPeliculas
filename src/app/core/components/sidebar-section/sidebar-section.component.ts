@@ -9,13 +9,11 @@ import { MoviesService } from '@shared/services/movies.service';
 })
 export class SidebarSectionComponent implements OnInit {
   @Input() public title: string;
-  @Input() public movies: Movie[] = [];
+  @Input() public movies: Movie[];
 
   constructor( private moviesService: MoviesService ) { }
 
   ngOnInit(): void { }
 
-  showDetails( id: number ) {
-    this.moviesService.showMovieDetails( id );
-  }
+  showDetails( id: number ) { this.moviesService.showMovieDetails( id ); }
 }

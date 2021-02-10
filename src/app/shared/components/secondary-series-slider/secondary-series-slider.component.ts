@@ -14,31 +14,11 @@ export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
 
   constructor( private seriesService: SeriesService ) { }
 
-  ngOnInit(): void {
-    // console.log(this.series);
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
-    const swiper = new Swiper('.swiper3-container', {
-      observer: true,
-      spaceBetween: 10,
-      pagination: {
-        el: '.swiper3-pagination',
-        clickable: true,
-        dynamicBullets: true
-      },
-      breakpoints: {
-        0:    { slidesPerView: 1 },
-        350:  { slidesPerView: 2 },
-        550:  { slidesPerView: 3 },
-        769:  { slidesPerView: 2 },
-        845:  { slidesPerView: 3 },
-        1100: { slidesPerView: 4 }
-      }
-    });
+    const swiper = new Swiper('.second-series-swiper', this.seriesService.secondSwiperOptions);
   }
 
-  showSerieDetails( id: number ) {
-    this.seriesService.showSerieDetails( id );
-  }
+  showSerieDetails( id: number ) { this.seriesService.showSerieDetails( id ); }
 }

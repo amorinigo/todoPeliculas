@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PersonResponse } from '@shared/interfaces/person-response.interface';
+import { Person } from '@shared/interfaces/person.interface';
 import { MoviesService } from '@shared/services/movies.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { MoviesService } from '@shared/services/movies.service';
   styleUrls: ['./person.component.scss']
 })
 export class PersonComponent implements OnInit {
-  public personDetails: PersonResponse;
+  public person: Person;
   public readMore: boolean = false;
 
   constructor( private activatedRoute: ActivatedRoute,
@@ -18,14 +18,9 @@ export class PersonComponent implements OnInit {
   ngOnInit(): void {
     this.moviesService.showMainSlider = false;
 
-    this.activatedRoute.params.subscribe( params => {
-      this.moviesService.getPersonDetails( params.id ).subscribe(
-        personDetails => {
-          this.personDetails = personDetails;
-          console.log(this.personDetails);
-        }
-      );
-    });
+    const { id } = this.activatedRoute.snapshot.params;
+
+    this.moviesService.getPerson( id ).subscribe( person => this.person = person );
   }
 
 }

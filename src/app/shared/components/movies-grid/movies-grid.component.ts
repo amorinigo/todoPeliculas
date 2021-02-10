@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { Movie } from '@shared/interfaces/movies-response.interface';
 import { MoviesService } from '@shared/services/movies.service';
 
@@ -11,14 +10,9 @@ import { MoviesService } from '@shared/services/movies.service';
 export class MoviesGridComponent implements OnInit {
   @Input() movies: Movie[];
 
-  constructor( private moviesService: MoviesService,
-               private router: Router ) { }
+  constructor( private moviesService: MoviesService ) { }
 
-  ngOnInit(): void {
-    // console.log(this.movies);
-  }
+  ngOnInit(): void {}
 
-  showDetails( id: number ) {
-    this.moviesService.showMovieDetails( id );
-  }
+  showDetails( id: number ) { this.moviesService.showMovieDetails( id ); }
 }

@@ -12,7 +12,6 @@ import { SeriesService } from '@shared/services/series.service';
 export class HomeComponent implements OnInit {
   public movies: Movie[] = [];
   public series: Serie[] = [];
-  private queryWord = "últimas";
 
   constructor( private moviesService: MoviesService,
                private seriesService: SeriesService ) {
@@ -21,26 +20,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTheFirst60Movies();
-    this.runSeriesQuery( this.queryWord );
+    this.runSeriesQuery( this.moviesService.queryWord );
   }
 
   runMoviesQuery( typeOfQuery: string ) {
-    this.queryWord = typeOfQuery;
     this.movies = [];
-    this.loadTheFirst60Movies();
+    this.moviesService.runMoviesQuery( typeOfQuery, this.movies );
   }
 
-  loadTheFirst60Movies() {
-    this.moviesService.page = 1;
-    for(let i = 1; i <= 3; i++) this.loadMoreMovies();
-  }
+  loadTheFirst60Movies() { this.moviesService.loadTheFirst60Movies( this.movies ); }
 
-  loadMoreMovies() {
-    this.moviesService.getMoviesObservable( this.queryWord ).subscribe(
-      movies => this.movies.push( ... movies.filter( movie => movie.poster_path ) )
-    );
-    this.moviesService.page++;
-  }
+  loadMoreMovies() { this.moviesService.loadMoreMovies( this.movies ); }
 
   runSeriesQuery( typeOfQuery: string ) {
     this.seriesService.getSeriesObservable( typeOfQuery ).subscribe(

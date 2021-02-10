@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Cast } from '@shared/interfaces/credits-response.interface';
+import { Cast } from '@shared/interfaces/credits.interface';
 
 @Pipe({
   name: 'creators'

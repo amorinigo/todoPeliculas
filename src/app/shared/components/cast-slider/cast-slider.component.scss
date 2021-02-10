@@ -1,45 +1,40 @@
+@import '../../../../assets/scss/global-mixins';
+
 .cast-title {
   margin: 40px 0;
   font-weight: bold;
 }
 
-.swiper-cast-container {
-  height: 300px;
-}
+.swiper-cast-container {height: 300px;}
 
 .swiper-cast-slide {
-  border-radius: 8px;
-  // box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-  background: var(--navbar-bg);
-  // padding: 15px 0;
   cursor: pointer;
+  border-radius: 8px;
+  background: var(--navbar-bg);
   transition: opacity .3s;
   overflow: hidden;
 
   &:hover {
     opacity: 0.8;
+    .actor-img { transform: scale(1.04); }
+
+    .actor-name,
+    .actor-character {
+      color: var(--sidebar-title-color);
+    }
   }
 
-  &:hover .actor-img {
-    transform: scale(1.04);
-  }
-
-  &:hover .actor-name,
-  &:hover .actor-character {
-    color: var(--sidebar-title-color);
-  }
-
-  div {
+  .actor-info-ctn {
     width: 100%;
-    // background: orange;
     text-align: center;
 
     .actor-name,
     .actor-character {
-      font-size: 14px;
       margin: 0 5px;
       transition: color .3s;
     }
+
+    .actor-character { font-size: 14px; }
 
     .actor-name {
       font-size: 15px;
@@ -50,13 +45,11 @@
 }
 
 .actor-img-ctn {
-  width: 100%;
-  height: 70%;
+  @include width-and-height(100%, 70%);
   margin: 0 0 10px 0;
 
   .actor-img {
-    width: 100%;
-    height: 100%;
+    @include width-and-height();
     object-fit: cover;
     border-radius: 8px 8px 0 0;
     transition: transform .3s;

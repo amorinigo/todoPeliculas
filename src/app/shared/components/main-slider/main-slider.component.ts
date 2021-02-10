@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Movie } from '@shared/interfaces/movies-response.interface';
 import { MoviesService } from '@shared/services/movies.service';
 import Swiper, { Pagination, Autoplay } from 'swiper';
@@ -11,32 +10,15 @@ Swiper.use([Pagination, Autoplay]);
   styleUrls: ['./main-slider.component.scss']
 })
 export class MainSliderComponent implements OnInit, AfterViewInit {
-  @Input() films: Movie[];    // Movie[] || Serie[];
+  @Input() films: Movie[];
 
-  constructor( private router: Router,
-               private moviesService: MoviesService ) {}
+  constructor( private moviesService: MoviesService ) {}
 
-  ngOnInit(): void {
-    // console.log( this.films );
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
-    const mySwiper = new Swiper('.main-swiper', {
-      loop: true,
-      pagination: {
-        el: '.main-swiper-pagination',
-        clickable: true,
-        dynamicBullets: true
-      },
-      autoplay: {
-        delay: 3500,
-        disableOnInteraction: false
-      }
-    })
+    const swiper = new Swiper('.main-swiper', this.moviesService.mainSwiperOptions)
   }
 
-  showDetails( id: number ) {
-    // this.router.navigate(['película-detalles', id]);
-    this.moviesService.showMovieDetails( id );
-  }
+  showDetails( id: number ) { this.moviesService.showMovieDetails( id ); }
 }

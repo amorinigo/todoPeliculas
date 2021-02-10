@@ -1,12 +1,6 @@
 @import '../../../../assets/scss/global-mixins';
 
-:host {
-  --release-date-font-size: 14px;
-}
-
-.sidebar-section-ctn {
-  // max-width: 100%;
-}
+:host { --release-date-font-size: 14px; }
 
 .title {
   background-color: var(--navbar-bg);
@@ -22,7 +16,6 @@
 
 .movie-section {
   position: relative;
-  @include width-and-height(100%, 130px); // media
   @include width-and-height(100%, 150px);
   display: flex;
   margin-top: 25px;
@@ -48,7 +41,7 @@
     border-radius: 50%;
     z-index: 1;
     transition: transform .3s;
-    margin-left: 4px; //media
+    margin-left: 4px;
   }
 
   .img-ctn {
@@ -91,7 +84,12 @@
   &:last-child { margin-bottom: 60px; }
 }
 
+// media queries
 @media (min-width: 280px) {
-  .type { @include pill(); display: inline-block !important; }
   .movie-section { overflow: visible; }
+
+  .type {
+    @include pill();
+    display: inline-block !important;
+  }
 }

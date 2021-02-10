@@ -2,45 +2,37 @@
 
 :host { --img-ctn-height: 120px; }
 
-.series-slider-ctn { position: relative; }
+.first-series-swiper { height: var(--series-swiper-height); }
 
 .title-section {
-  display: block;
   margin-bottom: 15px;
 
   .button {
     @include button(10px);
     text-transform: uppercase;
     padding: 5px 10px;
-    margin-top: 15px; // querie margin-top: 0;
+    margin-top: 15px;
   }
 }
-
-.series-swiper-container {
-  @include width-and-height(100%, var(--series-swiper-height));
-  // position: absolute;
-}
-
-.series-swiper-slide { position: relative; width: 100%; }
-.series-swiper-pagination { overflow: hidden; }
 
 .content {
   cursor: pointer;
-  &:hover .img-ctn { transform: scale(1.04); opacity: 0.7; }
-  &:hover .serie-name { color: var(--sidebar-title-color); }
+  &:hover {
+    .img-ctn {
+      transform: scale(1.04);
+      opacity: 0.8;
+    }
+
+    .serie-name { color: var(--sidebar-title-color); }
+  }
 }
 
 .img-ctn {
+  width: 100%;
+  @include img-ctn-format(var(--img-ctn-height), 0, 8px);
   @include position-abs-top-left;
-  @include width-and-height(100%, var(--img-ctn-height));
   @include display-flex(flex-start, center);
   transition: transform .3s, opacity .3s;
-
-  .serie-img {
-    @include img-format;
-    width: 100%;
-    border-radius: 4px;
-  }
 }
 
 .serie-data {

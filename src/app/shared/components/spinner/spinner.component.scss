@@ -1,7 +1,7 @@
+@import '../../../../assets/scss/global-mixins';
+
 .spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include display-flex();
   flex-direction: column;
 }
 

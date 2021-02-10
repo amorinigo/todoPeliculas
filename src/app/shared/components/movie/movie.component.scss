@@ -1,9 +1,7 @@
 @import "../../../../assets/scss/global-mixins";
 
 .movie {
-  // background: red;
-  width: 100%;
-  height: 100%;
+  @include width-and-height();
   position: relative;
   cursor: pointer;
   transition: transform .3s, opacity .3s;
@@ -11,32 +9,20 @@
   &:hover {
     transform: scale(1.02);
     opacity: 0.6;
-  }
-
-  &:hover .movie-title {
-    color: var(--sidebar-title-color);
+    .movie-title { color: var(--sidebar-title-color); }
   }
 }
 
 .movie-img-ctn {
   width: 100%;
-  height: 85%;
+  @include img-ctn-format(85%, 0, 8px);
   position: relative;
 }
 
 .spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  @include position-abs-top-left(50%, 50%);
   transform: translate(-50%, -50%);
   z-index: -1;
-}
-
-.movie-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: 7px;
 }
 
 .movie-date {
@@ -49,7 +35,6 @@
 }
 
 .movie-title {
-  // background: orange;
   width: 100%;
   text-align: center;
   font-size: 14px;

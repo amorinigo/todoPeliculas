@@ -4,8 +4,9 @@ import { Serie, SeriesResponse } from '@shared/interfaces/series-response.interf
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { SerieDetailsResponse } from '@shared/interfaces/serie-details-response.interface';
-import { CreditsResponse } from '@shared/interfaces/credits-response.interface';
+import { SerieDetails } from '@shared/interfaces/serie-details.interface';
+import { Credits } from '@shared/interfaces/credits.interface';
+import { SwiperOptions } from 'swiper';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,42 @@ export class SeriesService {
       page: this.page.toString()
     }
   }
+
+  public firstSwiperOptions: SwiperOptions = {
+    observer: true,
+    freeMode: true,
+    spaceBetween: 10,
+    pagination: {
+      el: '.first-series-swiper-pagination',
+      clickable: true,
+      dynamicBullets: true
+    },
+    breakpoints: {
+      0:    { slidesPerView: 1 },
+      350:  { slidesPerView: 2 },
+      550:  { slidesPerView: 3 },
+      1100: { slidesPerView: 4 }
+    }
+  };
+
+  public secondSwiperOptions: SwiperOptions = {
+    observer: true,
+      freeMode: true,
+      spaceBetween: 10,
+      pagination: {
+        el: '.second-series-swiper-pagination',
+        clickable: true,
+        dynamicBullets: true
+      },
+      breakpoints: {
+        0:    { slidesPerView: 1 },
+        350:  { slidesPerView: 2 },
+        550:  { slidesPerView: 3 },
+        769:  { slidesPerView: 2 },
+        845:  { slidesPerView: 3 },
+        1100: { slidesPerView: 4 }
+      }
+  };
 
   constructor( private http: HttpClient,
                private router: Router ) {}
@@ -56,12 +93,12 @@ export class SeriesService {
     window.scrollTo(0, 0);
   }
 
-  getSerieDetails( id: number ): Observable<SerieDetailsResponse> {
-    return this.http.get<SerieDetailsResponse>(`${ this.url }tv/${ id }`, { params: this.params });
+  getSerieDetails( id: number ): Observable<SerieDetails> {
+    return this.http.get<SerieDetails>(`${ this.url }tv/${ id }`, { params: this.params });
   }
 
-  getSerieCredits( id: number ): Observable<CreditsResponse> {
-    return this.http.get<CreditsResponse>(`${ this.url }tv/${ id }/credits`, { params: this.params })
+  getSerieCredits( id: number ): Observable<Credits> {
+    return this.http.get<Credits>(`${ this.url }tv/${ id }/credits`, { params: this.params })
   }
 
   getRecommendedSeries( id: number ): Observable<Serie[]>{

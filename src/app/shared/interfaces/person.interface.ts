@@ -1,4 +1,4 @@
-export interface PersonResponse {
+export interface Person {
   adult:                boolean;
   also_known_as:        string[];
   biography:            string;

@@ -1,4 +1,4 @@
-export interface SerieDetailsResponse {
+export interface SerieDetails {
   backdrop_path:        string;
   created_by:           CreatedBy[];
   episode_run_time:     number[];

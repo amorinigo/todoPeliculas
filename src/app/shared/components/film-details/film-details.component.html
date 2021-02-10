@@ -1,12 +1,12 @@
-<section class="movie-details-ctn" *ngIf="movieDetails && credits">
+<section class="film-details-ctn" *ngIf="movieDetails && credits">
   <img [src]="movieDetails.backdrop_path | originalImage" [alt]="movieDetails.title" class="background-img">
 
   <div class="super-container">
-    <figure class="movie-img-ctn">
-      <img [src]="movieDetails.poster_path | posterImage" [alt]="movieDetails.title" class="movie-img">
+    <figure class="film-img-ctn">
+      <img [src]="movieDetails.poster_path | posterImage" [alt]="movieDetails.title" class="film-img">
     </figure>
 
-    <div class="movie-info">
+    <div class="film-info">
       <div>
         <h3 class="title-info">
           {{ movieDetails.title }}
@@ -73,15 +73,15 @@
 </section>
 
 
-<section #serieTemplate class="movie-details-ctn" *ngIf="serieDetails && credits">
+<section class="film-details-ctn" *ngIf="serieDetails && credits">
   <img [src]="serieDetails.backdrop_path | originalImage" [alt]="serieDetails.name" class="background-img">
 
   <div class="super-container">
-    <figure class="movie-img-ctn">
-      <img [src]="serieDetails.poster_path | posterImage" [alt]="serieDetails.name" class="movie-img">
+    <figure class="film-img-ctn">
+      <img [src]="serieDetails.poster_path | posterImage" [alt]="serieDetails.name" class="film-img">
     </figure>
 
-    <div class="movie-info">
+    <div class="film-info">
       <div>
         <h3 class="title-info">
           {{ serieDetails.name }}
@@ -91,9 +91,10 @@
 
       <div class="general-info-ctn">
         <span> {{ serieDetails.first_air_date | date: 'dd/MM/yyyy' }} </span>
-        <!-- <span> {{ filmGenres | slice:0:-2 }} </span> -->
         <span> {{ serieDetails.genres | genres }} </span>
-        <span *ngIf="serieDetails.episode_run_time[0] !== 0"> {{ serieDetails.episode_run_time[0] | minutesToHour }} </span>
+        <span *ngIf="serieDetails.episode_run_time[0] !== 0">
+          {{ serieDetails.episode_run_time[0] | minutesToHour }}
+        </span>
       </div>
 
       <div *ngIf="serieDetails.vote_average !== 0">

@@ -17,22 +17,10 @@ export class RecommendedSliderComponent implements OnInit, AfterViewInit {
   constructor( private moviesService: MoviesService,
                private seriesService: SeriesService ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
-    const swiperRecMovies = new Swiper('.swiper-recMovies-container', {
-      observer: true,
-      spaceBetween: 20,
-      breakpoints: {
-        0:    { slidesPerView: 1.3 },
-        350:  { slidesPerView: 2.3 },
-        550:  { slidesPerView: 3.3 },
-        769:  { slidesPerView: 2.3 },
-        845:  { slidesPerView: 3.3 },
-        1100: { slidesPerView: 4.3 }
-      }
-    });
+    const swiper = new Swiper('.recommended-swiper-container', this.moviesService.recommendedSwiperOptions);
   }
 
   showDetails( id: number ) {

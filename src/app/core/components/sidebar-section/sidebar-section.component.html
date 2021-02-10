@@ -1,7 +1,5 @@
 <div class="sidebar-section-ctn">
-  <h3 class="title">
-    {{ title }}
-  </h3>
+  <h3 class="title"> {{ title }} </h3>
 
   <div
     class="movie-section"
@@ -18,11 +16,14 @@
     <div class="info-ctn">
       <h5 class="info-title"> {{ movie.title }} </h5>
       <div class="extra-info">
+
         <span class="rating">
           {{movie.vote_average / 2 | number:'0.2-2'}}
           <span class="max-rating">/ 5</span>
         </span>
+
         <span class="release-date"> {{ movie.release_date | slice:0:4 }} </span>
+
         <span class="type">Película</span>
       </div>
     </div>

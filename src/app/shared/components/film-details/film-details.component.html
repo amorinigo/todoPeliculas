@@ -1,9 +1,16 @@
 <section class="film-details-ctn" *ngIf="movieDetails && credits">
-  <img [src]="movieDetails.backdrop_path | originalImage" [alt]="movieDetails.title" class="background-img">
+  <img
+    #imgBgMovie
+    [src]="movieDetails.backdrop_path | originalImage" 
+    [alt]="movieDetails.title" 
+    class="background-img"
+  >
+  <app-spinner *ngIf="!imgBgMovie.complete"></app-spinner>
 
   <div class="super-container">
     <figure class="film-img-ctn">
-      <img [src]="movieDetails.poster_path | posterImage" [alt]="movieDetails.title" class="film-img">
+      <img #imgMovie [src]="movieDetails.poster_path | posterImage" [alt]="movieDetails.title">
+      <app-spinner *ngIf="!imgMovie.complete"></app-spinner>
     </figure>
 
     <div class="film-info">
@@ -74,11 +81,19 @@
 
 
 <section class="film-details-ctn" *ngIf="serieDetails && credits">
-  <img [src]="serieDetails.backdrop_path | originalImage" [alt]="serieDetails.name" class="background-img">
+  <img 
+    #imgBgSerie
+    [src]="serieDetails.backdrop_path | originalImage" 
+    [alt]="serieDetails.name" 
+    class="background-img"
+  >
+
+  <app-spinner *ngIf="!imgBgSerie.complete"></app-spinner>
 
   <div class="super-container">
     <figure class="film-img-ctn">
-      <img [src]="serieDetails.poster_path | posterImage" [alt]="serieDetails.name" class="film-img">
+      <img #imgSerie [src]="serieDetails.poster_path | posterImage" [alt]="serieDetails.name">
+      <app-spinner *ngIf="!imgSerie.complete"></app-spinner>
     </figure>
 
     <div class="film-info">

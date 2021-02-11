@@ -10,7 +10,8 @@
     <span class="number"> #{{ i + 1 }} </span>
 
     <div class="img-ctn">
-      <img [src]="movie.poster_path | posterImage" [alt]="movie.title" class="img">
+      <img #img [src]="movie.poster_path | posterImage" [alt]="movie.title" class="img">
+      <app-spinner *ngIf="!img.complete"></app-spinner>
     </div>
 
     <div class="info-ctn">

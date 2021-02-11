@@ -5,6 +5,7 @@
   position: relative;
   cursor: pointer;
   transition: transform .3s, opacity .3s;
+  overflow: hidden;
 
   &:hover {
     transform: scale(1.02);
@@ -17,12 +18,6 @@
   width: 100%;
   @include img-ctn-format(85%, 0, 8px);
   position: relative;
-}
-
-.spinner {
-  @include position-abs-top-left(50%, 50%);
-  transform: translate(-50%, -50%);
-  z-index: -1;
 }
 
 .movie-date {
@@ -39,5 +34,7 @@
   text-align: center;
   font-size: 14px;
   margin: 10px 0 0 0;
+  padding: 0 5px;
   transition: color .3s;
 }
+

@@ -8,8 +8,10 @@
       (click)="showActorInfo( actor.id )"
     >
       <figure class="actor-img-ctn">
-        <img [src]="actor.profile_path | posterImage" [alt]="actor.name" class="actor-img">
+        <img #img [src]="actor.profile_path | posterImage" [alt]="actor.name" class="actor-img">
+        <app-spinner *ngIf="!img.complete"></app-spinner>
       </figure>
+
       <div class="actor-info-ctn">
         <h5 class="actor-name"> {{ actor.name }} </h5>
         <h6 class="actor-character"> {{ actor.character | slice:0:30 }} </h6>

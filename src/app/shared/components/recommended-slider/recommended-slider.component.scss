@@ -14,7 +14,6 @@
   &:hover {
     .swiper-movie-img {
       transform: scale(1.04);
-      opacity: .8;
     }
 
     .swiper-movie-title { color: var(--sidebar-title-color); }
@@ -25,9 +24,8 @@
   max-width: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
   @include img-ctn-format(80%, 0, 8px);
-  .swiper-movie-img { transition: transform .3s, opacity .3s; }
+  .swiper-movie-img { transition: transform .3s; }
 
   .movie-info-ctn {
     width: 100%;

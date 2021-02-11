@@ -15,7 +15,7 @@
   }
 }
 
-.content {
+.first-series-swiper-slide {
   cursor: pointer;
   &:hover {
     .img-ctn {
@@ -30,8 +30,6 @@
 .img-ctn {
   width: 100%;
   @include img-ctn-format(var(--img-ctn-height), 0, 8px);
-  @include position-abs-top-left;
-  @include display-flex(flex-start, center);
   transition: transform .3s, opacity .3s;
 }
 

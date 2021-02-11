@@ -8,19 +8,26 @@
       (click)="showDetails( film.id )"
     >
       <div class="swiper-movie-img-ctn">
-        <img
-          *ngIf="type !== 'Serie'"
-          [src]="film.poster_path | posterImage"
-          [alt]="film.title"
-          class="swiper-movie-img"
-        >
+          <img
+            #img
+            *ngIf="type !== 'Serie'"
+            [src]="film.poster_path | posterImage"
+            [alt]="film.title"
+            class="swiper-movie-img"
+          >
+
+          <app-spinner *ngIf="!img?.complete"></app-spinner>
 
         <img
+          #img2
           *ngIf="type === 'Serie'"
           [src]="film.poster_path | posterImage"
           [alt]="film.name"
           class="swiper-movie-img"
         >
+
+        <app-spinner *ngIf="!img2?.complete"></app-spinner>
+
         <div class="movie-info-ctn">
           <span class="type"> {{ type }} </span>
           <span *ngIf="type !== 'Serie'" class="date"> {{ film.release_date | slice:0:4 }} </span>

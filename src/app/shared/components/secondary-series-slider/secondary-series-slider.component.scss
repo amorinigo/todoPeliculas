@@ -4,8 +4,6 @@
 
 .second-series-swiper-slide {
   cursor: pointer;
-  border-radius: 4px;
-  position: relative;
   transition: transform .3s, opacity .3s;
 
   &:hover {
@@ -15,10 +13,9 @@
   }
 }
 
-.serie-img {
-  @include width-and-height(100%, 80%);
-  object-fit: cover;
-  border-radius: 4px;
+.serie-img-ctn {
+  width: 100%;
+  @include img-ctn-format(80%, 0, 8px);
 }
 
 .data {

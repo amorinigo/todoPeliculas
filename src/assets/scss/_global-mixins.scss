@@ -57,10 +57,13 @@
   padding: $padding;
 }
 
-@mixin img-ctn-format($height: auto, $margin: 0, $border-radius: 0) {
+@mixin img-ctn-format($height: auto, $margin: 0, $border-radius: 0) { // width: auto;
   height: $height;
   margin: $margin;
-  background-color: red;
+  border-radius: $border-radius;
+  position: relative;
+  background: var(--img-bg-color);
+  z-index: -1;
 
   img {
     @include width-and-height();

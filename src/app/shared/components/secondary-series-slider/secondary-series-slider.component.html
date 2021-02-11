@@ -5,7 +5,10 @@
         *ngFor="let serie of series"
         (click)="showSerieDetails( serie.id )"
       >
-        <img [src]="serie.poster_path | posterImage" [alt]="serie.name" class="serie-img">
+        <figure class="serie-img-ctn">
+          <img #img [src]="serie.poster_path | posterImage" [alt]="serie.name" class="serie-img">
+          <app-spinner *ngIf="!img.complete"></app-spinner>
+        </figure>
 
         <div class="data">
           <span class="type">Serie</span>

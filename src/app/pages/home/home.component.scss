@@ -10,6 +10,6 @@
 }
 
 .spinner-ctn {
-  min-height: 200px;
-  @include display-flex();
+  min-height: 300px;
+  position: relative;
 }

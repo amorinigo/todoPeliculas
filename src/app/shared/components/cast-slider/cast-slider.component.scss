@@ -45,13 +45,8 @@
 }
 
 .actor-img-ctn {
-  @include width-and-height(100%, 70%);
-  margin: 0 0 10px 0;
-
-  .actor-img {
-    @include width-and-height();
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-    transition: transform .3s;
-  }
+  width: 100%;
+  @include img-ctn-format(70%, 0 0 10px 0, 8px 8px 0 0);
+  .actor-img { transition: transform .3s; }
+  z-index: 0;
 }

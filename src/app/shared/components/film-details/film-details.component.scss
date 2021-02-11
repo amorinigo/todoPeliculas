@@ -5,23 +5,20 @@
 .film-details-ctn {
   position: relative;
   padding: 15px 0;
+  @include img-ctn-format(auto, 0, 8px);
 
   &:after {
     display: block;
     content: "";
     @include position-abs-top-left();
     @include width-and-height();
-    z-index: -1;
     background: rgba(25, 20, 27, 0.9);
   }
 
-  .background-img {
-    @include position-abs-top-left();
-    @include width-and-height();
-    object-fit: cover;
-    z-index: -1;
-    background: black;
-  }
+  .background-img { @include position-abs-top-left(); }
+
+  &:after,
+  .background-img { z-index: -1; }
 }
 
 .title-info {
@@ -57,6 +54,7 @@
 .film-img-ctn {
   @include img-ctn-format(350px, 10px, 8px);
   flex-shrink: 0;
+  z-index: 0;
 }
 
 .overview-title {

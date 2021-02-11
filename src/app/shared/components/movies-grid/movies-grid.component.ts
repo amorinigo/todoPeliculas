@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from '@shared/interfaces/movies-response.interface';
-import { MoviesService } from '@shared/services/movies.service';
+import { Movie }                    from '@shared/interfaces/movies-response.interface';
+import { MoviesService }            from '@shared/services/movies.service';
 
 @Component({
   selector: 'app-movies-grid',
@@ -14,5 +14,7 @@ export class MoviesGridComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showDetails( id: number ) { this.moviesService.showMovieDetails( id ); }
+  public showDetails( id: number ): Promise<boolean> {
+    return this.moviesService.showMovieDetails( id );
+  }
 }

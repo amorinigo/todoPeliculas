@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Serie } from '@shared/interfaces/series-response.interface';
-import { SeriesService } from '@shared/services/series.service';
+import { SeriesService }      from '@shared/services/series.service';
+import { SwipersService }     from '@shared/services/swipers.service';
+import { Serie }              from '@shared/interfaces/series-response.interface';
 import Swiper, { Pagination } from 'swiper';
+
 Swiper.use([ Pagination ]);
 
 @Component({
@@ -10,10 +12,13 @@ Swiper.use([ Pagination ]);
   styleUrls: ['./series-slider.component.scss']
 })
 export class SeriesSliderComponent implements OnInit, AfterViewInit {
-  public title: string = "Series populares";
+  public title: string;
   public series: Serie[] = [];
 
-  constructor(private seriesService: SeriesService) { }
+  constructor( private seriesService:  SeriesService,
+               private swipersService: SwipersService ) {
+    this.title = "Series populares";
+  }
 
   ngOnInit(): void {
     this.seriesService.getSeriesPopular().subscribe(
@@ -21,9 +26,11 @@ export class SeriesSliderComponent implements OnInit, AfterViewInit {
     );
   }
 
-  ngAfterViewInit() {
-    const swiper = new Swiper('.first-series-swiper', this.seriesService.firstSwiperOptions);
+  ngAfterViewInit(): void {
+    const swiper = new Swiper('.first-series-swiper', this.swipersService.firstSwiperOptions);
   }
 
-  showSerieDetails( id: number ) { this.seriesService.showSerieDetails( id ); }
+  public showSerieDetails( id: number ): Promise<boolean> {
+    return this.seriesService.showSerieDetails( id );
+  }
 }

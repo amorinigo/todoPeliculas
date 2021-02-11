@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Movie } from '@shared/interfaces/movies-response.interface';
-import { Serie } from '@shared/interfaces/series-response.interface';
-import { MoviesService } from '@shared/services/movies.service';
-import { SeriesService } from '@shared/services/series.service';
+import { Component, OnInit }  from '@angular/core';
+import { MoviesService }      from '@shared/services/movies.service';
+import { SeriesService }      from '@shared/services/series.service';
+import { Movie }              from '@shared/interfaces/movies-response.interface';
+import { Serie }              from '@shared/interfaces/series-response.interface';
+import { Subscription }       from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -23,17 +24,21 @@ export class HomeComponent implements OnInit {
     this.runSeriesQuery( this.moviesService.queryWord );
   }
 
-  runMoviesQuery( typeOfQuery: string ) {
-    this.movies = [];
-    this.moviesService.runMoviesQuery( typeOfQuery, this.movies );
+  private loadTheFirst60Movies(): Movie[] {
+    return this.moviesService.loadTheFirst60Movies( this.movies );
   }
 
-  loadTheFirst60Movies() { this.moviesService.loadTheFirst60Movies( this.movies ); }
+  public runMoviesQuery( typeOfQuery: string ): Movie[] {
+    this.movies = [];
+    return this.moviesService.runMoviesQuery( typeOfQuery, this.movies );
+  }
 
-  loadMoreMovies() { this.moviesService.loadMoreMovies( this.movies ); }
+  public loadMoreMovies(): Movie[] {
+    return this.moviesService.loadMoreMovies( this.movies );
+  }
 
-  runSeriesQuery( typeOfQuery: string ) {
-    this.seriesService.getSeriesObservable( typeOfQuery ).subscribe(
+  public runSeriesQuery( typeOfQuery: string ): Subscription {
+    return this.seriesService.getSeriesObservable( typeOfQuery ).subscribe(
       series => this.series = series.filter( serie => serie.poster_path ).splice(0, 12)
     );
   }

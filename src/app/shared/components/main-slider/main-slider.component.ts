@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Movie } from '@shared/interfaces/movies-response.interface';
-import { MoviesService } from '@shared/services/movies.service';
+import { MoviesService }  from '@shared/services/movies.service';
+import { SwipersService } from '@shared/services/swipers.service';
+import { Movie }          from '@shared/interfaces/movies-response.interface';
 import Swiper, { Pagination, Autoplay } from 'swiper';
+
 Swiper.use([Pagination, Autoplay]);
 
 @Component({
@@ -12,13 +14,16 @@ Swiper.use([Pagination, Autoplay]);
 export class MainSliderComponent implements OnInit, AfterViewInit {
   @Input() films: Movie[];
 
-  constructor( private moviesService: MoviesService ) {}
+  constructor( private moviesService: MoviesService,
+               private swipersService: SwipersService ) {}
 
   ngOnInit(): void {}
 
-  ngAfterViewInit() {
-    const swiper = new Swiper('.main-swiper', this.moviesService.mainSwiperOptions)
+  ngAfterViewInit(): void {
+    const swiper = new Swiper('.main-swiper', this.swipersService.mainSwiperOptions)
   }
 
-  showDetails( id: number ) { this.moviesService.showMovieDetails( id ); }
+  public showDetails( id: number ): Promise<boolean> {
+    return this.moviesService.showMovieDetails( id );
+  }
 }

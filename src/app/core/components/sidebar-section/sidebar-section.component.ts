@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from '@shared/interfaces/movies-response.interface';
-import { MoviesService } from '@shared/services/movies.service';
+import { MoviesService }            from '@shared/services/movies.service';
+import { Movie }                    from '@shared/interfaces/movies-response.interface';
 
 @Component({
   selector: 'app-sidebar-section',
@@ -8,12 +8,14 @@ import { MoviesService } from '@shared/services/movies.service';
   styleUrls: ['./sidebar-section.component.scss']
 })
 export class SidebarSectionComponent implements OnInit {
-  @Input() public title: string;
-  @Input() public movies: Movie[];
+  @Input() title: string;
+  @Input() movies: Movie[];
 
   constructor( private moviesService: MoviesService ) { }
 
   ngOnInit(): void { }
 
-  showDetails( id: number ) { this.moviesService.showMovieDetails( id ); }
+  public showDetails( id: number ): Promise<boolean> {
+    return this.moviesService.showMovieDetails( id );
+  }
 }

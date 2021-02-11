@@ -8,9 +8,10 @@ import {
   styleUrls: ['./content-selector.component.scss']
 })
 export class ContentSelectorComponent implements OnInit, AfterViewInit {
-  @Input() isMovieTitle: boolean;
+  @Input()  isMovieTitle: boolean;
   @Output() typeOfQuery = new EventEmitter<string>();
-  @ViewChild( "menu" ) menu: ElementRef;
+  @ViewChild( "menu" ) private menu: ElementRef;
+
   public ratings: string[];
   private currentRating: string;
 
@@ -25,12 +26,18 @@ export class ContentSelectorComponent implements OnInit, AfterViewInit {
     this.menu.nativeElement.firstElementChild.classList.add("active");
   }
 
-  showTitle(): string {
+  public showTitle(): string {
     if( this.isMovieTitle ) return "Películas online";
     return "Series online";
   }
 
-  disableCurrentItem(): void {
+  public activateItem( item: HTMLElement ): void {
+    this.disableCurrentItem();
+    item.classList.add("active");
+    this.emitCurrentRating( item );
+  }
+
+  private disableCurrentItem(): void {
     const currentItem = Array.from( this.menu.nativeElement.children ).find(
       (element: HTMLElement) => element.classList.contains("active")
     );
@@ -38,13 +45,7 @@ export class ContentSelectorComponent implements OnInit, AfterViewInit {
     currentItem["classList"].remove("active");
   }
 
-  activateItem( item: HTMLElement ): void {
-    this.disableCurrentItem();
-    item.classList.add("active");
-    this.emitCurrentRating( item );
-  }
-
-  emitCurrentRating( item: HTMLElement ) {
+  private emitCurrentRating( item: HTMLElement ): void {
     const word: string = item.innerText.toLowerCase().trim();
     if(word == this.currentRating) return;
     this.currentRating = word;

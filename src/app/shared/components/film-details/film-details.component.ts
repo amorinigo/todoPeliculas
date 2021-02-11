@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Credits } from '@shared/interfaces/credits.interface';
 import { MovieDetails } from '@shared/interfaces/movie-details.interface';
 import { SerieDetails } from '@shared/interfaces/serie-details.interface';
+import { Credits }      from '@shared/interfaces/credits.interface';
 
 @Component({
   selector: 'app-film-details',

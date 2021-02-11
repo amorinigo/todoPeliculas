@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Movie } from '@shared/interfaces/movies-response.interface';
-import { MoviesService } from '@shared/services/movies.service';
+import { Component, OnInit }    from '@angular/core';
+import { MovieRequestsService } from '@shared/services/movie-requests.service';
+import { MoviesService }        from '@shared/services/movies.service';
+import { Movie }                from '@shared/interfaces/movies-response.interface';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +11,11 @@ import { MoviesService } from '@shared/services/movies.service';
 export class HeaderComponent implements OnInit {
   public films: Movie[];
 
-  constructor( public moviesService: MoviesService ) { }
+  constructor( public moviesService: MoviesService,
+               private movieReqService: MovieRequestsService ) { }
 
   ngOnInit(): void {
-    this.moviesService.getNowPlaying().subscribe(
+    this.movieReqService.getNowPlaying().subscribe(
       movies => this.films = movies.filter( movie => movie.poster_path ).splice(0, 10)
     );
   }

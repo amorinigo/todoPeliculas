@@ -28,7 +28,7 @@
   display: inline-block;
   margin: 0;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .punctuation { font-weight: 900; }
@@ -116,6 +116,8 @@
   .super-container,
   .crew-ctn { flex-direction: row; }
 }
+
+@media (min-width: 1000px) { .title-info { font-size: 24px; } }
 
 @media (min-width: 1050px) {
   .tagline,

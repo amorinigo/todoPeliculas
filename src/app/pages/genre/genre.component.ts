@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '@shared/services/movies.service';
+import { Component, OnInit }  from '@angular/core';
+import { MoviesService }      from '@shared/services/movies.service';
 
 @Component({
   selector: 'app-genre',
@@ -12,7 +12,5 @@ export class GenreComponent implements OnInit {
     this.moviesService.showMainSlider = true;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

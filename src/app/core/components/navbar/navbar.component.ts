@@ -1,7 +1,7 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-import { Genre } from '@shared/interfaces/genres-response.interface';
-import { MoviesService } from '@shared/services/movies.service';
+import { Component, OnInit, HostListener }  from '@angular/core';
+import { Router }                           from '@angular/router';
+import { MovieRequestsService }             from '@shared/services/movie-requests.service';
+import { Genre }                            from '@shared/interfaces/genres-response.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +9,10 @@ import { MoviesService } from '@shared/services/movies.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public  menuActivated:    boolean = false;
-  public  gendersActivated: boolean = false;
-  public  moviesActivated:  boolean = false;
-  public  scrollActivated:  boolean = false;
+  public  menuActivated:    boolean;
+  public  gendersActivated: boolean;
+  public  moviesActivated:  boolean;
+  public  scrollActivated:  boolean;
   public  word: string;
   public  genres: Genre[];
   public  moviesRatings: string[];
@@ -25,12 +25,16 @@ export class NavbarComponent implements OnInit {
   }
 
   constructor( private router: Router,
-               private moviesService: MoviesService ) {
-    this.moviesRatings = ['Estrenos', 'Ranking', 'Más vistas', 'Películas'];
+               private movieReqService: MovieRequestsService ) {
+    this.moviesRatings    = ['Estrenos', 'Ranking', 'Más vistas', 'Películas'];
+    this.menuActivated    = false;
+    this.gendersActivated = false;
+    this.moviesActivated  = false;
+    this.scrollActivated  = false;
   }
 
   ngOnInit(): void {
-    this.moviesService.getGenres().subscribe( genres => {
+    this.movieReqService.getGenres().subscribe( genres => {
       this.genres = genres.sort( (genreA, genreB) => {
         if (genreA.name > genreB.name) return 1;
         if (genreA.name < genreB.name) return -1;
@@ -39,29 +43,29 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  gendersOnOff(): boolean { return this.gendersActivated = !this.gendersActivated; }
-  moviesOnOff():  boolean { return this.moviesActivated = !this.moviesActivated; }
+  public gendersOnOff(): boolean { return this.gendersActivated = !this.gendersActivated; }
+  public moviesOnOff():  boolean { return this.moviesActivated = !this.moviesActivated; }
 
-  menuOnOff(): void {
+  public menuOnOff(): void {
     this.menuActivated    = !this.menuActivated;
     this.gendersActivated = false;
     this.moviesActivated  = false;
   }
 
-  search(): void {
+  public search(): void {
     if(!this.word) return;
     this.router.navigate(["búsqueda", this.word]);
     this.word = "";
     this.menuOnOff();
   }
 
-  showGenre( genre: Genre ) {
+  public showGenre( genre: Genre ): Promise<boolean> {
     this.menuOnOff();
-    this.router.navigate(["género", genre.name.toLowerCase()]);
+    return this.router.navigate(["género", genre.name.toLowerCase()]);
   }
 
-  showMovies( rating: string ) {
+  public showMovies( rating: string ): Promise<boolean> {
     this.menuOnOff();
-    this.router.navigate(["películas", rating.toLowerCase()]);
+    return this.router.navigate(["películas", rating.toLowerCase()]);
   }
 }

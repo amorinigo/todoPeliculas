@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { Serie } from '@shared/interfaces/series-response.interface';
-import { SeriesService } from '@shared/services/series.service';
+import { Component, OnInit, Input, AfterViewInit }  from '@angular/core';
+import { SeriesService }      from '@shared/services/series.service';
+import { SwipersService }     from '@shared/services/swipers.service';
+import { Serie }              from '@shared/interfaces/series-response.interface';
 import Swiper, { Pagination } from 'swiper';
+
 Swiper.use([ Pagination ]);
 
 @Component({
@@ -12,13 +14,16 @@ Swiper.use([ Pagination ]);
 export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
   @Input() series: Serie[];
 
-  constructor( private seriesService: SeriesService ) { }
+  constructor( private seriesService:  SeriesService,
+               private swipersService: SwipersService ) { }
 
   ngOnInit(): void {}
 
-  ngAfterViewInit() {
-    const swiper = new Swiper('.second-series-swiper', this.seriesService.secondSwiperOptions);
+  ngAfterViewInit(): void {
+    const swiper = new Swiper('.second-series-swiper', this.swipersService.secondSwiperOptions);
   }
 
-  showSerieDetails( id: number ) { this.seriesService.showSerieDetails( id ); }
+  public showSerieDetails( id: number ): Promise<boolean> {
+    return this.seriesService.showSerieDetails( id );
+  }
 }

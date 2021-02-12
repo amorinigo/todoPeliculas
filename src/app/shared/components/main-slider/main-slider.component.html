@@ -2,30 +2,30 @@
   <div class="swiper-wrapper">
     <div
       class="swiper-slide main-swiper-slide"
-      *ngFor="let film of films"
+      *ngFor="let movie of movies"
     >
-      <img class="slider-img" [src]="film.backdrop_path | originalImage" [alt]="film.title">
+      <img class="slider-img" [src]="movie.backdrop_path | originalImage" [alt]="movie.title">
       <app-spinner></app-spinner>
-      
+
       <div class="info-ctn">
-        <h2 class="info-title"> {{ film.title }} </h2>
+        <h2 class="info-title"> {{ movie.title }} </h2>
         <span class="type"> Película </span>
 
         <div class="extra-info">
           <span class="rating">
-            {{film.vote_average / 2 | number:'0.2-2'}}
+            {{movie.vote_average / 2 | number:'0.2-2'}}
             <span class="max-rating">/ 5</span>
           </span>
-          <span class="release-date"> {{ film.release_date | slice:0:4 }} </span>
+          <span class="release-date"> {{ movie.release_date | slice:0:4 }} </span>
         </div>
 
         <div class="overview-ctn">
           <p class="overview">
-            {{ film.overview | slice:0:200 }}...
+            {{ movie.overview | slice:0:200 }}...
           </p>
         </div>
 
-        <button type="button" class="button" (click)="showDetails( film.id )">
+        <button type="button" class="button" (click)="showDetails( movie.id )">
           Detalles
         </button>
       </div>

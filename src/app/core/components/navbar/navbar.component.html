@@ -24,10 +24,10 @@
     <ul class="menu">
 
       <li class="menu__item">
-        <a 
-          class="menu__link" 
-          (click)="menuOnOff()" 
-          routerLink="inicio" 
+        <a
+          class="menu__link"
+          (click)="menuOnOff()"
+          routerLink="inicio"
           routerLinkActive="link-active"
         >
           Inicio
@@ -35,8 +35,8 @@
       </li>
 
       <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': gendersActivated}">
-        <a 
-          class="menu__link" 
+        <a
+          class="menu__link"
           (click)="gendersOnOff()"
         >
           Géneros
@@ -49,7 +49,7 @@
             <a
               class="sub-menu__link"
               (click)="menuOnOff()"
-              [routerLink]="['género', genre.name.toLowerCase()]" 
+              [routerLink]="['género', genre.name.toLowerCase()]"
               routerLinkActive="link-active"
             >
               {{ genre.name }}
@@ -65,13 +65,13 @@
         <ul class="sub-menu movies-ul animate__animated animate__pulse">
 
           <li class="sub-menu__item" *ngFor="let rating of moviesRatings">
-            <a 
-              class="sub-menu__link" 
-              (click)="menuOnOff()" 
-              [routerLink]="['/películas', rating.toLowerCase()]" 
+            <a
+              class="sub-menu__link"
+              (click)="menuOnOff()"
+              [routerLink]="['/películas', rating]"
               routerLinkActive="link-active"
-            > 
-              {{ rating }} 
+            >
+              {{ rating }}
             </a>
           </li>
 
@@ -79,10 +79,10 @@
       </li>
 
       <li class="menu__item">
-        <a 
-          class="menu__link" 
-          (click)="menuOnOff()" 
-          routerLink="series" 
+        <a
+          class="menu__link"
+          (click)="menuOnOff()"
+          routerLink="series"
           routerLinkActive="link-active"
         >
           Series & TV

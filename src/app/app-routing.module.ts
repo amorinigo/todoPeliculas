@@ -8,11 +8,11 @@ import { MoviesComponent }        from '@pages/movies/movies.component';
 import { PersonComponent }        from '@pages/person/person.component';
 import { SearchComponent }        from '@pages/search/search.component';
 import { SerieDetailsComponent }  from '@pages/serie-details/serie-details.component';
-import { SerieComponent }         from '@pages/serie/serie.component';
+import { SeriesComponent }         from '@pages/series/series.component';
 
 const routes: Routes = [
   {path: "inicio",                component: HomeComponent},
-  {path: "series",                component: SerieComponent},
+  {path: "series",                component: SeriesComponent},
   {path: "búsqueda/:term",        component: SearchComponent},
   {path: "género/:genreType",     component: GenreComponent},
   {path: "películas/:rating",     component: MoviesComponent},

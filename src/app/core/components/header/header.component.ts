@@ -9,14 +9,14 @@ import { Movie }                from '@shared/interfaces/movies-response.interfa
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public films: Movie[];
+  public movies: Movie[];
 
   constructor( public moviesService: MoviesService,
                private movieReqService: MovieRequestsService ) { }
 
   ngOnInit(): void {
     this.movieReqService.getNowPlaying().subscribe(
-      movies => this.films = movies.filter( movie => movie.poster_path ).splice(0, 10)
+      movies => this.movies = movies.filter( movie => movie.poster_path ).splice(0, 10)
     );
   }
 }

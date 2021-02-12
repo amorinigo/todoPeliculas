@@ -31,6 +31,12 @@ export class MoviesService {
     return movies;
   }
 
+  public load120movies( movies: Movie[] ): Movie[] {
+    this.movieReqService.page = 1;
+    for(let i = 1; i <= 6; i++) this.loadMoreMovies( movies );
+    return movies;
+  }
+
   public runMoviesQuery( word: string, movies: Movie[] ): Movie[] {
     this.queryWord = word;
     this.loadTheFirst60Movies( movies );

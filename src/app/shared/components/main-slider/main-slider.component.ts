@@ -12,7 +12,7 @@ Swiper.use([Pagination, Autoplay]);
   styleUrls: ['./main-slider.component.scss']
 })
 export class MainSliderComponent implements OnInit, AfterViewInit {
-  @Input() films: Movie[];
+  @Input() movies: Movie[];
 
   constructor( private moviesService: MoviesService,
                private swipersService: SwipersService ) {}

@@ -1,0 +1,10 @@
+@import "../../../assets/scss/global-mixins";
+
+.button {
+  @include button(16px);
+  display: block;
+  width: 100%;
+  margin: 70px auto;
+  padding: 10px 0;
+  &:hover { transform: scale(1); }
+}

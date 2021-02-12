@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   public  word: string;
   public  genres: Genre[];
   public  moviesRatings: string[];
+  // public rating: string;
 
   @HostListener("window: scroll")
   onScroll() {

@@ -1,1 +1,5 @@
-<p>movies works!</p>
+<h2 *ngIf="title"> {{ title | rating }} </h2>
+
+<app-movies-grid [movies]="movies" *ngIf="movies?.length > 0"></app-movies-grid>
+
+<button class="button" (click)="loadMoreMovies()">Cargar más películas</button>

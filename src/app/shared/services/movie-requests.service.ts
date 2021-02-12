@@ -69,12 +69,14 @@ export class MovieRequestsService {
     return this.http.get<Person>(`${ this.url }/person/${ id }`, { params: this.params });
   }
 
-  public getMoviesObservable( term: string ): Observable<Movie[]> {  // LOS CASE DEBEN SER NÚMEROS.
+  public getMoviesObservable( term: string ): Observable<Movie[]> {
+    // LOS CASE DEBEN SER EN INGLÉS.
     switch( term ) {
       case 'últimas'    :  return this.getNowPlaying();
       case 'estrenos'   :  return this.getUpcoming();
       case 'ranking'    :  return this.getTopRated();
       case 'más vistas' :  return this.getPopular();
+      case 'películas'  :  return this.getNowPlaying();
     };
   }
 }

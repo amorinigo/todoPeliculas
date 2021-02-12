@@ -4,7 +4,7 @@ import { SharedModule } from '@shared/shared.module';
 
 import { HomeComponent }          from './home/home.component';
 import { MoviesComponent }        from './movies/movies.component';
-import { SerieComponent }         from './serie/serie.component';
+import { SeriesComponent }         from './series/series.component';
 import { SearchComponent }        from './search/search.component';
 import { MovieDetailsComponent }  from './movie-details/movie-details.component';
 import { GenreComponent }         from './genre/genre.component';
@@ -16,7 +16,7 @@ import { SerieDetailsComponent }  from './serie-details/serie-details.component'
   declarations: [
     HomeComponent,
     MoviesComponent,
-    SerieComponent,
+    SeriesComponent,
     SearchComponent,
     MovieDetailsComponent,
     GenreComponent,

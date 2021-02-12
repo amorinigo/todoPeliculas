@@ -19,12 +19,8 @@
     "paths": {
       "@assets": ["assets/*"],
       "@core/*": ["app/core/*"],
-      "@core/components/*" : ["app/core/components/*"],
       "@pages/*": ["app/pages/*"],
-      "@shared/*": ["app/shared/*"],
-      "@shared/components/*": ["app/shared/components/*"],
-      "@shared/pipes/*": ["app/shared/pipes/*"],
-      "@shared/services/*": ["app/shared/services/*"]
+      "@shared/*": ["app/shared/*"]
     }
   }
 }

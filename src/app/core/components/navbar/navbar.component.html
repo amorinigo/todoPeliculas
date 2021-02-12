@@ -1,6 +1,6 @@
 <div class="navbar-ctn" [ngClass]="{'navbar-ctn--active': scrollActivated}">
 
-  <div class="logo" (click)="menuActivated = false" routerLink="home">
+  <div class="logo" (click)="menuActivated = false" routerLink="inicio">
     <i class="fas fa-video logo__icon"></i>
     <h1 class="logo__title">Todo películas!</h1>
   </div>
@@ -23,16 +23,24 @@
 
     <ul class="menu">
 
-      <li class="menu__item" routerLinkActive="activo">
-        <a class="menu__link fw-bold" (click)="menuOnOff()" routerLink="home">Inicio</a>
+      <li class="menu__item">
+        <a 
+          class="menu__link" 
+          (click)="menuOnOff()" 
+          routerLink="inicio" 
+          routerLinkActive="link-active"
+        >
+          Inicio
+        </a>
       </li>
 
-      <li
-        class="menu__item sub-menu-li"
-        routerLinkActive="activo"
-        [ngClass]="{'sub-menu--active': gendersActivated}"
-      >
-        <a class="menu__link" (click)="gendersOnOff()">Géneros</a>
+      <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': gendersActivated}">
+        <a 
+          class="menu__link" 
+          (click)="gendersOnOff()"
+        >
+          Géneros
+        </a>
         <i class="fas fa-chevron-right"></i>
 
         <ul class="sub-menu animate__animated animate__pulse">
@@ -40,8 +48,9 @@
           <li class="sub-menu__item" *ngFor="let genre of genres">
             <a
               class="sub-menu__link"
-              [id]="genre.id"
-              (click)="showGenre( genre )"
+              (click)="menuOnOff()"
+              [routerLink]="['género', genre.name.toLowerCase()]" 
+              routerLinkActive="link-active"
             >
               {{ genre.name }}
             </a>
@@ -50,20 +59,34 @@
         </ul>
       </li>
 
-      <li class="menu__item sub-menu-li" routerLinkActive="activo" [ngClass]="{'sub-menu--active': moviesActivated}">
+      <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': moviesActivated}">
         <a class="menu__link" (click)="moviesOnOff()">Películas</a>
         <i class="fas fa-chevron-right"></i>
         <ul class="sub-menu movies-ul animate__animated animate__pulse">
 
           <li class="sub-menu__item" *ngFor="let rating of moviesRatings">
-            <a class="sub-menu__link" (click)="showMovies( rating )"> {{ rating }} </a>
+            <a 
+              class="sub-menu__link" 
+              (click)="menuOnOff()" 
+              [routerLink]="['/películas', rating.toLowerCase()]" 
+              routerLinkActive="link-active"
+            > 
+              {{ rating }} 
+            </a>
           </li>
 
         </ul>
       </li>
 
-      <li class="menu__item" routerLinkActive="activo">
-        <a class="menu__link" (click)="menuOnOff()" routerLink="series">Series & TV</a>
+      <li class="menu__item">
+        <a 
+          class="menu__link" 
+          (click)="menuOnOff()" 
+          routerLink="series" 
+          routerLinkActive="link-active"
+        >
+          Series & TV
+        </a>
       </li>
 
     </ul>

@@ -286,7 +286,7 @@
 // animate
 .animate__animated.animate__pulse { --animate-duration: 0.3s; }
 
-.activo {
-  background: red;
-  color: yellow;
+.link-active {
+  font-weight: bold;
+  color: var(--main-color) !important;
 }

@@ -58,14 +58,4 @@ export class NavbarComponent implements OnInit {
     this.word = "";
     this.menuOnOff();
   }
-
-  public showGenre( genre: Genre ): Promise<boolean> {
-    this.menuOnOff();
-    return this.router.navigate(["género", genre.name.toLowerCase()]);
-  }
-
-  public showMovies( rating: string ): Promise<boolean> {
-    this.menuOnOff();
-    return this.router.navigate(["películas", rating.toLowerCase()]);
-  }
 }

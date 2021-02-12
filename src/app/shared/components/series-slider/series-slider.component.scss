@@ -28,8 +28,7 @@
 }
 
 .img-ctn {
-  width: 100%;
-  @include img-ctn-format(var(--img-ctn-height), 0, 8px);
+  @include img-ctn-format(100%, var(--img-ctn-height), 0, 8px);
   transition: transform .3s, opacity .3s;
 }
 

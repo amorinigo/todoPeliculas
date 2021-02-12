@@ -10,6 +10,7 @@
     </figure>
 
     <h3 class="actor-name"> {{ person.name }} </h3>
+
     <div class="person-biography" *ngIf="person.biography">
       <h5 class="biography-title"> Biografía </h5>
       <p class="biography-paragraph" [ngClass]="{'visible': readMore}">
@@ -48,4 +49,5 @@
     </div>
   </div>
 
+  <app-back-button></app-back-button>
 </section>

@@ -66,7 +66,7 @@
     </div>
 
     <div class="crew-ctn">
-      <div class="director">
+      <div class="director" *ngIf="thereIsADirector()">
         <h5> {{ credits.crew | director }} </h5>
         <h6> Director </h6>
       </div>
@@ -159,3 +159,5 @@
 
   </div>
 </section>
+
+<app-back-button></app-back-button>

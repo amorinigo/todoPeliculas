@@ -13,6 +13,7 @@ import { MovieComponent }                 from './components/movie/movie.compone
 import { CastSliderComponent }            from './components/cast-slider/cast-slider.component';
 import { SeriesSliderComponent }          from './components/series-slider/series-slider.component';
 import { FilmDetailsComponent }           from './components/film-details/film-details.component';
+import { BackButtonComponent }            from './components/back-button/back-button.component';
 import { ContentSelectorComponent }       from './components/content-selector/content-selector.component';
 import { RecommendedSliderComponent }     from './components/recommended-slider/recommended-slider.component';
 import { SecondarySeriesSliderComponent } from './components/secondary-series-slider/secondary-series-slider.component';
@@ -39,6 +40,7 @@ import { CreatorsPipe }       from './pipes/creators.pipe';
     SecondarySeriesSliderComponent,
     RecommendedSliderComponent,
     FilmDetailsComponent,
+    BackButtonComponent,
 
     MinutesToHourPipe,
     GenderPipe,
@@ -72,6 +74,7 @@ import { CreatorsPipe }       from './pipes/creators.pipe';
     CastSliderComponent,
     RecommendedSliderComponent,
     FilmDetailsComponent,
+    BackButtonComponent,
 
     GenderPipe,
     OriginalImagePipe,

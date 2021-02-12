@@ -14,8 +14,7 @@
 }
 
 .serie-img-ctn {
-  width: 100%;
-  @include img-ctn-format(80%, 0, 8px);
+  @include img-ctn-format(100%, 80%, 0, 8px);
 }
 
 .data {

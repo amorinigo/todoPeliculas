@@ -27,11 +27,6 @@
   height: $height;
 }
 
-@mixin img-format {
-  object-fit: cover;
-  height: 100%;
-}
-
 @mixin button($font-size) {
   border: none;
   outline: none;
@@ -57,17 +52,18 @@
   padding: $padding;
 }
 
-@mixin img-ctn-format($height: auto, $margin: 0, $border-radius: 0) { // width: auto;
-  height: $height;
+@mixin img-format($border-radius: 0) {
+  @include width-and-height();
+  object-fit: cover;
+  border-radius: $border-radius;
+}
+
+@mixin img-ctn-format($width: auto, $height: auto, $margin: 0, $border-radius: 0) {
+  @include width-and-height($width, $height);
   margin: $margin;
   border-radius: $border-radius;
   position: relative;
   background: var(--img-bg-color);
   z-index: -1;
-
-  img {
-    @include width-and-height();
-    object-fit: cover;
-    border-radius: $border-radius;
-  }
+  img { @include img-format($border-radius); }
 }

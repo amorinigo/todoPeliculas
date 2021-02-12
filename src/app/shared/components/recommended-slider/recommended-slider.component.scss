@@ -24,7 +24,7 @@
   max-width: 100%;
   position: relative;
   overflow: hidden;
-  @include img-ctn-format(80%, 0, 8px);
+  @include img-ctn-format(auto, 80%, 0, 8px);
   .swiper-movie-img { transition: transform .3s; }
 
   .movie-info-ctn {

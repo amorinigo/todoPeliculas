@@ -6,6 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MinutesToHourPipe implements PipeTransform {
 
   transform( time: number ): string {
+    if(!time) return;
+
     let hour = Math.floor( time / 60 );
 
     let minute = Math.floor( time % 60 );

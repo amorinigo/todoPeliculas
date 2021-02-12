@@ -15,8 +15,7 @@
 }
 
 .movie-img-ctn {
-  width: 100%;
-  @include img-ctn-format(85%, 0, 8px);
+  @include img-ctn-format(100%, 85%, 0, 8px);
   position: relative;
 }
 

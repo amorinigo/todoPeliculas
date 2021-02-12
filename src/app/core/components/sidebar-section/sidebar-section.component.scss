@@ -45,8 +45,7 @@
   }
 
   .img-ctn {
-    @include img-ctn-format(100%, 0 25px 0 0, 4px);
-    width: 100px;
+    @include img-ctn-format(100px, 100%, 0 25px 0 0, 4px);
     flex-shrink: 0;
     position: relative;
     .img { transition: transform .3s, opacity .3s; }

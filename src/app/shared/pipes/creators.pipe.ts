@@ -7,7 +7,6 @@ import { Cast } from '@shared/interfaces/credits.interface';
 export class CreatorsPipe implements PipeTransform {
 
   transform(crew: Cast[]): Cast[] {
-
     return crew.filter(
       person =>
         person.job == "Executive Producer" &&

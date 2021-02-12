@@ -12,9 +12,8 @@
 }
 
 .main-swiper-slide { 
-  position: relative; 
-  width: 100%;
-  @include img-ctn-format(100%, 0, 0);
+  position: relative;
+  @include img-ctn-format(100%, 100%, 0, 0);
   overflow: hidden;
   background: none;
 }

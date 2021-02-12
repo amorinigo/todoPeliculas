@@ -7,6 +7,8 @@ import { Cast } from '@shared/interfaces/credits.interface';
 export class WritersPipe implements PipeTransform {
 
   transform(crew: Cast[]): Cast[] {
+    if(!crew) return [];
+
     return crew.filter( person => person.job == "Writer" && person.department == "Writing" )
                .splice(0, 3);
   }

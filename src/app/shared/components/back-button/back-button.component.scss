@@ -1,0 +1,15 @@
+@import "../../../../assets/scss/global-mixins";
+
+.button-ctn {
+  width: 100%;
+  @include display-flex(center, flex-end);
+  margin-top: 40px;
+}
+
+.back-button {
+  @include button(16px);
+  padding: 5px 20px;
+  &:hover { transform: scale(1); }
+  display: block;
+  width: 100%;
+}

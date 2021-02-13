@@ -1,8 +1,8 @@
 <section class="film-details-ctn" *ngIf="movieDetails && credits">
   <img
     #imgBgMovie
-    [src]="movieDetails.backdrop_path | originalImage" 
-    [alt]="movieDetails.title" 
+    [src]="movieDetails.backdrop_path | originalImage"
+    [alt]="movieDetails.title"
     class="background-img"
   >
   <app-spinner *ngIf="!imgBgMovie.complete"></app-spinner>
@@ -81,10 +81,10 @@
 
 
 <section class="film-details-ctn" *ngIf="serieDetails && credits">
-  <img 
+  <img
     #imgBgSerie
-    [src]="serieDetails.backdrop_path | originalImage" 
-    [alt]="serieDetails.name" 
+    [src]="serieDetails.backdrop_path | originalImage"
+    [alt]="serieDetails.name"
     class="background-img"
   >
 

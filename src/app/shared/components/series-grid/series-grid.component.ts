@@ -20,7 +20,7 @@ export class SeriesGridComponent implements OnInit {
   }
 
   public showSerieDetails( id: number ) {
-
+    this.seriesService.showSerieDetails( id );
   }
 
   public loadMoreSeries(): void {

@@ -1,0 +1,8 @@
+<div class="movies-grid-container">
+  <app-serie *ngFor="let serie of series" [serie]="serie" (click)="showSerieDetails( serie.id )">
+  </app-serie>
+</div>
+
+<button class="button" (click)="loadMoreSeries()" *ngIf="thereAreSeries">
+  Cargar más series
+</button>

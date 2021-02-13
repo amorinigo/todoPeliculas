@@ -15,6 +15,8 @@ export class SeriesService {
   private url: string = "https://api.themoviedb.org/3/tv";
   public page: number = 1;
 
+  public queryWord: string = 'últimas';
+
   constructor( private http: HttpClient,
                private router: Router ) {}
 
@@ -70,5 +72,15 @@ export class SeriesService {
 
   public showSerieDetails( id: number ): Promise<boolean> {
     return this.router.navigate( ['serie-detalles', id] );
+  }
+
+  public load120Series( series: Serie[] ): void {
+    this.page = 1;
+    for(let i = 1; i <= 6; i++) this.loadMoreSeries( series );
+  }
+
+  public loadMoreSeries( series: Serie[] ) {
+    this.getSeriesObservable( this.queryWord ).subscribe( resp => series.push( ... resp ) );
+    this.page++;
   }
 }

@@ -17,10 +17,10 @@ export class MoviesService {
     this.queryWord = "últimas";
   }
 
-  public loadMoreMovies( movies: Movie[], genreId?: number ): void {
-      this.movieReqService.getMoviesObservable( this.queryWord ).subscribe(
-        resp => movies.push( ... resp )
-      );
+  public loadMoreMovies( movies: Movie[] ): void {
+    this.movieReqService.getMoviesObservable( this.queryWord ).subscribe(
+      resp => movies.push( ... resp )
+    );
 
     this.movieReqService.page++;
   }

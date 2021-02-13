@@ -14,6 +14,7 @@ import { CastSliderComponent }            from './components/cast-slider/cast-sl
 import { SeriesSliderComponent }          from './components/series-slider/series-slider.component';
 import { FilmDetailsComponent }           from './components/film-details/film-details.component';
 import { BackButtonComponent }            from './components/back-button/back-button.component';
+import { SeriesGridComponent }            from './components/series-grid/series-grid.component';
 import { ContentSelectorComponent }       from './components/content-selector/content-selector.component';
 import { RecommendedSliderComponent }     from './components/recommended-slider/recommended-slider.component';
 import { SecondarySeriesSliderComponent } from './components/secondary-series-slider/secondary-series-slider.component';
@@ -27,6 +28,7 @@ import { DirectorPipe }       from './pipes/director.pipe';
 import { WritersPipe }        from './pipes/writers.pipe';
 import { CreatorsPipe }       from './pipes/creators.pipe';
 import { RatingPipe }         from './pipes/rating.pipe';
+import { SerieComponent } from './components/serie/serie.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { RatingPipe }         from './pipes/rating.pipe';
     RecommendedSliderComponent,
     FilmDetailsComponent,
     BackButtonComponent,
+    SeriesGridComponent,
 
     MinutesToHourPipe,
     GenderPipe,
@@ -51,7 +54,8 @@ import { RatingPipe }         from './pipes/rating.pipe';
     DirectorPipe,
     WritersPipe,
     CreatorsPipe,
-    RatingPipe
+    RatingPipe,
+    SerieComponent
   ],
   imports: [
     CommonModule,
@@ -77,6 +81,7 @@ import { RatingPipe }         from './pipes/rating.pipe';
     RecommendedSliderComponent,
     FilmDetailsComponent,
     BackButtonComponent,
+    SeriesGridComponent,
 
     GenderPipe,
     OriginalImagePipe,

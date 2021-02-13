@@ -1,3 +1,11 @@
-<p>series works!</p>
-<p>series works!</p>
-<p>series works!</p>
+<!-- SERIES GRID -->
+<div class="selector-ctn">
+  <app-content-selector [isMovieTitle]="false" (typeOfQuery)="runSeriesQuery( $event )">
+  </app-content-selector>
+</div>
+
+<app-series-grid [series]="series" *ngIf="series.length > 0"></app-series-grid>
+
+<div class="spinner-ctn" *ngIf="series.length == 0">
+  <app-spinner></app-spinner>
+</div>

@@ -18,17 +18,9 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movieReqService.getNowPlaying().subscribe( movies => {
-      this.nowPlaying = movies.filter( movie => movie.poster_path ).splice(5, 5);
-    });
-
-    this.movieReqService.getUpcoming().subscribe( movies => {
-      this.upcoming = movies.filter( movie => movie.poster_path ).splice(5, 5);
-    })
-
-    this.movieReqService.getPopular().subscribe( movies => {
-      this.populars = movies.filter( movie => movie.poster_path ).splice(5, 5);
-    })
+    this.movieReqService.getNowPlaying().subscribe(movies => this.nowPlaying = movies.splice(5, 5));
+    this.movieReqService.getUpcoming().subscribe(movies => this.upcoming = movies.splice(5, 5));
+    this.movieReqService.getPopular().subscribe(movies => this.populars = movies.splice(5, 5));
   }
 
 }

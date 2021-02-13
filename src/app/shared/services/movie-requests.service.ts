@@ -34,27 +34,28 @@ export class MovieRequestsService {
 
   public getNowPlaying(): Observable<Movie[]> {
     return  this.http.get<MoviesResponse>(`${this.url}/movie/now_playing`, {params: this.params})
-                .pipe( map( response => response.results ) );
+                .pipe( map( response => response.results.filter( movie => movie.poster_path ) ) );
   }
 
   public getPopular(): Observable<Movie[]> {
     return  this.http.get<MoviesResponse>(`${this.url}/movie/popular`, {params: this.params})
-                .pipe( map( response => response.results ) );
+                .pipe( map( response => response.results.filter( movie => movie.poster_path ) ) );
   }
 
   public getTopRated(): Observable<Movie[]> {
     return  this.http.get<MoviesResponse>(`${this.url}/movie/top_rated`, {params: this.params})
-                .pipe( map( response => response.results ) );
+                .pipe( map( response => response.results.filter( movie => movie.poster_path ) ) );
   }
 
   public getUpcoming(): Observable<Movie[]> {
     return  this.http.get<MoviesResponse>(`${this.url}/movie/upcoming`, {params: this.params})
-                .pipe( map( response => response.results ) );
+                .pipe( map( response => response.results.filter( movie => movie.poster_path ) ) );
   }
 
   public getRecommendedMovies( id: number ): Observable<Movie[]> {
-    return this.http.get<MoviesResponse>(`${ this.url }/movie/${ id }/recommendations`,
-      { params: this.params }).pipe( map( resp => resp.results ) );
+    return this.http.get<MoviesResponse>(`${ this.url }/movie/${ id }/recommendations`, {
+      params: this.params
+    }).pipe( map( resp => resp.results.filter( movie => movie.poster_path ) ) );
   }
 
   public getCredits( id: number ): Observable<Credits> {

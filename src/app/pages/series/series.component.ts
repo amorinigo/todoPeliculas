@@ -12,5 +12,7 @@ export class SeriesComponent implements OnInit {
     this.moviesService.showMainSlider = true;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    window.scrollTo(0, 600);
+  }
 }

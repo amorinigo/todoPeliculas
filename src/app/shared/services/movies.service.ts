@@ -9,6 +9,7 @@ export class MoviesService {
 
   public showMainSlider: boolean;
   public queryWord: string;
+  public genreId: number;
 
   constructor( private movieReqService: MovieRequestsService,
                private router: Router ) {
@@ -16,25 +17,38 @@ export class MoviesService {
     this.queryWord = "últimas";
   }
 
-  public loadMoreMovies( movies: Movie[] ): Movie[] {
-    this.movieReqService.getMoviesObservable( this.queryWord ).subscribe(
-      resp => movies.push( ... resp.filter( movie => movie.poster_path ) )
-    );
+  public loadMoreMovies( movies: Movie[], genreId?: number ): void {
+      this.movieReqService.getMoviesObservable( this.queryWord ).subscribe(
+        resp => movies.push( ... resp )
+      );
 
     this.movieReqService.page++;
-    return movies;
   }
 
-  public loadTheFirst60Movies( movies: Movie[] ): Movie[] {
+  public loadTheFirst60Movies( movies: Movie[] ): void {
     this.movieReqService.page = 1;
     for(let i = 1; i <= 3; i++) this.loadMoreMovies( movies );
-    return movies;
   }
 
-  public load120movies( movies: Movie[] ): Movie[] {
+  public load120movies( movies: Movie[] ): void {
     this.movieReqService.page = 1;
     for(let i = 1; i <= 6; i++) this.loadMoreMovies( movies );
-    return movies;
+  }
+
+  public loadMoviesWithFilter( id: number, movies: Movie[] ) {
+    this.movieReqService.page = 1;
+
+    for(let i = 1; i <= 10; i++) this.loadMoreMoviesWithFilter( movies, id );
+  }
+
+  public loadMoreMoviesWithFilter( movies: Movie[], id: number ): void {
+    for(let i = 1; i <= 3; i++) {
+      this.movieReqService.getMoviesObservable( this.queryWord ).subscribe(
+        resp => movies.push( ... resp.filter( movie => movie.genre_ids.includes( Number( id ) ) ) )
+      );
+
+      this.movieReqService.page++;
+    }
   }
 
   public runMoviesQuery( word: string, movies: Movie[] ): Movie[] {

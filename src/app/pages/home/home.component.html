@@ -8,14 +8,11 @@
     <app-content-selector [isMovieTitle]="true" (typeOfQuery)="runMoviesQuery( $event )">
     </app-content-selector>
 
-    <app-movies-grid [movies]="movies" *ngIf="movies?.length > 0">
-    </app-movies-grid>
+    <app-movies-grid [movies]="movies" *ngIf="movies?.length > 0"></app-movies-grid>
 
     <div class="spinner-ctn" *ngIf="movies?.length == 0">
       <app-spinner></app-spinner>
     </div>
-
-    <button class="button" (click)="loadMoreMovies()">Cargar más películas</button>
 
     <!-- SECONDARY SERIES SLIDER -->
     <app-content-selector [isMovieTitle]="false" (typeOfQuery)="runSeriesQuery( $event )">

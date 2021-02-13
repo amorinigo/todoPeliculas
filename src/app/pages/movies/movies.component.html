@@ -1,5 +1,7 @@
-<h2 *ngIf="title"> {{ title | rating }} </h2>
+<h2 *ngIf="title" class="title"> {{ title | rating }} </h2>
+
+<div class="spinner-ctn" *ngIf="movies?.length == 0">
+  <app-spinner></app-spinner>
+</div>
 
 <app-movies-grid [movies]="movies" *ngIf="movies?.length > 0"></app-movies-grid>
-
-<button class="button" (click)="loadMoreMovies()">Cargar más películas</button>

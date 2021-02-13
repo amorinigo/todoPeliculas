@@ -14,7 +14,6 @@ export class MoviesComponent implements OnInit {
   public movies: Movie[];
 
   constructor( private moviesService: MoviesService,
-               private movieReqService: MovieRequestsService,
                private activatedRoute: ActivatedRoute ) {
     this.moviesService.showMainSlider = true;
   }
@@ -23,13 +22,10 @@ export class MoviesComponent implements OnInit {
     this.activatedRoute.params.subscribe( params => {
       this.movies = [];
       this.title = params.rating;
+
       this.moviesService.queryWord = this.title.toLowerCase();
       this.moviesService.load120movies( this.movies );
-      window.scrollTo(0, 500);
+      window.scrollTo(0, 600);
     });
-  }
-
-  public loadMoreMovies(): Movie[] {
-    return this.moviesService.loadMoreMovies( this.movies );
   }
 }

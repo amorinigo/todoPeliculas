@@ -20,11 +20,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.moviesService.queryWord = 'últimas';
     this.loadTheFirst60Movies();
     this.runSeriesQuery( this.moviesService.queryWord );
   }
 
-  private loadTheFirst60Movies(): Movie[] {
+  private loadTheFirst60Movies(): void {
     return this.moviesService.loadTheFirst60Movies( this.movies );
   }
 
@@ -33,13 +34,13 @@ export class HomeComponent implements OnInit {
     return this.moviesService.runMoviesQuery( typeOfQuery, this.movies );
   }
 
-  public loadMoreMovies(): Movie[] {
+  public loadMoreMovies(): void {
     return this.moviesService.loadMoreMovies( this.movies );
   }
 
   public runSeriesQuery( typeOfQuery: string ): Subscription {
     return this.seriesService.getSeriesObservable( typeOfQuery ).subscribe(
-      series => this.series = series.filter( serie => serie.poster_path ).splice(0, 12)
+      series => this.series = series.splice(0, 12)
     );
   }
 }

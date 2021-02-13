@@ -15,8 +15,6 @@ export class HeaderComponent implements OnInit {
                private movieReqService: MovieRequestsService ) { }
 
   ngOnInit(): void {
-    this.movieReqService.getNowPlaying().subscribe(
-      movies => this.movies = movies.filter( movie => movie.poster_path ).splice(0, 10)
-    );
+    this.movieReqService.getNowPlaying().subscribe( movies => this.movies = movies.splice(0, 10) );
   }
 }

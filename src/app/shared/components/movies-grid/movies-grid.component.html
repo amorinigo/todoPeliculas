@@ -2,3 +2,9 @@
   <app-movie *ngFor="let movie of movies" [movie]="movie" (click)="showDetails( movie.id )">
   </app-movie>
 </div>
+
+<button class="button" (click)="loadMoreMovies()" *ngIf="thereAreMovies">
+  Cargar más películas
+</button>
+
+

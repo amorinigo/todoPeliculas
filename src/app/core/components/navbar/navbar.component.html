@@ -49,7 +49,7 @@
             <a
               class="sub-menu__link"
               (click)="menuOnOff()"
-              [routerLink]="['género', genre.name.toLowerCase()]"
+              [routerLink]="['género', genre.name.toLowerCase(), genre.id]"
               routerLinkActive="link-active"
             >
               {{ genre.name }}
@@ -68,7 +68,7 @@
             <a
               class="sub-menu__link"
               (click)="menuOnOff()"
-              [routerLink]="['/películas', rating]"
+              [routerLink]="['/películas', rating.toLowerCase()]"
               routerLinkActive="link-active"
             >
               {{ rating }}

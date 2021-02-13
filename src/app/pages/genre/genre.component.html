@@ -1,1 +1,7 @@
-<p>genre works!</p>
+<h2 *ngIf="title" class="title"> {{ title }} </h2>
+
+<div class="spinner-ctn" *ngIf="movies?.length == 0">
+  <app-spinner></app-spinner>
+</div>
+
+<app-movies-grid [filter]="filterId" [movies]="movies" *ngIf="movies?.length > 0"></app-movies-grid>

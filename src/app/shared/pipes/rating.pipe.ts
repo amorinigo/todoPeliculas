@@ -7,10 +7,10 @@ export class RatingPipe implements PipeTransform {
 
   transform(title: string): string {
     switch( title ) {
-      case 'Estrenos'   : return title;
-      case 'Películas'  : return title;
-      case 'Ranking'    : return 'Películas más valoradas';
-      case 'Más vistas' : return 'Películas más vistas';
+      case 'estrenos'   : return 'Estrenos';
+      case 'películas'  : return 'Películas';
+      case 'ranking'    : return 'Películas más valoradas';
+      case 'más vistas' : return 'Películas más vistas';
     }
   }
 

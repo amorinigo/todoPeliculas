@@ -28,27 +28,27 @@ export class SeriesService {
 
   public getSeriesAiringToday(): Observable<Serie[]> {
     return this.http.get<SeriesResponse>(`${this.url}/airing_today`, { params: this.params })
-               .pipe( map( response => response.results ) );
+               .pipe( map( response => response.results.filter( serie => serie.poster_path ) ) );
   }
 
   public getSeriesOnTheAir(): Observable<Serie[]> {
     return this.http.get<SeriesResponse>(`${this.url}/on_the_air`, { params: this.params })
-               .pipe( map( response => response.results ) );
+               .pipe( map( response => response.results.filter( serie => serie.poster_path ) ) );
   }
 
   public getSeriesPopular(): Observable<Serie[]> {
     return this.http.get<SeriesResponse>(`${this.url}/popular`, { params: this.params })
-               .pipe( map( response => response.results ) );
+               .pipe( map( response => response.results.filter( serie => serie.poster_path ) ) );
   }
 
   public getSeriesTopRated(): Observable<Serie[]> {
     return this.http.get<SeriesResponse>(`${this.url}/top_rated`, { params: this.params })
-               .pipe( map( response => response.results ) );
+               .pipe( map( response => response.results.filter( serie => serie.poster_path ) ) );
   }
 
   public getRecommendedSeries( id: number ): Observable<Serie[]>{
     return this.http.get<SeriesResponse>(`${this.url}/${id}/recommendations`, {params: this.params})
-               .pipe( map( resp => resp.results ) );
+               .pipe( map( resp => resp.results.filter( serie => serie.poster_path ) ) );
   }
 
   public getSerieDetails( id: number ): Observable<SerieDetails> {
@@ -59,7 +59,7 @@ export class SeriesService {
     return this.http.get<Credits>(`${ this.url }/${ id }/credits`, { params: this.params });
   }
 
-  public getSeriesObservable( term: string ): Observable<Serie[]> { // LOS CASE DEBEN SER NÚMEROS.
+  public getSeriesObservable( term: string ): Observable<Serie[]> {
     switch( term ) {
       case 'últimas'    :  return this.getSeriesAiringToday();
       case 'estrenos'   :  return this.getSeriesOnTheAir();

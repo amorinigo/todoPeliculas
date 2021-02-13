@@ -11,14 +11,14 @@ import { SerieDetailsComponent }  from '@pages/serie-details/serie-details.compo
 import { SeriesComponent }         from '@pages/series/series.component';
 
 const routes: Routes = [
-  {path: "inicio",                component: HomeComponent},
-  {path: "series",                component: SeriesComponent},
-  {path: "búsqueda/:term",        component: SearchComponent},
-  {path: "género/:genreType",     component: GenreComponent},
-  {path: "películas/:rating",     component: MoviesComponent},
-  {path: "película-detalles/:id", component: MovieDetailsComponent},
-  {path: "serie-detalles/:id",    component: SerieDetailsComponent },
-  {path: "persona/:id",           component: PersonComponent},
+  {path: "inicio",                      component: HomeComponent},
+  {path: "series",                      component: SeriesComponent},
+  {path: "búsqueda/:term",              component: SearchComponent},
+  {path: "género/:genreType/:genreId",  component: GenreComponent},
+  {path: "películas/:rating",           component: MoviesComponent},
+  {path: "película-detalles/:id",       component: MovieDetailsComponent},
+  {path: "serie-detalles/:id",          component: SerieDetailsComponent },
+  {path: "persona/:id",                 component: PersonComponent},
   {path: "**", pathMatch: "full", redirectTo: "inicio"}
 ];
 

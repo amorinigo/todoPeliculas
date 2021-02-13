@@ -8,13 +8,34 @@ import { MoviesService }            from '@shared/services/movies.service';
   styleUrls: ['./movies-grid.component.scss']
 })
 export class MoviesGridComponent implements OnInit {
-  @Input() movies: Movie[];
+  @Input() movies:        Movie[];
+  @Input() filter:        number;
+  public thereAreMovies:  boolean;
+  public lastLength:      number;
 
-  constructor( private moviesService: MoviesService ) { }
+  constructor( private moviesService: MoviesService ) {
+    this.thereAreMovies = true;
+  }
 
   ngOnInit(): void {}
 
   public showDetails( id: number ): Promise<boolean> {
     return this.moviesService.showMovieDetails( id );
+  }
+
+  public loadMoreMovies(): void {
+    if( this.filter ) {
+      this.moviesService.loadMoreMoviesWithFilter( this.movies, Number( this.filter ) );
+    } else {
+      this.moviesService.loadMoreMovies( this.movies );
+    }
+
+    this.disableButton();
+  }
+
+  private disableButton(): void {
+    ( this.lastLength == this.movies.length ) ?
+      this.thereAreMovies = false :
+      this.lastLength = this.movies.length;
   }
 }

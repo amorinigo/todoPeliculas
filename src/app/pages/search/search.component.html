@@ -6,4 +6,4 @@
 
 <!-- <p *ngIf="isEmpty"> NO HAY RESULTADOS </p> -->
 
-<app-films-grid *ngIf="films.length > 0" [films]="films" [query]="query"></app-films-grid>
+<app-films-grid [films]="films" *ngIf="films?.length > 0"></app-films-grid>

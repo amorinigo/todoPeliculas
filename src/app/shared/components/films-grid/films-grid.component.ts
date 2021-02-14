@@ -11,7 +11,7 @@ import { SeriesService } from '@shared/services/series.service';
 })
 export class FilmsGridComponent implements OnInit {
   @Input() films:         Film[];
-  @Input() query:         string;
+  // @Input() query:         string;
   public thereAreFilms:   boolean;
   public lastLength:      number;
 
@@ -31,10 +31,10 @@ export class FilmsGridComponent implements OnInit {
     }
   }
 
-  loadMoreFilms() {
-    this.searchService.loadMoreFilms( this.query, this.films );
-    this.disableButton();
-  }
+  // loadMoreFilms() {
+  //   this.searchService.loadMoreFilms( this.query, this.films );
+  //   this.disableButton();
+  // }
 
   private disableButton(): void {
     ( this.lastLength == this.films.length ) ?

@@ -4,7 +4,7 @@
   </app-content-selector>
 </div>
 
-<app-series-grid [series]="series" *ngIf="series.length > 0"></app-series-grid>
+<app-films-grid [films]="series" *ngIf="series?.length > 0"></app-films-grid>
 
 <div class="spinner-ctn" *ngIf="series.length == 0">
   <app-spinner></app-spinner>

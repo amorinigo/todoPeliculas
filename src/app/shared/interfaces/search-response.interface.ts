@@ -10,10 +10,10 @@ export interface Film {
   first_air_date?:   Date;
   genre_ids:         number[];
   id:                number;
-  media_type:        MediaType;
+  media_type?:        MediaType;
   name?:             string;
   origin_country?:   string[];
-  original_language: OriginalLanguage;
+  original_language: string;
   original_name?:    string;
   overview:          string;
   popularity:        number;
@@ -30,11 +30,4 @@ export interface Film {
 export enum MediaType {
   Movie = "movie",
   Tv = "tv",
-}
-
-export enum OriginalLanguage {
-  De = "de",
-  En = "en",
-  Fr = "fr",
-  Ja = "ja",
 }

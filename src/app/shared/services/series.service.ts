@@ -8,6 +8,7 @@ import { map }                    from 'rxjs/operators';
 import { Serie, SeriesResponse }  from '@shared/interfaces/series-response.interface';
 import { SerieDetails }           from '@shared/interfaces/serie-details.interface';
 import { Credits }                from '@shared/interfaces/credits.interface';
+import { Film } from '@shared/interfaces/search-response.interface';
 
 @Injectable({ providedIn: 'root' })
 export class SeriesService {
@@ -79,7 +80,7 @@ export class SeriesService {
     for(let i = 1; i <= 6; i++) this.loadMoreSeries( series );
   }
 
-  public loadMoreSeries( series: Serie[] ) {
+  public loadMoreSeries( series: Serie[] | Film[] ) {
     this.getSeriesObservable( this.queryWord ).subscribe( resp => series.push( ... resp ) );
     this.page++;
   }

@@ -25,23 +25,23 @@ export class SearchService {
   getSearch( query: string ): Observable<Film[]> {
     const params: Params = { ... this.params, query: query, include_adult: 'false' };
     return this.http.get<SearchResponse>(`${ this.url }/search/multi`, { params })
-               .pipe( 
+               .pipe(
                   map(
-                    resp => resp.results.filter( 
-                      film => film.poster_path && 
+                    resp => resp.results.filter(
+                      film => film.poster_path &&
                               ( film.media_type == 'movie' || film.media_type == 'tv' )
-                    ) 
+                    )
                   )
                );
   }
 
-  loadMoreFilms( query: string, films: Film[] ) {
+  loadMoreFilms( films: Film[], query: string ) {
     this.getSearch( query ).subscribe( resp => films.push( ... resp ) );
     this.page++;
   }
 
-  load5pagesOfFilms( query: string, films: Film[] ) {
+  load5pagesOfFilms( films: Film[], query: string ) {
     this.page = 1;
-    for(let i = 1; i <= 5; i++) this.loadMoreFilms( query, films );
+    for(let i = 1; i <= 5; i++) this.loadMoreFilms( films, query );
   }
 }

@@ -8,11 +8,12 @@
     <app-content-selector [isMovieTitle]="true" (typeOfQuery)="runMoviesQuery( $event )">
     </app-content-selector>
 
-    <app-films-grid [films]="movies" *ngIf="movies?.length > 0"></app-films-grid>
-
     <div class="spinner-ctn" *ngIf="movies?.length == 0">
       <app-spinner></app-spinner>
     </div>
+
+    <app-films-grid [films]="movies" *ngIf="movies?.length > 0" [button]="'simple1'">
+    </app-films-grid>
 
     <!-- SECONDARY SERIES SLIDER -->
     <app-content-selector [isMovieTitle]="false" (typeOfQuery)="runSeriesQuery( $event )">

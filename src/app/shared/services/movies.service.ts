@@ -3,6 +3,7 @@ import { Router }                 from '@angular/router';
 
 import { MovieRequestsService }   from './movie-requests.service';
 import { Movie }                  from '@shared/interfaces/movies-response.interface';
+import { Film } from '@shared/interfaces/search-response.interface';
 
 @Injectable({ providedIn: 'root' })
 export class MoviesService {
@@ -17,7 +18,7 @@ export class MoviesService {
     this.queryWord = "últimas";
   }
 
-  public loadMoreMovies( movies: Movie[] ): void {
+  public loadMoreMovies( movies: Movie[] | Film[] ): void {
     this.movieReqService.getMoviesObservable( this.queryWord ).subscribe(
       resp => movies.push( ... resp )
     );
@@ -41,7 +42,7 @@ export class MoviesService {
     for(let i = 1; i <= 10; i++) this.loadMoreMoviesWithFilter( movies, id );
   }
 
-  public loadMoreMoviesWithFilter( movies: Movie[], id: number ): void {
+  public loadMoreMoviesWithFilter( movies: Movie[] | Film[], id: number ): void {
     for(let i = 1; i <= 3; i++) {
       this.movieReqService.getMoviesObservable( this.queryWord ).subscribe(
         resp => movies.push( ... resp.filter( movie => movie.genre_ids.includes( Number( id ) ) ) )

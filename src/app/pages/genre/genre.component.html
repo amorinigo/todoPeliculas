@@ -4,4 +4,5 @@
   <app-spinner></app-spinner>
 </div>
 
-<app-films-grid [films]="movies" *ngIf="movies?.length > 0"></app-films-grid>
+<app-films-grid [films]="movies" *ngIf="movies?.length > 0" [button]="'filtro'" [genreId]="genreId">
+</app-films-grid>

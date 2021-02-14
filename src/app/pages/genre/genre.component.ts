@@ -12,7 +12,7 @@ import { MoviesService }      from '@shared/services/movies.service';
 export class GenreComponent implements OnInit, OnDestroy {
   public title: string;
   public movies: Movie[];
-  public filterId: number;
+  public genreId: number;
 
   constructor( private moviesService: MoviesService,
                private activatedRoute: ActivatedRoute,
@@ -24,7 +24,7 @@ export class GenreComponent implements OnInit, OnDestroy {
     this.activatedRoute.params.subscribe( params => {
       this.movies = [];
       this.title = params.genreType;
-      this.filterId = Number( params.genreId );
+      this.genreId = Number( params.genreId );
 
       this.moviesService.queryWord = 'últimas';
       this.moviesService.loadMoviesWithFilter( params.genreId, this.movies );
@@ -33,6 +33,6 @@ export class GenreComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.filterId = null;
+    this.genreId = null;
   }
 }

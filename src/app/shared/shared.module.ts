@@ -30,6 +30,7 @@ import { DirectorPipe }       from './pipes/director.pipe';
 import { WritersPipe }        from './pipes/writers.pipe';
 import { CreatorsPipe }       from './pipes/creators.pipe';
 import { RatingPipe }         from './pipes/rating.pipe';
+import { ButtonTextPipe } from './pipes/button-text.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { RatingPipe }         from './pipes/rating.pipe';
     DirectorPipe,
     WritersPipe,
     CreatorsPipe,
-    RatingPipe
+    RatingPipe,
+    ButtonTextPipe
   ],
   imports: [
     CommonModule,
@@ -91,7 +93,8 @@ import { RatingPipe }         from './pipes/rating.pipe';
     OriginalImagePipe,
     PosterImagePipe,
     MinutesToHourPipe,
-    RatingPipe
+    RatingPipe,
+    ButtonTextPipe
   ]
 })
 export class SharedModule { }

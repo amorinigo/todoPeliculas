@@ -25,8 +25,9 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.params.subscribe( params => {
       this.films = [];
       this.query = params.term;
-      this.searchService.load5pagesOfFilms( params.term, this.films );
+      this.searchService.load5pagesOfFilms( this.films, params.term );
       // ( this.films.length === 0 ) ? this.isEmpty = true : this.isEmpty = false;
+      window.scrollTo(0, 0);
     });
   }
 }

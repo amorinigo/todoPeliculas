@@ -11,7 +11,9 @@ import { SeriesService } from '@shared/services/series.service';
 })
 export class FilmsGridComponent implements OnInit {
   @Input() films:         Film[];
-  // @Input() query:         string;
+  @Input() button:        string;
+  @Input() query:         string;
+  @Input() genreId:       number;
   public thereAreFilms:   boolean;
   public lastLength:      number;
 
@@ -23,21 +25,25 @@ export class FilmsGridComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showDetails( film: Film ) {
-    if(film.title) {
-      this.moviesService.showMovieDetails( film.id );
-    } else {
+  public showDetails( film: Film ): void {
+    (film.title) ?
+      this.moviesService.showMovieDetails( film.id ) :
       this.seriesService.showSerieDetails( film.id );
+  }
+
+  public loadMoreFilms(): void {
+    this.disableButton();
+
+    switch( this.button ) {
+      case 'simple1'  : return this.moviesService.loadMoreMovies(this.films);
+      case 'simple2'  : return this.seriesService.loadMoreSeries(this.films);
+      case 'filtro'   : return this.moviesService.loadMoreMoviesWithFilter(this.films, this.genreId);
+      case 'search'   : return this.searchService.loadMoreFilms(this.films, this.query);
     }
   }
 
-  // loadMoreFilms() {
-  //   this.searchService.loadMoreFilms( this.query, this.films );
-  //   this.disableButton();
-  // }
-
   private disableButton(): void {
-    ( this.lastLength == this.films.length ) ?
+    (this.lastLength == this.films.length) ?
       this.thereAreFilms = false :
       this.lastLength = this.films.length;
   }

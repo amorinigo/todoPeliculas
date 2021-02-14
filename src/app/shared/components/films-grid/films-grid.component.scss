@@ -1,0 +1,32 @@
+@import "../../../../assets/scss/global-mixins";
+
+.movies-grid-container {
+  display: grid;
+  column-gap: 15px;
+  row-gap: 15px;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(330px, 1fr);
+}
+
+.button {
+  @include button(16px);
+  display: block;
+  width: 100%;
+  margin: 70px auto;
+  padding: 10px 0;
+  &:hover { transform: scale(1); }
+}
+
+// media queries
+@media (min-width: 368px) {
+  .movies-grid-container {
+    grid-template-columns: repeat( 2, 1fr );
+    grid-auto-rows: minmax(auto, 320px);
+  }
+}
+
+@media (min-width: 468px)  { .movies-grid-container { grid-auto-rows: minmax(340px, 1fr); }      }
+@media (min-width: 515px)  { .movies-grid-container { grid-template-columns: repeat( 3, 1fr ); } }
+@media (min-width: 769px)  { .movies-grid-container { grid-template-columns: repeat( 2, 1fr ); } }
+@media (min-width: 955px)  { .movies-grid-container { grid-template-columns: repeat( 3, 1fr ); } }
+@media (min-width: 1200px) { .movies-grid-container { grid-template-columns: repeat( 4, 1fr ); } }

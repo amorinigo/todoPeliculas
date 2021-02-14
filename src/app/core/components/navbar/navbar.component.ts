@@ -13,7 +13,6 @@ export class NavbarComponent implements OnInit {
   public  gendersActivated: boolean;
   public  moviesActivated:  boolean;
   public  scrollActivated:  boolean;
-  public  word: string;
   public  genres: Genre[];
   public  moviesRatings: string[];
 
@@ -52,10 +51,10 @@ export class NavbarComponent implements OnInit {
     this.moviesActivated  = false;
   }
 
-  public search(): void {
-    if(!this.word) return;
-    this.router.navigate(["búsqueda", this.word]);
-    this.word = "";
+  public search( input ): void {
+    if( !input.value ) return;
+    this.router.navigate(["búsqueda", input.value]);
+    input.value = "";
     this.menuOnOff();
   }
 }

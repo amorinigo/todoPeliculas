@@ -9,13 +9,13 @@
     <div class="search">
 
       <input
+        #input
         type="text" class="search-input"
         placeholder="Buscar..."
-        [(ngModel)]="word"
-        (keyup.enter)="search()"
+        (keyup.enter)="search( input )"
       >
 
-      <label for="search" class="search-label" (click)="search()">
+      <label for="search" class="search-label" (click)="search( input )">
         <i class="fas fa-search"></i>
       </label>
 

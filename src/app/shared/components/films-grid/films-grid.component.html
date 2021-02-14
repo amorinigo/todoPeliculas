@@ -1,0 +1,7 @@
+<div class="movies-grid-container">
+  <app-film *ngFor="let film of films" [film]="film" (click)="showDetails( film )"></app-film>
+</div>
+
+<button class="button" (click)="loadMoreFilms()" *ngIf="thereAreFilms">
+  Cargar más videos
+</button>

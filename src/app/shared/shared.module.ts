@@ -1,6 +1,5 @@
 import { NgModule }               from '@angular/core';
 import { CommonModule }           from '@angular/common';
-import { FormsModule }            from '@angular/forms';
 import { HttpClientModule }       from '@angular/common/http';
 import { SwiperModule }           from 'swiper/angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
@@ -15,6 +14,9 @@ import { SeriesSliderComponent }          from './components/series-slider/serie
 import { FilmDetailsComponent }           from './components/film-details/film-details.component';
 import { BackButtonComponent }            from './components/back-button/back-button.component';
 import { SeriesGridComponent }            from './components/series-grid/series-grid.component';
+import { SerieComponent }                 from './components/serie/serie.component';
+import { FilmComponent }                  from './components/film/film.component';
+import { FilmsGridComponent }             from './components/films-grid/films-grid.component';
 import { ContentSelectorComponent }       from './components/content-selector/content-selector.component';
 import { RecommendedSliderComponent }     from './components/recommended-slider/recommended-slider.component';
 import { SecondarySeriesSliderComponent } from './components/secondary-series-slider/secondary-series-slider.component';
@@ -28,7 +30,6 @@ import { DirectorPipe }       from './pipes/director.pipe';
 import { WritersPipe }        from './pipes/writers.pipe';
 import { CreatorsPipe }       from './pipes/creators.pipe';
 import { RatingPipe }         from './pipes/rating.pipe';
-import { SerieComponent } from './components/serie/serie.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,9 @@ import { SerieComponent } from './components/serie/serie.component';
     FilmDetailsComponent,
     BackButtonComponent,
     SeriesGridComponent,
+    SerieComponent,
+    FilmComponent,
+    FilmsGridComponent,
 
     MinutesToHourPipe,
     GenderPipe,
@@ -54,18 +58,15 @@ import { SerieComponent } from './components/serie/serie.component';
     DirectorPipe,
     WritersPipe,
     CreatorsPipe,
-    RatingPipe,
-    SerieComponent
+    RatingPipe
   ],
   imports: [
     CommonModule,
-    FormsModule,
     HttpClientModule,
     SwiperModule,
     NgCircleProgressModule.forRoot()
   ],
   exports: [
-    FormsModule,
     HttpClientModule,
     NgCircleProgressModule,
     SwiperModule,
@@ -82,6 +83,9 @@ import { SerieComponent } from './components/serie/serie.component';
     FilmDetailsComponent,
     BackButtonComponent,
     SeriesGridComponent,
+    SerieComponent,
+    FilmComponent,
+    FilmsGridComponent,
 
     GenderPipe,
     OriginalImagePipe,

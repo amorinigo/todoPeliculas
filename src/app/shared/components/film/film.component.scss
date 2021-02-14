@@ -1,0 +1,52 @@
+@import "../../../../assets/scss/global-mixins";
+
+.contenedor-todo {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  &:hover {
+    .swiper-movie-img {
+      transform: scale(1.04);
+    }
+
+    .swiper-movie-title {
+      color: var(--sidebar-title-color);
+    }
+  }
+}
+
+.contenedor {
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  @include img-ctn-format(auto, 80%, 0, 8px);
+  .swiper-movie-img { transition: transform .3s; }
+
+  .movie-info-ctn {
+    width: 100%;
+    padding: 0 10px;
+    @include position-abs-bottom-left(5px, 0);
+    @include display-flex(center, space-between);
+
+    .type {
+      @include pill(10px, 1px 5px);
+      text-transform: capitalize;
+    }
+
+    .date {
+      @include pill(10px, 1px 5px);
+      color: #fff;
+      background: var(--main-color);
+    }
+  }
+}
+
+.swiper-movie-title {
+  width: 100%;
+  text-align: center;
+  padding: 0 5px;
+  font-size: 15px;
+  margin-top: 10px;
+  transition: color .3s;
+}

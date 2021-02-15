@@ -9,7 +9,7 @@
     >
       <figure class="actor-img-ctn">
         <img #img [src]="actor.profile_path | posterImage" [alt]="actor.name" class="actor-img">
-        <app-spinner *ngIf="!img.complete"></app-spinner>
+        <app-spinner *ngIf="!img.complete" [container]="false"></app-spinner>
       </figure>
 
       <div class="actor-info-ctn">

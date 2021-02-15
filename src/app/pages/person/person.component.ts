@@ -10,17 +10,19 @@ import { Person }               from '@shared/interfaces/person.interface';
   styleUrls: ['./person.component.scss']
 })
 export class PersonComponent implements OnInit {
-  public person:   Person;
-  public readMore: boolean = false;
+  public person   : Person;
+  public readMore : boolean;
 
-  constructor( private activatedRoute:  ActivatedRoute,
-               private moviesService:   MoviesService,
-               private movieReqService: MovieRequestsService ) {
+  constructor( private activatedRoute  : ActivatedRoute,
+               private moviesService   : MoviesService,
+               private movieReqService : MovieRequestsService ) {
     this.moviesService.showMainSlider = false;
+    this.readMore = false;
   }
 
   ngOnInit(): void {
     const { id } = this.activatedRoute.snapshot.params;
+
     this.movieReqService.getPerson( id ).subscribe( person => {
       this.person = person;
       window.scrollTo(0, 0);

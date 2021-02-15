@@ -49,7 +49,9 @@ export class SeriesService {
                .pipe( map( response => response.results.filter( serie => serie.poster_path ) ) );
   }
 
-  public getRecommendedSeries( id: number ): Observable<Serie[]>{
+  public getRecommended( id: number ): Observable<Serie[]>{
+    this.page = 1;
+
     return this.http.get<SeriesResponse>(`${this.url}/${id}/recommendations`, {params: this.params})
                .pipe( map( resp => resp.results.filter( serie => serie.poster_path ) ) );
   }

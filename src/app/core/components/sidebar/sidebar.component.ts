@@ -5,13 +5,13 @@ import { Movie }                from '@shared/interfaces/movies-response.interfa
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styles: []
 })
 export class SidebarComponent implements OnInit {
-  public titles:     string[];
-  public nowPlaying: Movie[];
-  public populars:   Movie[];
-  public upcoming:   Movie[];
+  public titles     : string[];
+  public nowPlaying : Movie[];
+  public populars   : Movie[];
+  public upcoming   : Movie[];
 
   constructor( private movieReqService: MovieRequestsService ) {
     this.titles = ['Top estrenos', 'Películas destacadas', 'Más películas'];

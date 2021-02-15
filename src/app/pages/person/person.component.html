@@ -2,23 +2,26 @@
 
   <div class="main-info">
     <figure class="person-img-ctn">
-      <img
-        [src]="person.profile_path | posterImage"
-        [alt]="person.name"
-        class="person-img"
-      >
+      <img #img [src]="person.profile_path | posterImage" [alt]="person.name" class="person-img">
+      <app-spinner *ngIf="!img?.complete" [container]="false"></app-spinner>
     </figure>
 
     <h3 class="actor-name"> {{ person.name }} </h3>
 
     <div class="person-biography" *ngIf="person.biography">
       <h5 class="biography-title"> Biografía </h5>
+
       <p class="biography-paragraph" [ngClass]="{'visible': readMore}">
         {{ person.biography }}
       </p>
 
       <div class="button-ctn">
-        <button type="button" class="button" (click)="this.readMore = true" [ngClass]="{'none': readMore}" >
+        <button
+          type="button"
+          class="button"
+          (click)="this.readMore = true"
+          [ngClass]="{'none': readMore}"
+        >
           Leer más
         </button>
       </div>

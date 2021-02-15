@@ -1,26 +1,11 @@
-<div class="home-container">
+<!-- SERIES SLIDER 1 -->
+<app-series-slider-1></app-series-slider-1>
 
-  <app-series-slider></app-series-slider>
+<!-- FILMS GRID -->
+<app-selector [isMovieTitle]="true" (query)="getMovies( $event )"></app-selector>
+<app-films-grid [films]="movies" *ngIf="movies?.length > 0" [button]="'simple1'"></app-films-grid>
+<app-spinner *ngIf="movies?.length == 0" [container]="true"></app-spinner>
 
-  <div class="main-content-ctn">
-
-    <!-- MOVIES GRID -->
-    <app-content-selector [isMovieTitle]="true" (typeOfQuery)="runMoviesQuery( $event )">
-    </app-content-selector>
-
-    <div class="spinner-ctn" *ngIf="movies?.length == 0">
-      <app-spinner></app-spinner>
-    </div>
-
-    <app-films-grid [films]="movies" *ngIf="movies?.length > 0" [button]="'simple1'">
-    </app-films-grid>
-
-    <!-- SECONDARY SERIES SLIDER -->
-    <app-content-selector [isMovieTitle]="false" (typeOfQuery)="runSeriesQuery( $event )">
-    </app-content-selector>
-
-    <app-secondary-series-slider [series]="series" *ngIf="series?.length > 0">
-    </app-secondary-series-slider>
-  </div>
-
-</div>
+<!-- SERIES SLIDER 2 -->
+<app-selector [isMovieTitle]="false" (query)="getSeries( $event )"></app-selector>
+<app-series-slider-2 [series]="series" *ngIf="series?.length > 0"></app-series-slider-2>

@@ -3,15 +3,14 @@ import { SeriesService }      from '@shared/services/series.service';
 import { SwipersService }     from '@shared/services/swipers.service';
 import { Serie }              from '@shared/interfaces/series-response.interface';
 import Swiper, { Pagination } from 'swiper';
-
 Swiper.use([ Pagination ]);
 
 @Component({
-  selector: 'app-secondary-series-slider',
-  templateUrl: './secondary-series-slider.component.html',
-  styleUrls: ['./secondary-series-slider.component.scss']
+  selector: 'app-series-slider-2',
+  templateUrl: './series-slider-2.component.html',
+  styleUrls: ['./series-slider-2.component.scss']
 })
-export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
+export class SeriesSlider2Component implements OnInit, AfterViewInit {
   @Input() series: Serie[];
 
   constructor( private seriesService:  SeriesService,
@@ -20,7 +19,7 @@ export class SecondarySeriesSliderComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    const swiper = new Swiper('.second-series-swiper', this.swipersService.secondSwiperOptions);
+    const swiper = new Swiper('.second-series-swiper', this.swipersService.series2SwiperOptions);
   }
 
   public showSerieDetails( id: number ): Promise<boolean> {

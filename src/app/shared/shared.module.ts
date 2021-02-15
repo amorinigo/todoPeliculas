@@ -1,55 +1,46 @@
 import { NgModule }               from '@angular/core';
 import { CommonModule }           from '@angular/common';
 import { HttpClientModule }       from '@angular/common/http';
+
 import { SwiperModule }           from 'swiper/angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
-import { TitleComponent }                 from './components/title/title.component';
-import { SpinnerComponent }               from './components/spinner/spinner.component';
-import { MainSliderComponent }            from './components/main-slider/main-slider.component';
-import { MoviesGridComponent }            from './components/movies-grid/movies-grid.component';
-import { MovieComponent }                 from './components/movie/movie.component';
-import { CastSliderComponent }            from './components/cast-slider/cast-slider.component';
-import { SeriesSliderComponent }          from './components/series-slider/series-slider.component';
-import { FilmDetailsComponent }           from './components/film-details/film-details.component';
-import { BackButtonComponent }            from './components/back-button/back-button.component';
-import { SeriesGridComponent }            from './components/series-grid/series-grid.component';
-import { SerieComponent }                 from './components/serie/serie.component';
-import { FilmComponent }                  from './components/film/film.component';
-import { FilmsGridComponent }             from './components/films-grid/films-grid.component';
-import { ContentSelectorComponent }       from './components/content-selector/content-selector.component';
-import { RecommendedSliderComponent }     from './components/recommended-slider/recommended-slider.component';
-import { SecondarySeriesSliderComponent } from './components/secondary-series-slider/secondary-series-slider.component';
+import { SpinnerComponent }       from './components/spinner/spinner.component';
+import { MainSliderComponent }    from './components/main-slider/main-slider.component';
+import { CastSliderComponent }    from './components/cast-slider/cast-slider.component';
+import { SeriesSlider1Component } from "./components/series-slider-1/series-slider-1.component";
+import { SeriesSlider2Component } from "./components/series-slider-2/series-slider-2.component";
+import { FilmDetailsComponent }   from './components/film-details/film-details.component';
+import { BackButtonComponent }    from './components/back-button/back-button.component';
+import { FilmComponent }          from './components/film/film.component';
+import { FilmsGridComponent }     from './components/films-grid/films-grid.component';
+import { SelectorComponent }      from './components/selector/selector.component';
+import { FilmsSliderComponent }   from "./components/films-slider/films-slider.component";
 
-import { MinutesToHourPipe }  from './pipes/minutes-to-hour.pipe';
-import { GenderPipe }         from './pipes/gender.pipe';
-import { OriginalImagePipe }  from './pipes/original-image.pipe';
-import { PosterImagePipe }    from './pipes/poster-image.pipe';
-import { GenresPipe }         from './pipes/genres.pipe';
-import { DirectorPipe }       from './pipes/director.pipe';
-import { WritersPipe }        from './pipes/writers.pipe';
-import { CreatorsPipe }       from './pipes/creators.pipe';
-import { RatingPipe }         from './pipes/rating.pipe';
-import { ButtonTextPipe } from './pipes/button-text.pipe';
+import { MinutesToHourPipe }      from './pipes/minutes-to-hour.pipe';
+import { GenderPipe }             from './pipes/gender.pipe';
+import { OriginalImagePipe }      from './pipes/original-image.pipe';
+import { PosterImagePipe }        from './pipes/poster-image.pipe';
+import { GenresPipe }             from './pipes/genres.pipe';
+import { DirectorPipe }           from './pipes/director.pipe';
+import { WritersPipe }            from './pipes/writers.pipe';
+import { CreatorsPipe }           from './pipes/creators.pipe';
+import { RatingPipe }             from './pipes/rating.pipe';
+import { ButtonTextPipe }         from './pipes/button-text.pipe';
 
 @NgModule({
   declarations: [
-    TitleComponent,
     SpinnerComponent,
     MainSliderComponent,
-    MoviesGridComponent,
-    MovieComponent,
     CastSliderComponent,
-    SeriesSliderComponent,
-    ContentSelectorComponent,
-    SecondarySeriesSliderComponent,
-    RecommendedSliderComponent,
-    FilmDetailsComponent,
+    SeriesSlider1Component,
+    SeriesSlider2Component,
+    SelectorComponent,
+    FilmsSliderComponent,
     BackButtonComponent,
-    SeriesGridComponent,
-    SerieComponent,
-    FilmComponent,
+    FilmDetailsComponent,
     FilmsGridComponent,
+    FilmComponent,
 
     MinutesToHourPipe,
     GenderPipe,
@@ -74,18 +65,14 @@ import { ButtonTextPipe } from './pipes/button-text.pipe';
     SwiperModule,
 
     MainSliderComponent,
-    TitleComponent,
-    SeriesSliderComponent,
-    ContentSelectorComponent,
-    MoviesGridComponent,
-    SecondarySeriesSliderComponent,
+    SeriesSlider1Component,
+    SeriesSlider2Component,
+    SelectorComponent,
     SpinnerComponent,
     CastSliderComponent,
-    RecommendedSliderComponent,
+    FilmsSliderComponent,
     FilmDetailsComponent,
     BackButtonComponent,
-    SeriesGridComponent,
-    SerieComponent,
     FilmComponent,
     FilmsGridComponent,
 

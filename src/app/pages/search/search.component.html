@@ -1,10 +1,8 @@
-<h2 class="title"> Búsquedas relacionadas </h2>
+<h2 [ngStyle]="style"> Búsquedas relacionadas </h2>
 
-<div class="spinner-ctn" *ngIf="films.length == 0">
-  <app-spinner></app-spinner>
-</div>
+<app-spinner *ngIf="films.length == 0" [container]="true"></app-spinner>
 
 <!-- <p *ngIf="isEmpty"> NO HAY RESULTADOS </p> -->
 
-<app-films-grid [films]="films" *ngIf="films?.length > 0" [button]="'search'" [query]="query">
+<app-films-grid *ngIf="films?.length > 0" [films]="films" [query]="query" [button]="'search'">
 </app-films-grid>

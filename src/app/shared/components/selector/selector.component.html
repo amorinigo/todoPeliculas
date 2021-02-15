@@ -1,5 +1,5 @@
-<div class="content-selector">
-    <app-title [title]="showTitle()" class="title"></app-title>
+<div class="selector-ctn">
+    <h4 class="title"> {{ showTitle() }} </h4>
 
     <div #menu class="menu">
       <a #item class="item" (click)="activateItem( item )" *ngFor="let rating of ratings">

@@ -1,12 +1,12 @@
 import { Component, OnInit }  from '@angular/core';
-import { Serie } from '@shared/interfaces/series-response.interface';
 import { MoviesService }      from '@shared/services/movies.service';
-import { SeriesService } from '@shared/services/series.service';
+import { SeriesService }      from '@shared/services/series.service';
+import { Serie }              from '@shared/interfaces/series-response.interface';
 
 @Component({
   selector: 'app-series',
   templateUrl: './series.component.html',
-  styleUrls: ['./series.component.scss']
+  styles: []
 })
 export class SeriesComponent implements OnInit {
   public series: Serie[] = [];
@@ -23,9 +23,9 @@ export class SeriesComponent implements OnInit {
     window.scrollTo(0, 600);
   }
 
-  public runSeriesQuery( typeOfQuery: string ) {
+  public getSeries( query: string ): void {
     this.series = [];
-    this.seriesService.queryWord = typeOfQuery;
+    this.seriesService.queryWord = query;
     this.seriesService.load120Series( this.series );
   }
 }

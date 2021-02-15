@@ -9,12 +9,12 @@ import { Genre }                            from '@shared/interfaces/genres-resp
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public  menuActivated:    boolean;
-  public  gendersActivated: boolean;
-  public  moviesActivated:  boolean;
-  public  scrollActivated:  boolean;
-  public  genres: Genre[];
-  public  moviesRatings: string[];
+  public  menuActivated     : boolean;
+  public  gendersActivated  : boolean;
+  public  moviesActivated   : boolean;
+  public  scrollActivated   : boolean;
+  public  genres            : Genre[];
+  public  moviesRatings     : string[];
 
   @HostListener("window: scroll")
   onScroll() {
@@ -25,11 +25,10 @@ export class NavbarComponent implements OnInit {
 
   constructor( private router: Router,
                private movieReqService: MovieRequestsService ) {
-    this.moviesRatings    = ['Estrenos', 'Ranking', 'Más vistas', 'Películas'];
-    this.menuActivated    = false;
-    this.gendersActivated = false;
-    this.moviesActivated  = false;
-    this.scrollActivated  = false;
+
+    this.moviesRatings = ['Estrenos', 'Ranking', 'Más vistas', 'Películas'];
+    this.menuActivated, this.gendersActivated, this.moviesActivated, this.scrollActivated = false;
+
   }
 
   ngOnInit(): void {
@@ -42,13 +41,12 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  public gendersOnOff(): boolean { return this.gendersActivated = !this.gendersActivated; }
-  public moviesOnOff():  boolean { return this.moviesActivated = !this.moviesActivated; }
+  public gendersOnOff() : boolean { return this.gendersActivated = !this.gendersActivated; }
+  public moviesOnOff()  : boolean { return this.moviesActivated = !this.moviesActivated;   }
 
   public menuOnOff(): void {
     this.menuActivated    = !this.menuActivated;
-    this.gendersActivated = false;
-    this.moviesActivated  = false;
+    this.gendersActivated, this.moviesActivated = false;
   }
 
   public search( input ): void {

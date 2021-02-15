@@ -8,7 +8,7 @@ import { Subscription }       from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styles: [ 'app-selector { margin-top: 50px; }' ]
 })
 export class HomeComponent implements OnInit {
   public movies: Movie[] = [];
@@ -22,24 +22,24 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.moviesService.queryWord = 'últimas';
     this.loadTheFirst60Movies();
-    this.runSeriesQuery( this.moviesService.queryWord );
+    this.getSeries( this.moviesService.queryWord );
   }
 
   private loadTheFirst60Movies(): void {
     return this.moviesService.loadTheFirst60Movies( this.movies );
   }
 
-  public runMoviesQuery( typeOfQuery: string ): Movie[] {
+  public getMovies( query: string ): Movie[] {
     this.movies = [];
-    return this.moviesService.runMoviesQuery( typeOfQuery, this.movies );
+    return this.moviesService.runMoviesQuery( query, this.movies );
   }
 
   public loadMoreMovies(): void {
     return this.moviesService.loadMoreMovies( this.movies );
   }
 
-  public runSeriesQuery( typeOfQuery: string ): Subscription {
-    return this.seriesService.getSeriesObservable( typeOfQuery ).subscribe(
+  public getSeries( query: string ): Subscription {
+    return this.seriesService.getSeriesObservable( query ).subscribe(
       series => this.series = series.splice(0, 12)
     );
   }

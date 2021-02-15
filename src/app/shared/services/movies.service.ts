@@ -45,7 +45,7 @@ export class MoviesService {
   public loadMoreMoviesWithFilter( movies: Movie[] | Film[], id: number ): void {
     for(let i = 1; i <= 3; i++) {
       this.movieReqService.getMoviesObservable( this.queryWord ).subscribe(
-        resp => movies.push( ... resp.filter( movie => movie.genre_ids.includes( Number( id ) ) ) )
+        resp => movies.push( ... resp.filter( movie => movie.genre_ids.includes( id ) ) )
       );
 
       this.movieReqService.page++;

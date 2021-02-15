@@ -9,19 +9,17 @@ import { Credits }              from '@shared/interfaces/credits.interface';
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
-  styleUrls: ['./movie-details.component.scss']
+  styles: []
 })
 export class MovieDetailsComponent implements OnInit {
-  public details:           MovieDetails;
-  public credits:           Credits;
-  public recommendedMovies: Movie[];
-  public type:              string;
+  public details : MovieDetails;
+  public credits : Credits;
+  public movies  : Movie[];
 
-  constructor( private activatedRoute:  ActivatedRoute,
-               private movieReqService: MovieRequestsService,
-               private moviesService:   MoviesService ) {
+  constructor( private activatedRoute  : ActivatedRoute,
+               private movieReqService : MovieRequestsService,
+               private moviesService   : MoviesService ) {
     this.moviesService.showMainSlider = false;
-    this.type = "Película";
   }
 
   ngOnInit():void {
@@ -35,11 +33,6 @@ export class MovieDetailsComponent implements OnInit {
     });
 
     this.movieReqService.getCredits( id ).subscribe( credits => this.credits = credits );
-
-    this.movieReqService.page = 1;
-
-    this.movieReqService.getRecommendedMovies( id ).subscribe(
-      movies => this.recommendedMovies = movies
-    );
+    this.movieReqService.getRecommended( id ).subscribe( movies => this.movies = movies );
   }
 }

@@ -52,7 +52,9 @@ export class MovieRequestsService {
                 .pipe( map( response => response.results.filter( movie => movie.poster_path ) ) );
   }
 
-  public getRecommendedMovies( id: number ): Observable<Movie[]> {
+  public getRecommended( id: number ): Observable<Movie[]> {
+    this.page = 1;
+
     return this.http.get<MoviesResponse>(`${ this.url }/movie/${ id }/recommendations`, {
       params: this.params
     }).pipe( map( resp => resp.results.filter( movie => movie.poster_path ) ) );

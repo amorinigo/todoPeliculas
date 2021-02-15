@@ -27,6 +27,12 @@
   }
 }
 
+.title {
+  flex-shrink: 0;
+  margin: 0;
+  font-weight: 900;
+}
+
 .img-ctn {
   @include img-ctn-format(100%, var(--img-ctn-height), 0, 8px);
   transition: transform .3s, opacity .3s;

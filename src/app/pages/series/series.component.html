@@ -1,10 +1,5 @@
-<div class="selector-ctn">
-  <app-content-selector [isMovieTitle]="false" (typeOfQuery)="runSeriesQuery( $event )">
-  </app-content-selector>
-</div>
+<app-selector [isMovieTitle]="false" (query)="getSeries( $event )"></app-selector>
 
-<div class="spinner-ctn" *ngIf="series.length == 0">
-  <app-spinner></app-spinner>
-</div>
+<app-spinner *ngIf="series.length == 0" [container]="true"></app-spinner>
 
-<app-films-grid [films]="series" *ngIf="series?.length > 0" [button]="'simple2'"></app-films-grid>
+<app-films-grid *ngIf="series?.length > 0" [films]="series" [button]="'simple2'"></app-films-grid>

@@ -1,21 +1,26 @@
 import { Component, OnInit }  from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Movie } from '@shared/interfaces/movies-response.interface';
-import { MovieRequestsService } from '@shared/services/movie-requests.service';
+import { ActivatedRoute }     from '@angular/router';
 import { MoviesService }      from '@shared/services/movies.service';
+import { Movie }              from '@shared/interfaces/movies-response.interface';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  styles: []
 })
 export class MoviesComponent implements OnInit {
-  public title: string;
-  public movies: Movie[];
+  public title  : string;
+  public movies : Movie[];
+  public style  : object;
 
-  constructor( private moviesService: MoviesService,
-               private activatedRoute: ActivatedRoute ) {
+  constructor( private moviesService  : MoviesService,
+               private activatedRoute : ActivatedRoute ) {
     this.moviesService.showMainSlider = true;
+
+    this.style = {
+      'font-weight': 'bold',
+      'margin-bottom.px': '50'
+    };
   }
 
   ngOnInit(): void {

@@ -37,7 +37,7 @@ export class SwipersService {
     }
   };
 
-  public recommendedSwiperOptions: SwiperOptions = {
+  public filmsSwiperOptions: SwiperOptions = {
     observer: true,
     freeMode: true,
     spaceBetween: 20,
@@ -55,12 +55,12 @@ export class SwipersService {
 
   // series swipers
 
-  public firstSwiperOptions: SwiperOptions = {
+  public series1SwiperOptions: SwiperOptions = {
     observer: true,
     freeMode: true,
     spaceBetween: 10,
     pagination: {
-      el: '.first-series-swiper-pagination',
+      el: '.series-1-swiper-pagination',
       clickable: true,
       dynamicBullets: true
     },
@@ -76,12 +76,12 @@ export class SwipersService {
     }
   };
 
-  public secondSwiperOptions: SwiperOptions = {
+  public series2SwiperOptions: SwiperOptions = {
     observer: true,
     freeMode: true,
     spaceBetween: 10,
     pagination: {
-      el: '.second-series-swiper-pagination',
+      el: '.series-2-swiper-pagination',
       clickable: true,
       dynamicBullets: true
     },

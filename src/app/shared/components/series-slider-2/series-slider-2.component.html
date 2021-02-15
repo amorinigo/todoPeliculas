@@ -7,7 +7,7 @@
       >
         <figure class="serie-img-ctn">
           <img #img [src]="serie.poster_path | posterImage" [alt]="serie.name" class="serie-img">
-          <app-spinner *ngIf="!img.complete"></app-spinner>
+          <app-spinner *ngIf="!img.complete" [container]="false"></app-spinner>
         </figure>
 
         <div class="data">
@@ -18,5 +18,5 @@
         <h6 class="serie-name"> {{ serie.name }} </h6>
       </div>
   </div>
-  <!-- <div class="swiper-pagination second-series-swiper-pagination"></div> -->
+  <!-- <div class="swiper-pagination series-2-swiper-pagination"></div> -->
 </div>

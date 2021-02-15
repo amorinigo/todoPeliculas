@@ -8,12 +8,12 @@ import { Movie }                    from '@shared/interfaces/movies-response.int
   styleUrls: ['./sidebar-section.component.scss']
 })
 export class SidebarSectionComponent implements OnInit {
-  @Input() title: string;
-  @Input() movies: Movie[];
+  @Input() title  : string;
+  @Input() movies : Movie[];
 
-  constructor( private moviesService: MoviesService ) { }
+  constructor( private moviesService: MoviesService ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   public showDetails( id: number ): Promise<boolean> {
     return this.moviesService.showMovieDetails( id );

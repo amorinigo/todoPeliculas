@@ -3,13 +3,13 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-content-selector',
-  templateUrl: './content-selector.component.html',
-  styleUrls: ['./content-selector.component.scss']
+  selector: 'app-selector',
+  templateUrl: './selector.component.html',
+  styleUrls: ['./selector.component.scss']
 })
-export class ContentSelectorComponent implements OnInit, AfterViewInit {
+export class SelectorComponent implements OnInit, AfterViewInit {
   @Input()  isMovieTitle: boolean;
-  @Output() typeOfQuery = new EventEmitter<string>();
+  @Output() query = new EventEmitter<string>();
   @ViewChild( "menu" ) private menu: ElementRef;
 
   public ratings: string[];
@@ -47,8 +47,9 @@ export class ContentSelectorComponent implements OnInit, AfterViewInit {
 
   private emitCurrentRating( item: HTMLElement ): void {
     const word: string = item.innerText.toLowerCase().trim();
+
     if(word == this.currentRating) return;
     this.currentRating = word;
-    this.typeOfQuery.emit( this.currentRating );
+    this.query.emit( this.currentRating );
   }
 }

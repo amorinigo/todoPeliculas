@@ -6,7 +6,7 @@ import { Movie }                from '@shared/interfaces/movies-response.interfa
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styles: []
 })
 export class HeaderComponent implements OnInit {
   public movies: Movie[];

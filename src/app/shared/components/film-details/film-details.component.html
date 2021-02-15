@@ -5,12 +5,12 @@
     [alt]="movieDetails.title"
     class="background-img"
   >
-  <app-spinner *ngIf="!imgBgMovie.complete"></app-spinner>
+  <app-spinner *ngIf="!imgBgMovie.complete" [container]="false"></app-spinner>
 
   <div class="super-container">
     <figure class="film-img-ctn">
       <img #imgMovie [src]="movieDetails.poster_path | posterImage" [alt]="movieDetails.title">
-      <app-spinner *ngIf="!imgMovie.complete"></app-spinner>
+      <app-spinner *ngIf="!imgMovie.complete" [container]="false"></app-spinner>
     </figure>
 
     <div class="film-info">
@@ -88,12 +88,12 @@
     class="background-img"
   >
 
-  <app-spinner *ngIf="!imgBgSerie.complete"></app-spinner>
+  <app-spinner *ngIf="!imgBgSerie.complete" [container]="false"></app-spinner>
 
   <div class="super-container">
     <figure class="film-img-ctn">
       <img #imgSerie [src]="serieDetails.poster_path | posterImage" [alt]="serieDetails.name">
-      <app-spinner *ngIf="!imgSerie.complete"></app-spinner>
+      <app-spinner *ngIf="!imgSerie.complete" [container]="false"></app-spinner>
     </figure>
 
     <div class="film-info">

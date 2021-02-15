@@ -1,0 +1,6 @@
+<h2 *ngIf="title" [ngStyle]="style"> {{ title }} </h2>
+
+<app-spinner *ngIf="movies?.length == 0" [container]="true"></app-spinner>
+
+<app-films-grid [films]="movies" *ngIf="movies?.length > 0" [button]="'filtro'" [genreId]="genreId">
+</app-films-grid>

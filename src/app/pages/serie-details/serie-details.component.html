@@ -1,11 +1,6 @@
-<app-film-details *ngIf="serieDetails && serieCredits" [serieDetails]="serieDetails" [credits]="serieCredits">
+<app-film-details *ngIf="details && credits" [serieDetails]="details" [credits]="credits">
 </app-film-details>
 
-<app-cast-slider *ngIf="serieCredits?.cast.length > 0" [credits]="serieCredits"></app-cast-slider>
+<app-cast-slider *ngIf="credits?.cast.length > 0" [credits]="credits"></app-cast-slider>
 
-<app-recommended-slider
-  *ngIf="recommendedSeries?.length > 0"
-  [films]="recommendedSeries"
-  [type]="type"
->
-</app-recommended-slider>
+<app-films-slider *ngIf="series?.length > 0" [films]="series"></app-films-slider>

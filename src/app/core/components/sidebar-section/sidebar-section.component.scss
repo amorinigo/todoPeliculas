@@ -20,20 +20,18 @@
   display: flex;
   margin-top: 25px;
   overflow: hidden;
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
-    .img { transform: scale(1.04); opacity: 0.7; }
+    .img        { transform: scale(1.04); }
     .info-title { color: var(--sidebar-title-color); }
-    .number { transform: scale(1.04); }
+    .number     { transform: scale(1.04); }
   }
 
   .number {
-    --number-displacement: -4px;
-    --number-size: 35px;
     display: inline-block;
-    @include position-abs-top-left(var(--number-displacement), var(--number-displacement));
-    @include width-and-height(var(--number-size), var(--number-size));
+    @include position-abs-top-left(-4px, -4px);
+    @include width-and-height(35px, 35px);
     @include display-flex;
     background: var(--main-color);
     box-shadow: 0 0 0 5px var(--bg-color);
@@ -48,7 +46,7 @@
     @include img-ctn-format(100px, 100%, 0 25px 0 0, 4px);
     flex-shrink: 0;
     position: relative;
-    .img { transition: transform .3s, opacity .3s; }
+    .img { transition: transform .3s; }
   }
 
   .info-ctn {

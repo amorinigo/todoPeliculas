@@ -283,10 +283,10 @@
   }
 }
 
-// animate
-.animate__animated.animate__pulse { --animate-duration: 0.3s; }
-
 .link-active {
   font-weight: bold;
   color: var(--main-color) !important;
 }
+
+// animate
+.animate__animated.animate__pulse { --animate-duration: 0.3s; }

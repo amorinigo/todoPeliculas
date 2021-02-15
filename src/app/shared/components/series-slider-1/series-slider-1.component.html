@@ -1,7 +1,7 @@
 <div class="series-slider-ctn">
   <div class="title-section">
 
-    <app-title [title]="title"></app-title>
+    <h4 class="title">Series populares</h4>
     <button class="button">Ver más series</button>
 
   </div>
@@ -15,7 +15,7 @@
         >
           <div class="img-ctn">
             <img #img [src]="serie.backdrop_path | posterImage" [alt]="serie.name" class="serie-img">
-            <app-spinner *ngIf="!img.complete"></app-spinner>
+            <app-spinner *ngIf="!img.complete" [container]="false"></app-spinner>
           </div>
 
           <div class="serie-data">
@@ -24,6 +24,6 @@
           </div>
         </div>
     </div>
-    <!-- <div class="swiper-pagination first-series-swiper-pagination"></div> -->
+    <!-- <div class="swiper-pagination series-1-swiper-pagination"></div> -->
   </div>
 </div>

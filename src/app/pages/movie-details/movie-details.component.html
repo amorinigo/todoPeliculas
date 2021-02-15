@@ -1,13 +1,6 @@
 <app-film-details *ngIf="details && credits" [movieDetails]="details" [credits]="credits">
 </app-film-details>
 
-
 <app-cast-slider *ngIf="credits?.cast.length > 0" [credits]="credits"></app-cast-slider>
 
-
-<app-recommended-slider
-  *ngIf="recommendedMovies?.length > 0"
-  [films]="recommendedMovies"
-  [type]="type"
->
-</app-recommended-slider>
+<app-films-slider *ngIf="movies?.length > 0" [films]="movies"></app-films-slider>

@@ -5,14 +5,14 @@
   font-weight: bold;
 }
 
-.recommended-swiper-container { height: 300px; }
+.films-swiper { height: 300px; }
 
-.recommended-swiper-slide {
+.slide {
   cursor: pointer;
   overflow: hidden;
 
   &:hover {
-    .swiper-movie-img {
+    .img {
       transform: scale(1.04);
     }
 
@@ -25,7 +25,7 @@
   position: relative;
   overflow: hidden;
   @include img-ctn-format(auto, 80%, 0, 8px);
-  .swiper-movie-img { transition: transform .3s; }
+  .img { transition: transform .3s; }
 
   .movie-info-ctn {
     width: 100%;

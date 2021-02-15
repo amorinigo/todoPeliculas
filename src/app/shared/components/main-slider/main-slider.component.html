@@ -4,8 +4,8 @@
       class="swiper-slide main-swiper-slide"
       *ngFor="let movie of movies"
     >
-      <img class="slider-img" [src]="movie.backdrop_path | originalImage" [alt]="movie.title">
-      <app-spinner></app-spinner>
+      <img #img class="slider-img" [src]="movie.backdrop_path | originalImage" [alt]="movie.title">
+      <app-spinner *ngIf="!img?.complete" [container]="false"></app-spinner>
 
       <div class="info-ctn">
         <h2 class="info-title"> {{ movie.title }} </h2>

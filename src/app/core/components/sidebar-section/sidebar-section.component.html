@@ -11,7 +11,7 @@
 
     <div class="img-ctn">
       <img #img [src]="movie.poster_path | posterImage" [alt]="movie.title" class="img">
-      <app-spinner *ngIf="!img.complete"></app-spinner>
+      <app-spinner *ngIf="!img.complete" [container]="false"></app-spinner>
     </div>
 
     <div class="info-ctn">

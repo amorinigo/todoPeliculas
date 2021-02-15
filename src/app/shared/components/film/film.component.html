@@ -1,4 +1,4 @@
-<section class="contenedor-todo" *ngIf="film.media_type == 'movie' || film.title">
+<section class="contenedor-todo" *ngIf="film.title">
   <div class="contenedor">
     <img
       #img
@@ -7,7 +7,7 @@
       class="swiper-movie-img"
     >
 
-    <app-spinner *ngIf="!img?.complete"></app-spinner>
+    <app-spinner *ngIf="!img?.complete" [container]="false"></app-spinner>
 
     <div class="movie-info-ctn">
       <span class="type"> Película </span>
@@ -18,7 +18,7 @@
   <h5 class="swiper-movie-title"> {{ film.title | slice:0:65 }} </h5>
 </section>
 
-<section class="contenedor-todo" *ngIf="film.media_type == 'tv' || film.name">
+<section class="contenedor-todo" *ngIf="film.name">
   <div class="contenedor">
     <img
       #img2
@@ -27,7 +27,7 @@
       class="swiper-movie-img"
     >
 
-    <app-spinner *ngIf="!img2?.complete"></app-spinner>
+    <app-spinner *ngIf="!img2?.complete" [container]="false"></app-spinner>
 
     <div class="movie-info-ctn">
       <span class="type"> Serie </span>

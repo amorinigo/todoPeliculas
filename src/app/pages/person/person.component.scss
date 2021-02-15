@@ -19,6 +19,7 @@ h3, h5, h6, p { margin: 0; }
 .person-img-ctn {
   margin: 0;
   @include width-and-height(100%, 350px);
+  position: relative;
 
   .person-img {
     @include width-and-height();

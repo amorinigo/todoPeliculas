@@ -9,19 +9,17 @@ import { Credits }            from '@shared/interfaces/credits.interface';
 @Component({
   selector: 'app-serie-details',
   templateUrl: './serie-details.component.html',
-  styleUrls: ['./serie-details.component.scss']
+  styles: []
 })
 export class SerieDetailsComponent implements OnInit {
-  public serieDetails:      SerieDetails;
-  public serieCredits:      Credits;
-  public recommendedSeries: Serie[];
-  public type:              string;
+  public details  : SerieDetails;
+  public credits  : Credits;
+  public series   : Serie[];
 
-  constructor( private moviesService: MoviesService,
-               private activatedRoute: ActivatedRoute,
-               private seriesService: SeriesService ) {
+  constructor( private moviesService  : MoviesService,
+               private activatedRoute : ActivatedRoute,
+               private seriesService  : SeriesService ) {
     this.moviesService.showMainSlider = false;
-    this.type = "Serie";
   }
 
   ngOnInit(): void {
@@ -29,19 +27,13 @@ export class SerieDetailsComponent implements OnInit {
   }
 
   private getSerieInfo( id: number ): void {
-
-    this.seriesService.getSerieDetails( id ).subscribe( serieDetails => {
-      this.serieDetails = serieDetails;
+    this.seriesService.getSerieDetails( id ).subscribe( details => {
+      this.details = details;
       window.scrollTo(0,0);
     });
 
-    this.seriesService.getSerieCredits( id ).subscribe( credits => this.serieCredits = credits );
-
-    this.seriesService.page = 1;
-
-    this.seriesService.getRecommendedSeries( id ).subscribe(
-      series => this.recommendedSeries = series
-    );
+    this.seriesService.getSerieCredits( id ).subscribe( credits => this.credits = credits );
+    this.seriesService.getRecommended( id ).subscribe( series => this.series = series );
 
   }
 

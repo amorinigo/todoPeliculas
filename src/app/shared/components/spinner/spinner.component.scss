@@ -5,6 +5,11 @@
   --spiner-color: #fff;
 }
 
+.spinner-ctn {
+  min-height: 300px;
+  position: relative;
+}
+
 .spinner {
   @include position-abs-top-left();
   @include width-and-height();

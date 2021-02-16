@@ -16,8 +16,6 @@ export class SeriesService {
   private url: string = "https://api.themoviedb.org/3/tv";
   public page: number = 1;
 
-  public query: string = 'últimas';
-
   constructor( private http: HttpClient,
                private router: Router ) {}
 
@@ -65,10 +63,10 @@ export class SeriesService {
     return this.http.get<Credits>(`${ this.url }/${ id }/credits`, { params: this.params });
   }
 
-  public getSeries( term: string ): Observable<Serie[]> {
-    this.page = 1;
+  public getSeries( rating: string, page?: number ): Observable<Serie[]> {
+    if( page ) this.page = page;
 
-    switch( term ) {
+    switch( rating ) {
       case 'últimas'    :  return this.getAiringToday();
       case 'estrenos'   :  return this.getOnTheAir();
       case 'ranking'    :  return this.getTopRated();
@@ -76,22 +74,35 @@ export class SeriesService {
     };
   }
 
+
+
+
+
+
+
+
+  public load120Series( series: Serie[], rating: string = 'últimas' ): void {
+    this.page = 1;
+    for(let i = 1; i <= 6; i++) this.loadMoreSeries( series, rating );
+    window.scrollTo(0, 600);
+  }
+
+  public loadMoreSeries( series: Serie[] | Film[], rating: string = 'últimas' ): void {
+    this.getSeries( rating ).subscribe( resp => series.push( ... resp ) );
+    this.page++;
+  }
+
+
+
+
+
+
+
   public goToSeries(): Promise<boolean> {
     return this.router.navigate( ['series'] );
   }
 
   public showDetails( id: number ): Promise<boolean> {
     return this.router.navigate( ['serie-detalles', id] );
-  }
-
-  public load120Series( series: Serie[], query: string = 'últimas' ): void {
-    this.page = 1;
-    window.scrollTo(0, 600);
-    for(let i = 1; i <= 6; i++) this.loadMoreSeries( series, query );
-  }
-
-  public loadMoreSeries( series: Serie[] | Film[], query: string = 'últimas' ) {
-    this.getSeries( query ).subscribe( resp => series.push( ... resp ) );
-    this.page++;
   }
 }

@@ -1,5 +1,11 @@
-<h2 *ngIf="title" [ngStyle]="moviesService.style"> {{ title | rating }} </h2>
+<h2 *ngIf="rating" [ngStyle]="moviesService.style"> {{ rating | rating }} </h2>
 
 <app-spinner *ngIf="movies?.length == 0" [container]="true"></app-spinner>
 
-<app-films-grid *ngIf="movies?.length > 0" [films]="movies" [button]="'simple1'"></app-films-grid>
+<app-films-grid
+  *ngIf="movies?.length > 0"
+  [movies]="movies"
+  [button]="'películas'"
+  [rating]="rating"
+>
+</app-films-grid>

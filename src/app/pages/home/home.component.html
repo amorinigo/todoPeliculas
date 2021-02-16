@@ -3,7 +3,15 @@
 
 <!-- FILMS GRID -->
 <div> <app-selector [isMovieTitle]="true" (query)="getMovies( $event )"></app-selector> </div>
-<app-films-grid *ngIf="movies?.length > 0" [films]="movies" [button]="'simple1'"></app-films-grid>
+
+<app-films-grid
+  *ngIf="movies?.length > 0"
+  [movies]="movies"
+  [button]="'inicio'"
+  [rating]="rating"
+>
+</app-films-grid>
+
 <app-spinner *ngIf="movies?.length == 0" [container]="true"></app-spinner>
 
 <!-- SERIES SLIDER 2 -->

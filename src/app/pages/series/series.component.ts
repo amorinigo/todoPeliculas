@@ -10,6 +10,7 @@ import { Serie }              from '@shared/interfaces/series-response.interface
 })
 export class SeriesComponent implements OnInit {
   public series: Serie[] = [];
+  public rating: string;
 
   constructor( private moviesService: MoviesService,
                private seriesService: SeriesService ) {
@@ -20,7 +21,8 @@ export class SeriesComponent implements OnInit {
     this.seriesService.load120Series( this.series = [] );
   }
 
-  public getSeries( query: string ): void {
-    this.seriesService.load120Series( this.series = [], query );
+  public getSeries( rating: string ): void {
+    this.rating = rating;
+    this.seriesService.load120Series( this.series = [], rating );
   }
 }

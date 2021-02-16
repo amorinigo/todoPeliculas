@@ -2,4 +2,10 @@
 
 <app-spinner *ngIf="series.length == 0" [container]="true"></app-spinner>
 
-<app-films-grid *ngIf="series?.length > 0" [films]="series" [button]="'simple2'"></app-films-grid>
+<app-films-grid
+  *ngIf="series?.length > 0"
+  [series]="series"
+  [button]="'seriesTV'"
+  [rating]="rating"
+>
+</app-films-grid>

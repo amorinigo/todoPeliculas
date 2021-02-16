@@ -2,5 +2,10 @@
 
 <app-spinner *ngIf="movies?.length == 0" [container]="true"></app-spinner>
 
-<app-films-grid [films]="movies" *ngIf="movies?.length > 0" [button]="'filtro'" [genreId]="genreId">
+<app-films-grid
+  *ngIf="movies?.length > 0"
+  [movies]="movies"
+  [genreId]="genreId"
+  [button]="'géneros'"
+>
 </app-films-grid>

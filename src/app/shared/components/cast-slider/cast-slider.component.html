@@ -5,7 +5,7 @@
     <div
       class="swiper-slide swiper-cast-slide"
       *ngFor="let actor of credits?.cast"
-      (click)="showActorInfo( actor.id )"
+      (click)="showActor( actor.id )"
     >
       <figure class="actor-img-ctn">
         <img #img [src]="actor.profile_path | posterImage" [alt]="actor.name" class="actor-img">

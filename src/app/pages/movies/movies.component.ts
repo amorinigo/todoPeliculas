@@ -10,7 +10,7 @@ import { Movie }             from '@shared/interfaces/movies-response.interface'
 })
 export class MoviesComponent implements OnInit {
   public movies : Movie[];
-  public title  : string;
+  public rating : string;
 
   constructor( public  moviesService  : MoviesService,
                private activatedRoute : ActivatedRoute ) {
@@ -19,8 +19,12 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( params => {
-      this.title = params.rating;
-      this.moviesService.load120movies( this.movies = [], this.title.toLowerCase() );
+      this.rating = this.convertParam( params.rating );
+      this.moviesService.loadManyMovies( this.movies = [], this.rating );
     });
+  }
+
+  private convertParam( param: string ): string {
+    if ( param == 'películas' ) return 'últimas'; else return param.toLowerCase();
   }
 }

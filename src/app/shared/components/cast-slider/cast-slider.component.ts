@@ -20,7 +20,7 @@ export class CastSliderComponent implements AfterViewInit {
     const swiper = new Swiper('.swiper-cast-container', this.swipersService.castSwiperOptions);
   }
 
-  public showActorInfo( id: number ): Promise<boolean> {
-    return this.moviesService.showActorInfo( id );
+  public showActor( id: number ): Promise<boolean> {
+    return this.moviesService.showActor( id );
   }
 }

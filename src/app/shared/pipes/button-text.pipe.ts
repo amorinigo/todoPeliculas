@@ -7,10 +7,11 @@ export class ButtonTextPipe implements PipeTransform {
 
   transform(typeButton: string): string {
     switch( typeButton ) {
-      case 'simple1'  : return 'Cargar más películas';
-      case 'simple2'  : return 'Cargar más series';
-      case 'filtro'   : return 'Cargar más películas';
-      case 'search'   : return 'Cargar más resultados';
+      case 'inicio'     : return 'Cargar más películas';
+      case 'géneros'    : return 'Cargar más películas';
+      case 'películas'  : return 'Cargar más películas';
+      case 'seriesTV'   : return 'Cargar más series';
+      case 'búsqueda'   : return 'Cargar más resultados';
     }
   }
 

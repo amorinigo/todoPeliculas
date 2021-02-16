@@ -23,7 +23,7 @@ export class GenresComponent implements OnInit {
     this.activatedRoute.params.subscribe( params => {
       this.title    = params.genreType;
       this.genreId  = Number( params.genreId );
-      this.moviesService.loadMoviesWithFilter( this.genreId, this.movies = [] );
+      this.moviesService.loadGenres( this.movies = [], this.genreId );
     });
   }
 }

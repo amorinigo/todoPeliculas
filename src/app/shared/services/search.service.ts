@@ -36,6 +36,8 @@ export class SearchService {
   }
 
   loadMoreFilms( films: Film[], query: string ) {
+    console.log( query );
+    console.log( this.page );
     this.getSearch( query ).subscribe( resp => films.push( ... resp ) );
     this.page++;
   }

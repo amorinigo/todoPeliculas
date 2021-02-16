@@ -81,7 +81,6 @@ export class MoviesHttpService {
       case 'estrenos'   :  return this.getUpcoming();
       case 'ranking'    :  return this.getTopRated();
       case 'más vistas' :  return this.getPopular();
-      case 'películas'  :  return this.getNowPlaying();
     };
   }
 }

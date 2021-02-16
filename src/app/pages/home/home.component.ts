@@ -13,6 +13,7 @@ import { Subscription }      from 'rxjs';
 export class HomeComponent implements OnInit {
   public movies: Movie[] = [];
   public series: Serie[] = [];
+  public rating: string;
 
   constructor( private moviesService: MoviesService,
                private seriesService: SeriesService ) {
@@ -20,22 +21,23 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadTheFirst60Movies();
+    this.load60Movies();
     this.getSeries();
     window.scrollTo(0, 0);
   }
 
-  private loadTheFirst60Movies(): void {
-    return this.moviesService.loadTheFirst60Movies( this.movies );
+  private load60Movies(): void {
+    return this.moviesService.load60Movies( this.movies );
   }
 
-  public getMovies( query: string ): Movie[] {
-    return this.moviesService.runMoviesQuery( this.movies = [], query );
+  public getMovies( rating: string ): void {
+    this.rating = rating;
+    this.moviesService.load60Movies( this.movies = [], rating );
   }
 
-  public getSeries( query: string = 'últimas' ): Subscription {
-    return this.seriesService.getSeries( query ).subscribe(
-      series => {this.series = series.filter( serie => serie.backdrop_path ).splice(0, 12)}
+  public getSeries( rating: string = 'últimas' ): Subscription {
+    return this.seriesService.getSeries( rating, 1 ).subscribe(
+      series => this.series = series.filter( serie => serie.backdrop_path ).splice(0, 12)
     );
   }
 }

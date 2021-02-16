@@ -6,25 +6,27 @@ export interface SearchResponse {
 }
 
 export interface Film {
-  backdrop_path:     null | string;
-  first_air_date?:   Date;
+  adult?:            boolean;
+  backdrop_path:     string;
   genre_ids:         number[];
   id:                number;
-  media_type?:        MediaType;
-  name?:             string;
-  origin_country?:   string[];
   original_language: string;
-  original_name?:    string;
+  original_title?:   string;
   overview:          string;
   popularity:        number;
   poster_path:       string;
-  vote_average:      number;
-  vote_count:        number;
-  adult?:            boolean;
-  original_title?:   string;
   release_date?:     Date;
   title?:            string;
   video?:            boolean;
+  vote_average:      number;
+  vote_count:        number;
+
+
+  first_air_date?:   Date;
+  original_name?:    string;
+  media_type?:        MediaType;
+  name?:             string;
+  origin_country?:   string[];
 }
 
 export enum MediaType {

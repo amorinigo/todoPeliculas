@@ -53,8 +53,8 @@ export class FilmsGridComponent {
   }
 
   géneros() {
-    this.moviesService.loadMoreGenres(this.movies, this.genreId);
-  }
+    this.moviesService.loadMoreMovies(this.movies, undefined,this.genreId);
+  } // En moviesHttpSvc.getMovies puedo poner default: this.nowPlaying(), así puedo mandar '';
 
   películas() {
     this.moviesService.loadMoreMovies(this.movies, this.rating);

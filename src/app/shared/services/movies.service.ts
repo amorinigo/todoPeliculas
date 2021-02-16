@@ -41,7 +41,8 @@ export class MoviesService {
     for(let i = 1; i <= quantity; i++) this.loadMoreMovies( movies, rating );
   }
 
-  public loadMoreMovies( movies: Movie[], rating: string = 'últimas' ): void {
+  public loadMoreMovies( movies: Movie[], rating: string = 'últimas', genreId?: number ): void {
+    if( genreId ) return this.loadGenresInQuantity(3, movies, genreId, rating);
     this.moviesHttpSvc.getMovies( rating ).subscribe( resp => movies.push( ... resp ) );
     this.moviesHttpSvc.page++;
   }
@@ -61,10 +62,6 @@ export class MoviesService {
     this.loadGenresInQuantity(10, movies, genreId, rating, true);
     window.scrollTo(0, 600);
   }
-
-  public loadMoreGenres( movies: Movie[], genreId: number, rating: string = 'últimas' ): void {
-    this.loadGenresInQuantity(3, movies, genreId, rating);
-  } // ESTO DESPUÉS LO PUEDO BORRAR.
 
   public loadGenresInQuantity(
     quantity: number, movies: Movie[], genreId: number, rating: string, resetPage?: boolean

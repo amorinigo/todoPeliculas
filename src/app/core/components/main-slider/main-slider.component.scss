@@ -2,24 +2,20 @@
 
 :host {
   --overview-font-size: 14px;
-  --release-date-size: 14px;
-  --title-font-size: 25px;
+  --release-date-size:  14px;
+  --title-font-size:    25px;
 }
 
-.main-swiper {
-  position: relative;
-  @include width-and-height(100%, 600px);
-}
+.main-swiper { height: 600px; }
 
-.main-swiper-slide { 
-  position: relative;
+.main-swiper-slide {
   @include img-ctn-format(100%, 100%, 0, 0);
-  overflow: hidden;
   background: none;
-}
 
-.main-swiper-pagination {
-  transform: translate(-50%, -5px) scale(1.5) !important;
+  &:after {
+    @include after-format();
+    background: linear-gradient( 180deg, #080f2891 0%, #ffffff00 14%,#080f28 98% );
+  }
 }
 
 .info-ctn {
@@ -58,32 +54,18 @@
     color: var(--overview-color);
   }
 
-  .overview-ctn {
+  .overview {
     max-height: 170px;
     overflow: auto;
-
-    .overview {
-      font-size: var(--overview-font-size);
-      color: var(--overview-color);
-      margin: 0;
-    }
+    font-size: var(--overview-font-size);
+    color: var(--overview-color);
+    margin: 0;
   }
 
   .button {
-    @include button(var(--overview-font-size));
-    padding: 8px 30px;
+    @include button(var(--overview-font-size), 8px 30px);
     margin-top: 15px;
   }
-}
-
-.shadow {
-  @include position-abs-top-left;
-  @include width-and-height(100%, 100%);
-  background: linear-gradient(
-    180deg, rgba(8,15,40,0.57)
-    0%, rgba(255,255,255,0)
-    14%,rgba(8,15,40,1) 98%
-  );
 }
 
 // media queries

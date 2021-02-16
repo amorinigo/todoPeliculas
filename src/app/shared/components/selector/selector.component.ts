@@ -1,5 +1,5 @@
 import {
-  Component, Input, OnInit, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter
+  Component, Input, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter
 } from '@angular/core';
 
 @Component({
@@ -7,28 +7,25 @@ import {
   templateUrl: './selector.component.html',
   styleUrls: ['./selector.component.scss']
 })
-export class SelectorComponent implements OnInit, AfterViewInit {
+export class SelectorComponent implements AfterViewInit {
   @Input()  isMovieTitle: boolean;
   @Output() query = new EventEmitter<string>();
   @ViewChild( "menu" ) private menu: ElementRef;
 
-  public ratings: string[];
-  private currentRating: string;
+  public  ratings       : string[];
+  private currentRating : string;
 
   constructor() {
     this.ratings = ["Últimas", "Estrenos", "Ranking", "Más vistas"];
     this.currentRating = this.ratings[0].toLowerCase();
   }
 
-  ngOnInit(): void {}
-
   ngAfterViewInit(): void {
     this.menu.nativeElement.firstElementChild.classList.add("active");
   }
 
   public showTitle(): string {
-    if( this.isMovieTitle ) return "Películas online";
-    return "Series online";
+    if( this.isMovieTitle ) return 'Películas online'; else return 'Series online';
   }
 
   public activateItem( item: HTMLElement ): void {

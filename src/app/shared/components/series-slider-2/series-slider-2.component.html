@@ -1,12 +1,9 @@
-<div class="swiper-container second-series-swiper">
+<div class="swiper-container swiper-series-2">
   <div class="swiper-wrapper">
-      <div
-        class="swiper-slide second-series-swiper-slide"
-        *ngFor="let serie of series"
-        (click)="showSerieDetails( serie.id )"
-      >
-        <figure class="serie-img-ctn">
-          <img #img [src]="serie.poster_path | posterImage" [alt]="serie.name" class="serie-img">
+      <div class="swiper-slide slide" *ngFor="let serie of series" (click)="showDetails( serie.id )">
+
+        <figure class="img-ctn">
+          <img #img [src]="serie.poster_path | posterImage" [alt]="serie.name" class="img">
           <app-spinner *ngIf="!img.complete" [container]="false"></app-spinner>
         </figure>
 
@@ -16,7 +13,7 @@
         </div>
 
         <h6 class="serie-name"> {{ serie.name }} </h6>
+
       </div>
   </div>
-  <!-- <div class="swiper-pagination series-2-swiper-pagination"></div> -->
 </div>

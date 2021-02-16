@@ -43,5 +43,6 @@ export class SearchService {
   load5pagesOfFilms( films: Film[], query: string ) {
     this.page = 1;
     for(let i = 1; i <= 5; i++) this.loadMoreFilms( films, query );
+    window.scrollTo(0, 0);
   }
 }

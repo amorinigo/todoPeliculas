@@ -1,21 +1,17 @@
 @import "../../../../assets/scss/global-mixins";
 
-.second-series-swiper { @include width-and-height(100%, 360px); }
+.swiper-series-2 { height: 360px; }
 
-.second-series-swiper-slide {
+.slide {
   cursor: pointer;
-  transition: transform .3s, opacity .3s;
 
   &:hover {
-    transform: scale(1.02);
-    opacity: 0.6;
+    .img { transform: scale(1.04); }
     .serie-name { color: var(--sidebar-title-color); }
   }
 }
 
-.serie-img-ctn {
-  @include img-ctn-format(100%, 80%, 0, 8px);
-}
+.img-ctn { @include img-ctn-format(100%, 80%, 0, 8px); }
 
 .data {
   @include display-flex(center, space-between);
@@ -25,10 +21,13 @@
   .type,
   .date {
     @include pill(11px, 1px 5px);
-    text-transform: initial;
+    text-transform: none;
   }
 
-  .date { background: var(--main-color); color: #fff; }
+  .date {
+    background: var(--main-color);
+    color: #fff;
+  }
 }
 
 .serie-name {

@@ -6,7 +6,6 @@ import { SwiperModule }           from 'swiper/angular';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
 import { SpinnerComponent }       from './components/spinner/spinner.component';
-import { MainSliderComponent }    from './components/main-slider/main-slider.component';
 import { CastSliderComponent }    from './components/cast-slider/cast-slider.component';
 import { SeriesSlider1Component } from "./components/series-slider-1/series-slider-1.component";
 import { SeriesSlider2Component } from "./components/series-slider-2/series-slider-2.component";
@@ -31,7 +30,6 @@ import { ButtonTextPipe }         from './pipes/button-text.pipe';
 @NgModule({
   declarations: [
     SpinnerComponent,
-    MainSliderComponent,
     CastSliderComponent,
     SeriesSlider1Component,
     SeriesSlider2Component,
@@ -64,7 +62,6 @@ import { ButtonTextPipe }         from './pipes/button-text.pipe';
     NgCircleProgressModule,
     SwiperModule,
 
-    MainSliderComponent,
     SeriesSlider1Component,
     SeriesSlider2Component,
     SelectorComponent,

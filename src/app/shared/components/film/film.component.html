@@ -1,41 +1,35 @@
-<section class="contenedor-todo" *ngIf="film.title">
-  <div class="contenedor">
-    <img
-      #img
-      [src]="film.poster_path | posterImage"
-      [alt]="film.title"
-      class="swiper-movie-img"
-    >
+<section class="film-ctn" *ngIf="film.title">
+  <div class="img-ctn">
 
+    <img #img [src]="film.poster_path | posterImage" [alt]="film.title" class="img">
     <app-spinner *ngIf="!img?.complete" [container]="false"></app-spinner>
 
-    <div class="movie-info-ctn">
+    <div class="info-ctn">
       <span class="type"> Película </span>
       <span class="date" *ngIf="film.release_date"> {{ film.release_date | slice:0:4 }} </span>
     </div>
+
   </div>
 
-  <h5 class="swiper-movie-title"> {{ film.title | slice:0:65 }} </h5>
+  <h5 class="film-title"> {{ film.title | slice:0:65 }} </h5>
 </section>
 
-<section class="contenedor-todo" *ngIf="film.name">
-  <div class="contenedor">
-    <img
-      #img2
-      [src]="film.poster_path | posterImage"
-      [alt]="film.name"
-      class="swiper-movie-img"
-    >
 
+
+<section class="film-ctn" *ngIf="film.name">
+  <div class="img-ctn">
+
+    <img #img2 [src]="film.poster_path | posterImage" [alt]="film.name" class="img">
     <app-spinner *ngIf="!img2?.complete" [container]="false"></app-spinner>
 
-    <div class="movie-info-ctn">
+    <div class="info-ctn">
       <span class="type"> Serie </span>
       <span class="date" *ngIf="film.first_air_date"> {{ film.first_air_date | slice:0:4 }} </span>
     </div>
+
   </div>
 
-  <h5 class="swiper-movie-title"> {{ film.name | slice:0:65 }} </h5>
+  <h5 class="film-title"> {{ film.name | slice:0:65 }} </h5>
 </section>
 
 

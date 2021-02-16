@@ -12,7 +12,7 @@ import { Credits }                from '@shared/interfaces/credits.interface';
 import { Person }                 from '@shared/interfaces/person.interface';
 
 @Injectable({ providedIn: 'root' })
-export class MovieRequestsService {
+export class MoviesHttpService {
 
   private url: string = "https://api.themoviedb.org/3";
   public page: number = 1;
@@ -64,15 +64,17 @@ export class MovieRequestsService {
     return this.http.get<Credits>(`${ this.url }/movie/${ id }/credits`, { params: this.params });
   }
 
-  public getMovieDetails( id: number ): Observable<MovieDetails> {
+  public getDetails( id: number ): Observable<MovieDetails> {
+    window.scrollTo(0, 0);
     return this.http.get<MovieDetails>(`${ this.url }/movie/${ id }`, { params: this.params });
   }
 
   public getPerson( id: number ): Observable<Person> {
+    window.scrollTo(0, 0);
     return this.http.get<Person>(`${ this.url }/person/${ id }`, { params: this.params });
   }
 
-  public getMoviesObservable( term: string ): Observable<Movie[]> {
+  public getMovies( term: string ): Observable<Movie[]> {
     // LOS CASE DEBEN SER EN INGLÉS.
     switch( term ) {
       case 'últimas'    :  return this.getNowPlaying();

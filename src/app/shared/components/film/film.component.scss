@@ -1,29 +1,21 @@
 @import "../../../../assets/scss/global-mixins";
 
-.contenedor-todo {
-  width: 100%;
-  height: 100%;
+.film-ctn {
+  @include width-and-height();
   cursor: pointer;
 
   &:hover {
-    .swiper-movie-img {
-      transform: scale(1.04);
-    }
-
-    .swiper-movie-title {
-      color: var(--sidebar-title-color);
-    }
+    .img { transform: scale(1.04); }
+    .film-title { color: var(--sidebar-title-color); }
   }
 }
 
-.contenedor {
-  max-width: 100%;
-  position: relative;
-  overflow: hidden;
+.img-ctn {
   @include img-ctn-format(auto, 80%, 0, 8px);
-  .swiper-movie-img { transition: transform .3s; }
+  max-width: 100%;
+  overflow: hidden;
 
-  .movie-info-ctn {
+  .info-ctn {
     width: 100%;
     padding: 0 10px;
     @include position-abs-bottom-left(5px, 0);
@@ -42,7 +34,7 @@
   }
 }
 
-.swiper-movie-title {
+.film-title {
   width: 100%;
   text-align: center;
   padding: 0 5px;

@@ -1,9 +1,10 @@
 @import '../../../../assets/scss/global-mixins';
 
 :host {
-  --logo-size: 16px;
-  --hover-color: #C4E0FF;
-  --sub-menu-bg: #373E55;
+  --logo-size:         16px;
+  --sub-menu-bg:       #373E55;
+  --link-active-color: #86C0FF;
+  --hover-color:       #C4E0FF;
 }
 
 // navbar
@@ -285,7 +286,7 @@
 
 .link-active {
   font-weight: bold;
-  color: var(--main-color) !important;
+  color: var(--link-active-color) !important;
 }
 
 // animate

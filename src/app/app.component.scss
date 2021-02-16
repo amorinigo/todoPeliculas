@@ -8,6 +8,16 @@
   position: relative;
 }
 
+.footer {
+  margin-top: 200px;
+  text-align: center;
+  z-index: -1;
+  height: 100px;
+  background: var(--navbar-bg);
+
+  .copyright { margin: 0; }
+}
+
 // media queries
 @media (min-width: 576px) { .content-ctn { margin: 120px 5%; } }
 

@@ -17,15 +17,10 @@ export class SeriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.series = [];
-    this.seriesService.queryWord = 'últimas';
-    this.seriesService.load120Series( this.series );
-    window.scrollTo(0, 600);
+    this.seriesService.load120Series( this.series = [] );
   }
 
   public getSeries( query: string ): void {
-    this.series = [];
-    this.seriesService.queryWord = query;
-    this.seriesService.load120Series( this.series );
+    this.seriesService.load120Series( this.series = [], query );
   }
 }

@@ -1,5 +1,15 @@
 <app-header></app-header>
 
-<app-main-content></app-main-content>
+<section class="content-ctn">
+  <div class="router-outlet-ctn">
+    <router-outlet></router-outlet>
+  </div>
 
-<app-footer></app-footer>
+  <div class="sidebar-ctn">
+    <app-sidebar></app-sidebar>
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="copyright"> Web app desarrollada por Agustín Morinigo 2021. </p>
+</footer>

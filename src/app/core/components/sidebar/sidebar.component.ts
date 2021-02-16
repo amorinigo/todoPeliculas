@@ -1,6 +1,6 @@
-import { Component, OnInit }    from '@angular/core';
-import { MovieRequestsService } from '@shared/services/movie-requests.service';
-import { Movie }                from '@shared/interfaces/movies-response.interface';
+import { Component, OnInit } from '@angular/core';
+import { MoviesHttpService } from '@shared/services/movies-http.service';
+import { Movie }             from '@shared/interfaces/movies-response.interface';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,19 +8,15 @@ import { Movie }                from '@shared/interfaces/movies-response.interfa
   styles: []
 })
 export class SidebarComponent implements OnInit {
-  public titles     : string[];
   public nowPlaying : Movie[];
   public populars   : Movie[];
   public upcoming   : Movie[];
 
-  constructor( private movieReqService: MovieRequestsService ) {
-    this.titles = ['Top estrenos', 'Películas destacadas', 'Más películas'];
-  }
+  constructor( private moviesHttpSvc: MoviesHttpService ) {}
 
   ngOnInit(): void {
-    this.movieReqService.getNowPlaying().subscribe(movies => this.nowPlaying = movies.splice(5, 5));
-    this.movieReqService.getUpcoming().subscribe(movies => this.upcoming = movies.splice(5, 5));
-    this.movieReqService.getPopular().subscribe(movies => this.populars = movies.splice(5, 5));
+    this.moviesHttpSvc.getNowPlaying().subscribe(movies => this.nowPlaying = movies.splice(5, 5));
+    this.moviesHttpSvc.getUpcoming().subscribe(movies => this.upcoming = movies.splice(5, 5));
+    this.moviesHttpSvc.getPopular().subscribe(movies => this.populars = movies.splice(5, 5));
   }
-
 }

@@ -27,12 +27,13 @@
   height: $height;
 }
 
-@mixin button($font-size) {
+@mixin button($font-size, $padding: 0) {
   border: none;
   outline: none;
   background: var(--main-color);
   border-radius: 50px;
   font-size: $font-size;
+  padding: $padding;
   transition: opacity .3s;
   &:hover { opacity: 0.8; }
 }
@@ -52,6 +53,7 @@
   @include width-and-height();
   object-fit: cover;
   border-radius: $border-radius;
+  transition: transform .3s;
 }
 
 @mixin img-ctn-format($width: auto, $height: auto, $margin: 0, $border-radius: 0) {
@@ -60,8 +62,16 @@
   border-radius: $border-radius;
   position: relative;
   background: var(--img-bg-color);
+  overflow: hidden;
   z-index: -1;
   img { @include img-format($border-radius); }
+}
+
+@mixin after-format($width: 100%, $height: 100%) {
+  display: block;
+  content: '';
+  @include position-abs-top-left;
+  @include width-and-height($width, $height);
 }
 
 @mixin spinner-ctn {

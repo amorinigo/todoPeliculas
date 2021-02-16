@@ -1,41 +1,29 @@
-import { Component, OnDestroy, OnInit }   from '@angular/core';
-import { ActivatedRoute }                 from '@angular/router';
-import { Movie }                          from '@shared/interfaces/movies-response.interface';
-import { MoviesService }                  from '@shared/services/movies.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute }    from '@angular/router';
+import { MoviesService }     from '@shared/services/movies.service';
+import { Movie }             from '@shared/interfaces/movies-response.interface';
 
 @Component({
   selector: 'app-genres',
   templateUrl: './genres.component.html',
-  styles: []
+  styles: [ 'h2 { text-transform: capitalize }' ]
 })
-export class GenresComponent implements OnInit, OnDestroy {
-  public title    : string;
-  public movies   : Movie[];
-  public genreId  : number;
-  public style    : object;
+export class GenresComponent implements OnInit {
+  public movies  : Movie[];
+  public title   : string;
+  public genreId : number;
 
-  constructor( private moviesService: MoviesService,
-               private activatedRoute: ActivatedRoute ) {
+
+  constructor( public  moviesService  : MoviesService,
+               private activatedRoute : ActivatedRoute ) {
     this.moviesService.showMainSlider = true;
-
-    this.style = {
-      'font-weight': 'bold',
-      'margin-bottom.px': '50',
-      'text-transform': 'capitalize'
-    };
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( params => {
-      this.movies   = [];
       this.title    = params.genreType;
       this.genreId  = Number( params.genreId );
-
-      this.moviesService.queryWord = 'últimas';
-      this.moviesService.loadMoviesWithFilter( this.genreId, this.movies );
-      window.scrollTo(0, 600);
+      this.moviesService.loadMoviesWithFilter( this.genreId, this.movies = [] );
     });
   }
-
-  ngOnDestroy(): void { this.genreId = null; }
 }

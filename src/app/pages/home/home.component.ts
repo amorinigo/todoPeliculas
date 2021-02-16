@@ -1,14 +1,14 @@
-import { Component, OnInit }  from '@angular/core';
-import { MoviesService }      from '@shared/services/movies.service';
-import { SeriesService }      from '@shared/services/series.service';
-import { Movie }              from '@shared/interfaces/movies-response.interface';
-import { Serie }              from '@shared/interfaces/series-response.interface';
-import { Subscription }       from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { MoviesService }     from '@shared/services/movies.service';
+import { SeriesService }     from '@shared/services/series.service';
+import { Movie }             from '@shared/interfaces/movies-response.interface';
+import { Serie }             from '@shared/interfaces/series-response.interface';
+import { Subscription }      from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: [ 'app-selector { margin-top: 50px; }' ]
+  styles: [ 'div { margin-top: 60px; }' ]
 })
 export class HomeComponent implements OnInit {
   public movies: Movie[] = [];
@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.moviesService.queryWord = 'últimas';
     this.loadTheFirst60Movies();
-    this.getSeries( this.moviesService.queryWord );
+    this.getSeries();
+    window.scrollTo(0, 0);
   }
 
   private loadTheFirst60Movies(): void {
@@ -30,17 +30,12 @@ export class HomeComponent implements OnInit {
   }
 
   public getMovies( query: string ): Movie[] {
-    this.movies = [];
-    return this.moviesService.runMoviesQuery( query, this.movies );
+    return this.moviesService.runMoviesQuery( this.movies = [], query );
   }
 
-  public loadMoreMovies(): void {
-    return this.moviesService.loadMoreMovies( this.movies );
-  }
-
-  public getSeries( query: string ): Subscription {
-    return this.seriesService.getSeriesObservable( query ).subscribe(
-      series => this.series = series.splice(0, 12)
+  public getSeries( query: string = 'últimas' ): Subscription {
+    return this.seriesService.getSeries( query ).subscribe(
+      series => {this.series = series.filter( serie => serie.backdrop_path ).splice(0, 12)}
     );
   }
 }

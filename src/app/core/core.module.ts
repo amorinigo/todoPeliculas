@@ -4,18 +4,16 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 
 import { NavbarComponent }          from './components/navbar/navbar.component';
-import { FooterComponent }          from './components/footer/footer.component';
 import { HeaderComponent }          from './components/header/header.component';
-import { MainContentComponent }     from './components/main-content/main-content.component';
 import { SidebarComponent }         from './components/sidebar/sidebar.component';
 import { SidebarSectionComponent }  from './components/sidebar-section/sidebar-section.component';
+import { MainSliderComponent }      from './components/main-slider/main-slider.component';
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-    FooterComponent,
     HeaderComponent,
-    MainContentComponent,
+    NavbarComponent,
+    MainSliderComponent,
     SidebarComponent,
     SidebarSectionComponent
   ],
@@ -25,9 +23,8 @@ import { SidebarSectionComponent }  from './components/sidebar-section/sidebar-s
     SharedModule
   ],
   exports: [
-    FooterComponent,
     HeaderComponent,
-    MainContentComponent
+    SidebarComponent
   ]
 })
 export class CoreModule { }

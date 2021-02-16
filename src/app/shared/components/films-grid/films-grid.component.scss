@@ -25,7 +25,7 @@
   }
 }
 
-@media (min-width: 468px)  { .movies-grid-container { grid-auto-rows: minmax(340px, 1fr); }      }
+@media (min-width: 468px)  { .movies-grid-container { grid-auto-rows: minmax(340px, 1fr);      } }
 @media (min-width: 515px)  { .movies-grid-container { grid-template-columns: repeat( 3, 1fr ); } }
 @media (min-width: 769px)  { .movies-grid-container { grid-template-columns: repeat( 2, 1fr ); } }
 @media (min-width: 955px)  { .movies-grid-container { grid-template-columns: repeat( 3, 1fr ); } }

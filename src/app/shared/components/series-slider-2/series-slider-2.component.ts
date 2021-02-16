@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, AfterViewInit }  from '@angular/core';
-import { SeriesService }      from '@shared/services/series.service';
-import { SwipersService }     from '@shared/services/swipers.service';
-import { Serie }              from '@shared/interfaces/series-response.interface';
-import Swiper, { Pagination } from 'swiper';
+import { Component, Input, AfterViewInit }  from '@angular/core';
+import Swiper, { Pagination }               from 'swiper';
+import { SwipersService }                   from '@shared/services/swipers.service';
+import { SeriesService }                    from '@shared/services/series.service';
+import { Serie }                            from '@shared/interfaces/series-response.interface';
 Swiper.use([ Pagination ]);
 
 @Component({
@@ -10,19 +10,18 @@ Swiper.use([ Pagination ]);
   templateUrl: './series-slider-2.component.html',
   styleUrls: ['./series-slider-2.component.scss']
 })
-export class SeriesSlider2Component implements OnInit, AfterViewInit {
+export class SeriesSlider2Component implements AfterViewInit {
   @Input() series: Serie[];
 
-  constructor( private seriesService:  SeriesService,
-               private swipersService: SwipersService ) { }
-
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    const swiper = new Swiper('.second-series-swiper', this.swipersService.series2SwiperOptions);
+  constructor( private seriesService  : SeriesService,
+               private swipersService : SwipersService ) {
   }
 
-  public showSerieDetails( id: number ): Promise<boolean> {
-    return this.seriesService.showSerieDetails( id );
+  ngAfterViewInit(): void {
+    const swiper = new Swiper('.swiper-series-2', this.swipersService.swiperSeries2Options);
+  }
+
+  public showDetails( id: number ): Promise<boolean> {
+    return this.seriesService.showDetails( id );
   }
 }

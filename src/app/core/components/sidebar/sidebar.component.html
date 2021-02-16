@@ -1,5 +1,5 @@
 <div *ngIf="populars?.length > 0">
-  <app-sidebar-section [title]="titles[0]" [movies]="nowPlaying"></app-sidebar-section>
-  <app-sidebar-section [title]="titles[1]" [movies]="upcoming"></app-sidebar-section>
-  <app-sidebar-section [title]="titles[2]" [movies]="populars"></app-sidebar-section>
+  <app-sidebar-section [title]="'Top estrenos'"         [movies]="nowPlaying"></app-sidebar-section>
+  <app-sidebar-section [title]="'Películas destacadas'" [movies]="upcoming"></app-sidebar-section>
+  <app-sidebar-section [title]="'Más películas'"        [movies]="populars"></app-sidebar-section>
 </div>

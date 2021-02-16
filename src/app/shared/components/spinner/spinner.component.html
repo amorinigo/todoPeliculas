@@ -1,4 +1,4 @@
-<section class="spinner-ctn" *ngIf="container">
+<section class="spinner-ctn" [ngClass]="{'no-ctn': !container}">
 
   <div class="spinner">
     <div class="lds-ring">

@@ -55,7 +55,7 @@ export class SwipersService {
 
   // series swipers
 
-  public series1SwiperOptions: SwiperOptions = {
+  public swiperSeries1Options: SwiperOptions = {
     observer: true,
     freeMode: true,
     spaceBetween: 10,
@@ -76,7 +76,7 @@ export class SwipersService {
     }
   };
 
-  public series2SwiperOptions: SwiperOptions = {
+  public swiperSeries2Options: SwiperOptions = {
     observer: true,
     freeMode: true,
     spaceBetween: 10,

@@ -5,7 +5,7 @@
   font-weight: bold;
 }
 
-.swiper-cast-container {height: 300px;}
+.swiper-cast-container { height: 300px; }
 
 .swiper-cast-slide {
   cursor: pointer;
@@ -15,7 +15,6 @@
   overflow: hidden;
 
   &:hover {
-    opacity: 0.8;
     .actor-img { transform: scale(1.04); }
 
     .actor-name,

@@ -2,41 +2,34 @@
 
 :host { --img-ctn-height: 120px; }
 
-.first-series-swiper { height: var(--series-swiper-height); }
+.swiper-series-1 { height: var(--series-swiper-height); }
 
 .title-section {
   margin-bottom: 15px;
 
   .button {
-    @include button(10px);
+    @include button(10px, 5px 10px);
     text-transform: uppercase;
-    padding: 5px 10px;
     margin-top: 15px;
   }
 }
 
-.first-series-swiper-slide {
+.slide {
   cursor: pointer;
-  &:hover {
-    .img-ctn {
-      transform: scale(1.04);
-      opacity: 0.8;
-    }
 
+  &:hover {
+    .img { transform: scale(1.04); }
     .serie-name { color: var(--sidebar-title-color); }
   }
 }
 
 .title {
+  font-weight: 900;
   flex-shrink: 0;
   margin: 0;
-  font-weight: 900;
 }
 
-.img-ctn {
-  @include img-ctn-format(100%, var(--img-ctn-height), 0, 8px);
-  transition: transform .3s, opacity .3s;
-}
+.img-ctn { @include img-ctn-format(100%, var(--img-ctn-height), 0, 8px); }
 
 .serie-data {
   @include position-abs-top-left(var(--img-ctn-height), 0);

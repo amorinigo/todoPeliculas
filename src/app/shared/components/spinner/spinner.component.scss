@@ -10,6 +10,11 @@
   position: relative;
 }
 
+.no-ctn {
+  min-height: auto;
+  position: static;
+}
+
 .spinner {
   @include position-abs-top-left();
   @include width-and-height();

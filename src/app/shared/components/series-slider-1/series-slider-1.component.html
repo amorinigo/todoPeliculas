@@ -1,20 +1,16 @@
 <div class="series-slider-ctn">
+
   <div class="title-section">
-
     <h4 class="title">Series populares</h4>
-    <button class="button">Ver más series</button>
-
+    <button class="button" (click)="goToSeries()">Ver más series</button>
   </div>
 
-  <div class="swiper-container first-series-swiper">
+  <div class="swiper-container swiper-series-1">
     <div class="swiper-wrapper">
-        <div
-          class="swiper-slide first-series-swiper-slide"
-          *ngFor="let serie of series"
-          (click)="showSerieDetails( serie.id )"
-        >
+        <div class="swiper-slide slide" *ngFor="let serie of series" (click)="showDetails(serie.id)">
+
           <div class="img-ctn">
-            <img #img [src]="serie.backdrop_path | posterImage" [alt]="serie.name" class="serie-img">
+            <img #img [src]="serie.backdrop_path | posterImage" [alt]="serie.name" class="img">
             <app-spinner *ngIf="!img.complete" [container]="false"></app-spinner>
           </div>
 
@@ -22,8 +18,9 @@
             <h6 class="serie-name"> {{ serie.name }} </h6>
             <p class="serie-date"> {{ serie.first_air_date }} </p>
           </div>
+
         </div>
     </div>
-    <!-- <div class="swiper-pagination series-1-swiper-pagination"></div> -->
   </div>
+
 </div>

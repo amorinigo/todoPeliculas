@@ -12,60 +12,38 @@ import { Movie }            from '@shared/interfaces/movies-response.interface';
   styleUrls: ['./films-grid.component.scss']
 })
 export class FilmsGridComponent {
-  @Input() films      : Film[];
-  @Input() movies     : Movie[];
-  @Input() series     : Serie[];
-  @Input() button     : string;
-  @Input() search     : string;
-  @Input() genreId    : number;
-  @Input() rating     : string;
-  public   showButton : boolean;
-  public   lastLength : number;
+  @Input() films       : Film[];
+  @Input() movies      : Movie[];
+  @Input() series      : Serie[];
+  @Input() button      : string;
+  @Input() search      : string;
+  @Input() genreId     : number;
+  @Input() rating      : string;
+  public   showButton  : boolean;
+  public   lastLength  : number;
 
-  constructor( private moviesService: MoviesService,
+ constructor(  private moviesService: MoviesService,
                private seriesService: SeriesService,
                private searchService: SearchService ) {
     this.showButton = true;
   }
 
-  public showDetails( film: Film ): Promise<boolean> {
-    if ( film.title ) {
-      return this.moviesService.showDetails( film.id );
-    } else {
-      return this.seriesService.showDetails( film.id );
-    }
+  public showDetails( film: Film ): void {
+    ( film.title ) ?
+      this.moviesService.showDetails( film.id )  :
+      this.seriesService.showDetails( film.id );
   }
 
   public loadMoreFilms(): void {
     // this.disableButton();
 
     switch( this.button ) {
-      case 'inicio'    : return this.inicio();    // moviesService.
-      case 'géneros'   : return this.géneros();   // moviesService.
-      case 'películas' : return this.películas(); // moviesService.
-      case 'seriesTV'  : return this.seriesTV();  // seriesService.
-      case 'búsqueda'  : return this.búsqueda();  // searchService.
+      case 'inicio'    : return this.moviesService.loadMoreMovies(this.movies, this.rating);
+      case 'géneros'   : return this.moviesService.loadMoreMovies(this.movies, '',this.genreId);
+      case 'películas' : return this.moviesService.loadMoreMovies(this.movies, this.rating);
+      case 'seriesTV'  : return this.seriesService.loadMoreSeries(this.series, this.rating);
+      case 'búsqueda'  : return this.searchService.loadMoreFilms(this.films, this.search);
     }
-  }
-
-  inicio() {
-    this.moviesService.loadMoreMovies(this.movies, this.rating);
-  }
-
-  géneros() {
-    this.moviesService.loadMoreMovies(this.movies, undefined,this.genreId);
-  } // En moviesHttpSvc.getMovies puedo poner default: this.nowPlaying(), así puedo mandar '';
-
-  películas() {
-    this.moviesService.loadMoreMovies(this.movies, this.rating);
-  }
-
-  seriesTV() {
-    this.seriesService.loadMoreSeries(this.series, this.rating);
-  }
-
-  búsqueda() {
-    this.searchService.loadMoreFilms(this.films, this.search);
   }
 
   // private disableButton(): void {

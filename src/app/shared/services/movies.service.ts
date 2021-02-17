@@ -3,9 +3,13 @@ import { Router }            from '@angular/router';
 import { MoviesHttpService } from './movies-http.service';
 import { Movie }             from '@shared/interfaces/movies-response.interface';
 
-export interface Data {
-
-}
+// export interface Data {
+//   movies     :  Movie[];
+//   rating     :  string | 'últimas';
+//   quantity  ?:  number;
+//   resetPage ?:  boolean;
+//   genreId   ?:  number;
+// }
 
 @Injectable({ providedIn: 'root' })
 export class MoviesService {

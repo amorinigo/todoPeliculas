@@ -1,4 +1,4 @@
-<app-selector [isMovieTitle]="false" (query)="getSeries( $event )"></app-selector>
+<app-selector [isMovieTitle]="false" (rating)="getSeries( $event )"></app-selector>
 
 <app-spinner *ngIf="series.length == 0" [container]="true"></app-spinner>
 

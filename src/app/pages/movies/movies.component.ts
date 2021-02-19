@@ -20,11 +20,17 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( params => {
       this.rating = this.convertParam( params.rating );
+      console.log( this.rating );
       this.moviesService.loadManyMovies( this.movies = [], this.rating );
     });
   }
 
   private convertParam( param: string ): string {
-    if ( param == 'películas' ) return 'últimas'; else return param.toLowerCase();
+    switch( param ) {
+      case 'últimas' : return 'nowPlaying';
+      case 'estrenos' : return 'upcoming';
+      case 'ranking' : return 'topRated';
+      case 'más vistas' : return 'popular';
+    }
   }
 }

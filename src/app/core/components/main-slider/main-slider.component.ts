@@ -19,7 +19,7 @@ export class MainSliderComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const swiper = new Swiper('.main-swiper', this.swipersService.mainSwiperOptions)
+    const swiper = new Swiper( '.main-swiper', this.swipersService.configOne );
   }
 
   public showDetails( id: number ): Promise<boolean> {

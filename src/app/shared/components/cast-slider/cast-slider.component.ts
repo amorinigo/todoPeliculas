@@ -17,7 +17,7 @@ export class CastSliderComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const swiper = new Swiper('.swiper-cast-container', this.swipersService.castSwiperOptions);
+    const swiper = new Swiper( '.swiper-cast-container', this.swipersService.configThree );
   }
 
   public showActor( id: number ): Promise<boolean> {

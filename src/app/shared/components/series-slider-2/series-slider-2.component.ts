@@ -18,7 +18,7 @@ export class SeriesSlider2Component implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const swiper = new Swiper('.swiper-series-2', this.swipersService.swiperSeries2Options);
+    const swiper = new Swiper( '.swiper-series-2', this.swipersService.configTwo );
   }
 
   public showDetails( id: number ): Promise<boolean> {

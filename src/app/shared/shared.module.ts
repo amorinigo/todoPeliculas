@@ -26,6 +26,8 @@ import { WritersPipe }            from './pipes/writers.pipe';
 import { CreatorsPipe }           from './pipes/creators.pipe';
 import { RatingPipe }             from './pipes/rating.pipe';
 import { ButtonTextPipe }         from './pipes/button-text.pipe';
+import { TitlePipe }              from './pipes/title.pipe';
+import { GridButtonComponent } from './components/grid-button/grid-button.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { ButtonTextPipe }         from './pipes/button-text.pipe';
     WritersPipe,
     CreatorsPipe,
     RatingPipe,
-    ButtonTextPipe
+    ButtonTextPipe,
+    TitlePipe,
+    GridButtonComponent
   ],
   imports: [
     CommonModule,
@@ -78,7 +82,8 @@ import { ButtonTextPipe }         from './pipes/button-text.pipe';
     PosterImagePipe,
     MinutesToHourPipe,
     RatingPipe,
-    ButtonTextPipe
+    ButtonTextPipe,
+    TitlePipe
   ]
 })
 export class SharedModule { }

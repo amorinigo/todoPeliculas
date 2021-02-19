@@ -12,9 +12,9 @@ export class HeaderComponent implements OnInit {
   public movies: Movie[];
 
   constructor( public  moviesService : MoviesService,
-               private moviesHttpSvc : MoviesHttpService ) { }
+               private moviesHttpSvc : MoviesHttpService ) {}
 
   ngOnInit(): void {
-    this.moviesHttpSvc.getNowPlaying().subscribe( movies => this.movies = movies.splice(0, 10) );
+    this.moviesHttpSvc.getNowPlaying().subscribe( resp => this.movies = resp.results.splice(0, 10) );
   }
 }

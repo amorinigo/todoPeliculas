@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 import { MoviesService }     from '@shared/services/movies.service';
-import { SeriesService }     from '@shared/services/series.service';
+import { SeriesHttpService } from '@shared/services/series-http.service';
 import { SerieDetails }      from '@shared/interfaces/serie-details.interface';
 import { Serie }             from '@shared/interfaces/series-response.interface';
 import { Credits }           from '@shared/interfaces/credits.interface';
@@ -18,7 +18,7 @@ export class SerieDetailsComponent implements OnInit {
 
   constructor( private moviesService  : MoviesService,
                private activatedRoute : ActivatedRoute,
-               private seriesService  : SeriesService ) {
+               private seriesHttpSvc  : SeriesHttpService ) {
     this.moviesService.showMainSlider = false;
   }
 
@@ -27,8 +27,8 @@ export class SerieDetailsComponent implements OnInit {
   }
 
   private getInfo( id: number ): void {
-    this.seriesService.getDetails( id ).subscribe( details => this.details = details );
-    this.seriesService.getCredits( id ).subscribe( credits => this.credits = credits );
-    this.seriesService.getRecommended( id ).subscribe( series => this.series = series );
+    this.seriesHttpSvc.getDetails( id ).subscribe( details => this.details = details );
+    this.seriesHttpSvc.getCredits( id ).subscribe( credits => this.credits = credits );
+    this.seriesHttpSvc.getRecommended( id ).subscribe( series => this.series = series );
   }
 }

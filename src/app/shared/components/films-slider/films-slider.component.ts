@@ -20,7 +20,7 @@ export class FilmsSliderComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const swiper = new Swiper( '.films-swiper', this.swipersService.filmsSwiperOptions );
+    const swiper = new Swiper( '.films-swiper', this.swipersService.configThree );
   }
 
   public showDetails(id: number): void {

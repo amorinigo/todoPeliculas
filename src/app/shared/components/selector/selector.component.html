@@ -2,8 +2,8 @@
     <h4 class="title"> {{ showTitle() }} </h4>
 
     <div #menu class="menu">
-      <a #item class="item" (click)="activateItem( item )" *ngFor="let rating of ratings">
-        {{ rating }}
+      <a #item class="item" (click)="activateItem( item, rating )" *ngFor="let rating of ratings">
+        {{ rating | rating }}
       </a>
     </div>
 </div>

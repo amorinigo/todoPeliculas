@@ -5,12 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class RatingPipe implements PipeTransform {
 
-  transform(title: string): string {
-    switch( title ) {
-      case 'estrenos'   : return 'Estrenos';
-      case 'últimas'    : return 'Películas';
-      case 'ranking'    : return 'Películas más valoradas';
-      case 'más vistas' : return 'Películas más vistas';
+  transform(rating: string): string {
+    switch( rating ) {
+      case 'nowPlaying' : return 'estrenos';
+      case 'upcoming'   : return 'últimas';
+      case 'topRated'   : return 'ranking';
+      case 'popular'    : return 'más vistas';
     }
   }
 

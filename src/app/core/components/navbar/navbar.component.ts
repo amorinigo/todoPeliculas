@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   public  gendersActivated  : boolean;
   public  moviesActivated   : boolean;
   public  scrollActivated   : boolean;
-  public  moviesRatings     : string[];
+  public  ratings           : string[];
 
   @HostListener("window: scroll")
   onScroll() {
@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
 
   constructor( private router        : Router,
                private moviesHttpSvc : MoviesHttpService ) {
-    this.moviesRatings = ['Estrenos', 'Ranking', 'Más vistas', 'Películas'];
+    this.ratings = ['nowPlaying', 'topRated', 'popular', 'upcoming'];
     this.menuActivated, this.gendersActivated, this.moviesActivated, this.scrollActivated = false;
   }
 

@@ -2,14 +2,7 @@ import { Injectable }        from '@angular/core';
 import { Router }            from '@angular/router';
 import { MoviesHttpService } from './movies-http.service';
 import { Movie }             from '@shared/interfaces/movies-response.interface';
-
-// export interface Data {
-//   movies     :  Movie[];
-//   rating     :  string | 'últimas';
-//   quantity  ?:  number;
-//   resetPage ?:  boolean;
-//   genreId   ?:  number;
-// }
+import { style }             from 'environments/environment.prod';
 
 @Injectable({ providedIn: 'root' })
 export class MoviesService {
@@ -20,14 +13,10 @@ export class MoviesService {
   constructor( private moviesHttpSvc : MoviesHttpService,
                private router        : Router ) {
     this.showMainSlider = true;
-
-    this.style = {
-      'font-weight': 'bold',
-      'margin-bottom.px': '50'
-    };
+    this.style          = style;
   }
 
-  public load60Movies( movies: Movie[], rating: string = 'últimas' ): void {
+  public load60Movies( movies: Movie[], rating: string = 'nowPlaying' ): void {
     this.loadMoviesInQuantity( 3, movies, rating, true );
   }
 
@@ -45,38 +34,29 @@ export class MoviesService {
 
   getMovies( movies: Movie[], rating: string, genreId?: number ) {
     ( genreId ) ?
-      this.moviesHttpSvc.getMovies(rating).subscribe(resp => this.filterResp(resp,movies,genreId)) :
-      this.moviesHttpSvc.getMovies(rating).subscribe(resp => movies.push(...resp));
+      this.moviesHttpSvc.getResponseOf( rating ).subscribe(
+        resp => this.filterResp( resp.results, movies, genreId )
+      ) 
+    :
+      this.moviesHttpSvc.getResponseOf( rating ).subscribe( resp => movies.push( ...resp.results ) );
 
     this.moviesHttpSvc.page++;
+  }
+
+  public loadMoreMovies( movies: Movie[], rating: string = 'nowPlaying', genreId?: number ): void {
+    ( genreId ) ?
+      this.loadMoviesInQuantity(5, movies, rating, false, genreId)  :
+      this.loadMoviesInQuantity(1, movies, rating);
   }
 
   private filterResp( resp: Movie[], movies: Movie[], genreId: number ): void {
     movies.push( ...resp.filter( movie => movie.genre_ids.includes( genreId ) ) );
   }
 
-  public loadMoreMovies( movies: Movie[], rating: string = 'últimas', genreId?: number ): void {
-    ( genreId ) ?
-      this.loadMoviesInQuantity(3, movies, rating, false, genreId)  :
-      this.loadMoviesInQuantity(1, movies, rating);
-  }
-
-  public loadGenres( movies: Movie[], genreId: number, rating: string = 'últimas' ): void {
+  public loadGenres( movies: Movie[], genreId: number, rating: string = 'nowPlaying' ): void {
     this.loadMoviesInQuantity(10, movies, rating, true, genreId);
     window.scrollTo(0, 600);
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
   public showDetails( movieId: number ): Promise<boolean> {
     return this.router.navigate( ['película-detalles', movieId] );

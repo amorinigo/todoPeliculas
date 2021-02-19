@@ -15,8 +15,8 @@ export class SidebarComponent implements OnInit {
   constructor( private moviesHttpSvc: MoviesHttpService ) {}
 
   ngOnInit(): void {
-    this.moviesHttpSvc.getNowPlaying().subscribe(movies => this.nowPlaying = movies.splice(5, 5));
-    this.moviesHttpSvc.getUpcoming().subscribe(movies => this.upcoming = movies.splice(5, 5));
-    this.moviesHttpSvc.getPopular().subscribe(movies => this.populars = movies.splice(5, 5));
+    this.moviesHttpSvc.getNowPlaying().subscribe(resp => this.nowPlaying = resp.results.splice(5,5));
+    this.moviesHttpSvc.getUpcoming().subscribe(resp => this.upcoming = resp.results.splice(5,5));
+    this.moviesHttpSvc.getPopular().subscribe(resp => this.populars = resp.results.splice(5,5));
   }
 }

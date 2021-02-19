@@ -9,15 +9,15 @@ import {
 })
 export class SelectorComponent implements AfterViewInit {
   @Input()  isMovieTitle: boolean;
-  @Output() query = new EventEmitter<string>();
+  @Output() rating = new EventEmitter<string>();
   @ViewChild( "menu" ) private menu: ElementRef;
 
   public  ratings       : string[];
   private currentRating : string;
 
   constructor() {
-    this.ratings = ["Últimas", "Estrenos", "Ranking", "Más vistas"];
-    this.currentRating = this.ratings[0].toLowerCase();
+    this.ratings = ['nowPlaying', 'upcoming', 'topRated', 'popular'];
+    this.currentRating = this.ratings[0];
   }
 
   ngAfterViewInit(): void {
@@ -28,10 +28,10 @@ export class SelectorComponent implements AfterViewInit {
     if( this.isMovieTitle ) return 'Películas online'; else return 'Series online';
   }
 
-  public activateItem( item: HTMLElement ): void {
+  public activateItem( item: HTMLElement, rating: string ): void {
     this.disableCurrentItem();
     item.classList.add("active");
-    this.emitCurrentRating( item );
+    this.emitCurrentRating( rating );
   }
 
   private disableCurrentItem(): void {
@@ -42,11 +42,9 @@ export class SelectorComponent implements AfterViewInit {
     currentItem["classList"].remove("active");
   }
 
-  private emitCurrentRating( item: HTMLElement ): void {
-    const word: string = item.innerText.toLowerCase().trim();
-
-    if(word == this.currentRating) return;
-    this.currentRating = word;
-    this.query.emit( this.currentRating );
+  private emitCurrentRating( rating: string ): void {
+    if(rating == this.currentRating) return;
+    this.currentRating = rating;
+    this.rating.emit( this.currentRating );
   }
 }

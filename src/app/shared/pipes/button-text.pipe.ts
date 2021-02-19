@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ButtonTextPipe implements PipeTransform {
 
-  transform(typeButton: string): string {
+  transform( typeButton: string ): string {
     switch( typeButton ) {
       case 'inicio'     : return 'Cargar más películas';
       case 'géneros'    : return 'Cargar más películas';

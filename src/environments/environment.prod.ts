@@ -14,5 +14,4 @@ export const style: object = {
   'margin-bottom.px': '50'
 };
 
-export let showMainSlider: boolean = true;
 export let page: number = 1;

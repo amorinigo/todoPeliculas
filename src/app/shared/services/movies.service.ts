@@ -15,7 +15,7 @@ export class MoviesService {
                private router        : Router,
                private buttonSvc     : ButtonService ) {
     this.showMainSlider = true;
-    this.style          = style;
+    this.style = style;
   }
 
   public load60Movies( movies: Movie[], rating: string = 'nowPlaying' ): void {
@@ -59,6 +59,7 @@ export class MoviesService {
     ( genreId ) ?
       this.loadMoviesInQuantity(5, movies, rating, false, genreId)  :
       this.loadMoviesInQuantity(10, movies, rating);
+      // this.loadMoviesInQuantity(1, movies, rating);
   }
 
   private filterResp( resp: Movie[], movies: Movie[], genreId: number ): void {

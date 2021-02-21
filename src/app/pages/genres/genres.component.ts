@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 import { MoviesService }     from '@shared/services/movies.service';
 import { Movie }             from '@shared/interfaces/movies-response.interface';
-import { ButtonService } from '@shared/services/button.service';
 
 @Component({
   selector: 'app-genres',
@@ -16,8 +15,7 @@ export class GenresComponent implements OnInit {
 
 
   constructor( public  moviesService  : MoviesService,
-               private activatedRoute : ActivatedRoute, 
-               private buttonService  : ButtonService ) {
+               private activatedRoute : ActivatedRoute ) {
     this.moviesService.showMainSlider = true;
   }
 
@@ -26,12 +24,10 @@ export class GenresComponent implements OnInit {
       this.genreId  = Number( params.genreId );
       this.title    = params.genreType;
       this.moviesService.loadGenres( this.movies = [], this.genreId );
-      this.buttonService.seeMoviesPages();
     });
   }
 
   public loadMovies() {
     this.moviesService.loadMoreMovies(this.movies, '',this.genreId);
-    this.buttonService.seeMoviesPages();
   }
 }

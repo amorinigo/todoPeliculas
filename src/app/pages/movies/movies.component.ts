@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 import { MoviesService }     from '@shared/services/movies.service';
 import { Movie }             from '@shared/interfaces/movies-response.interface';
-import { ButtonService } from '@shared/services/button.service';
 
 @Component({
   selector: 'app-movies',
@@ -14,8 +13,7 @@ export class MoviesComponent implements OnInit {
   public rating : string;
 
   constructor( public  moviesService  : MoviesService,
-               private activatedRoute : ActivatedRoute,
-               private buttonService  : ButtonService ) {
+               private activatedRoute : ActivatedRoute ) {
     this.moviesService.showMainSlider = true;
   }
 
@@ -23,21 +21,19 @@ export class MoviesComponent implements OnInit {
     this.activatedRoute.params.subscribe( params => {
       this.rating = this.convertParam( params.rating );
       this.moviesService.loadManyMovies( this.movies = [], this.rating );
-      this.buttonService.seeMoviesPages( this.rating );
     });
   }
 
   private convertParam( param: string ): string {
     switch( param ) {
-      case 'últimas' : return 'nowPlaying';
-      case 'estrenos' : return 'upcoming';
-      case 'ranking' : return 'topRated';
+      case 'últimas'    : return 'nowPlaying';
+      case 'estrenos'   : return 'upcoming';
+      case 'ranking'    : return 'topRated';
       case 'más vistas' : return 'popular';
     }
   }
 
   loadMovies() {
     this.moviesService.loadMoreMovies(this.movies, this.rating);
-    this.buttonService.seeMoviesPages( this.rating );
   }
 }

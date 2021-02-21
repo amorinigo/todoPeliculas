@@ -29,3 +29,5 @@ export class SwipersService {
 
   public configThree: SwiperOptions = { ...this.configTwo, spaceBetween: 20 };
 }
+
+

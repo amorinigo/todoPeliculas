@@ -1,11 +1,4 @@
-<app-selector [isMovieTitle]="false" (rating)="getSeries( $event )"></app-selector>
-
+<app-selector [isMovieTitle]="false" (sendEvent)="getSeries( $event )"></app-selector>
 <app-spinner *ngIf="series.length == 0" [container]="true"></app-spinner>
-
-<app-films-grid
-  *ngIf="series?.length > 0"
-  [series]="series"
-  [button]="'seriesTV'"
-  [rating]="rating"
->
-</app-films-grid>
+<app-films-grid *ngIf="series?.length > 0" [series]="series"></app-films-grid>
+<app-grid-button (click)="loadSeries()"></app-grid-button>

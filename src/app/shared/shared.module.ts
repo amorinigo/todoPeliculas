@@ -7,14 +7,15 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 
 import { SpinnerComponent }       from './components/spinner/spinner.component';
 import { CastSliderComponent }    from './components/cast-slider/cast-slider.component';
-import { SeriesSlider1Component } from "./components/series-slider-1/series-slider-1.component";
-import { SeriesSlider2Component } from "./components/series-slider-2/series-slider-2.component";
+import { SeriesSlider1Component } from './components/series-slider-1/series-slider-1.component';
+import { SeriesSlider2Component } from './components/series-slider-2/series-slider-2.component';
 import { FilmDetailsComponent }   from './components/film-details/film-details.component';
 import { BackButtonComponent }    from './components/back-button/back-button.component';
 import { FilmComponent }          from './components/film/film.component';
 import { FilmsGridComponent }     from './components/films-grid/films-grid.component';
 import { SelectorComponent }      from './components/selector/selector.component';
-import { FilmsSliderComponent }   from "./components/films-slider/films-slider.component";
+import { FilmsSliderComponent }   from './components/films-slider/films-slider.component';
+import { GridButtonComponent }    from './components/grid-button/grid-button.component';
 
 import { MinutesToHourPipe }      from './pipes/minutes-to-hour.pipe';
 import { GenderPipe }             from './pipes/gender.pipe';
@@ -27,7 +28,6 @@ import { CreatorsPipe }           from './pipes/creators.pipe';
 import { RatingPipe }             from './pipes/rating.pipe';
 import { ButtonTextPipe }         from './pipes/button-text.pipe';
 import { TitlePipe }              from './pipes/title.pipe';
-import { GridButtonComponent } from './components/grid-button/grid-button.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { GridButtonComponent } from './components/grid-button/grid-button.compon
     FilmDetailsComponent,
     FilmsGridComponent,
     FilmComponent,
+    GridButtonComponent,
 
     MinutesToHourPipe,
     GenderPipe,
@@ -52,8 +53,7 @@ import { GridButtonComponent } from './components/grid-button/grid-button.compon
     CreatorsPipe,
     RatingPipe,
     ButtonTextPipe,
-    TitlePipe,
-    GridButtonComponent
+    TitlePipe
   ],
   imports: [
     CommonModule,
@@ -76,6 +76,7 @@ import { GridButtonComponent } from './components/grid-button/grid-button.compon
     BackButtonComponent,
     FilmComponent,
     FilmsGridComponent,
+    GridButtonComponent,
 
     GenderPipe,
     OriginalImagePipe,
@@ -86,4 +87,4 @@ import { GridButtonComponent } from './components/grid-button/grid-button.compon
     TitlePipe
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -3,6 +3,7 @@ import { Router }            from '@angular/router';
 import { MoviesHttpService } from './movies-http.service';
 import { Movie }             from '@shared/interfaces/movies-response.interface';
 import { style }             from 'environments/environment.prod';
+import { ButtonService } from './button.service';
 
 @Injectable({ providedIn: 'root' })
 export class MoviesService {
@@ -11,7 +12,8 @@ export class MoviesService {
   public style          : object;
 
   constructor( private moviesHttpSvc : MoviesHttpService,
-               private router        : Router ) {
+               private router        : Router,
+               private buttonSvc     : ButtonService ) {
     this.showMainSlider = true;
     this.style          = style;
   }
@@ -34,11 +36,21 @@ export class MoviesService {
 
   getMovies( movies: Movie[], rating: string, genreId?: number ) {
     ( genreId ) ?
-      this.moviesHttpSvc.getResponseOf( rating ).subscribe(
-        resp => this.filterResp( resp.results, movies, genreId )
-      ) 
+      this.moviesHttpSvc.getResponseOf( rating ).subscribe( resp => {
+        this.filterResp( resp.results, movies, genreId );
+
+        (this.moviesHttpSvc.page >= resp.total_pages) ? 
+          this.buttonSvc.quedanPages = false : 
+          this.buttonSvc.quedanPages = true;       
+      }) 
     :
-      this.moviesHttpSvc.getResponseOf( rating ).subscribe( resp => movies.push( ...resp.results ) );
+      this.moviesHttpSvc.getResponseOf( rating ).subscribe( resp => {
+        movies.push( ...resp.results );
+
+        (this.moviesHttpSvc.page >= resp.total_pages) ? 
+          this.buttonSvc.quedanPages = false : 
+          this.buttonSvc.quedanPages = true;
+      });
 
     this.moviesHttpSvc.page++;
   }
@@ -46,7 +58,7 @@ export class MoviesService {
   public loadMoreMovies( movies: Movie[], rating: string = 'nowPlaying', genreId?: number ): void {
     ( genreId ) ?
       this.loadMoviesInQuantity(5, movies, rating, false, genreId)  :
-      this.loadMoviesInQuantity(1, movies, rating);
+      this.loadMoviesInQuantity(10, movies, rating);
   }
 
   private filterResp( resp: Movie[], movies: Movie[], genreId: number ): void {

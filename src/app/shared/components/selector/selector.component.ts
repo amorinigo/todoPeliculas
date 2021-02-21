@@ -9,7 +9,7 @@ import {
 })
 export class SelectorComponent implements AfterViewInit {
   @Input()  isMovieTitle: boolean;
-  @Output() rating = new EventEmitter<string>();
+  @Output() sendEvent = new EventEmitter<string>();
   @ViewChild( "menu" ) private menu: ElementRef;
 
   public  ratings       : string[];
@@ -45,6 +45,6 @@ export class SelectorComponent implements AfterViewInit {
   private emitCurrentRating( rating: string ): void {
     if(rating == this.currentRating) return;
     this.currentRating = rating;
-    this.rating.emit( this.currentRating );
+    this.sendEvent.emit( this.currentRating );
   }
 }

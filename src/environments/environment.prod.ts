@@ -13,3 +13,6 @@ export const style: object = {
   'font-weight': 'bold',
   'margin-bottom.px': '50'
 };
+
+export let showMainSlider: boolean = true;
+export let page: number = 1;

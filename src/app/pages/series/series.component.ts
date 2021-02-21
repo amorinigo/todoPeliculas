@@ -25,4 +25,8 @@ export class SeriesComponent implements OnInit {
     this.rating = rating;
     this.seriesService.load120Series( this.series = [], rating );
   }
+
+  public loadSeries(): void {
+    this.seriesService.loadMoreSeries(this.series, this.rating);
+  }
 }

@@ -25,4 +25,8 @@ export class SearchComponent implements OnInit {
       this.searchService.load5pagesOfFilms( this.films = [], this.query );
     });
   }
+
+  loadSearches() {
+    this.searchService.loadMoreFilms(this.films, this.query);
+  }
 }

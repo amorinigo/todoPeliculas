@@ -4,11 +4,13 @@ import { Observable }         from 'rxjs';
 import { SeriesHttpService }  from './series-http.service';
 import { Serie, SeriesResponse }              from '@shared/interfaces/series-response.interface';
 import { Film }               from '@shared/interfaces/search-response.interface';
+import { ButtonService } from './button.service';
 
 @Injectable({ providedIn: 'root' })
 export class SeriesService {
   constructor( private seriesHttpSvc : SeriesHttpService,
-               private router        : Router ) {}
+               private router        : Router,
+               private buttonSvc     : ButtonService ) {}
   
   public load120Series( series: Serie[], rating: string = 'nowPlaying' ): void {
     this.seriesHttpSvc.page = 1;
@@ -17,7 +19,17 @@ export class SeriesService {
   }
 
   public loadMoreSeries( series: Serie[] | Film[], rating: string = 'nowPlaying' ): void {
-    this.seriesHttpSvc.getResponseOf( rating ).subscribe( resp => series.push( ... resp.results ) );
+    this.seriesHttpSvc.getResponseOf( rating ).subscribe( resp => {
+      // console.log( this.seriesHttpSvc.page );
+      // console.log( resp.total_pages );
+      // console.log( rating );
+
+      series.push( ... resp.results );
+
+      (this.seriesHttpSvc.page >= resp.total_pages) ? 
+        this.buttonSvc.quedanPages = false :
+        this.buttonSvc.quedanPages = true;
+    });
     this.seriesHttpSvc.page++;
   }
 

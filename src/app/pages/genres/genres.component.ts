@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 import { MoviesService }     from '@shared/services/movies.service';
 import { Movie }             from '@shared/interfaces/movies-response.interface';
+import { ButtonService } from '@shared/services/button.service';
 
 @Component({
   selector: 'app-genres',
@@ -15,15 +16,22 @@ export class GenresComponent implements OnInit {
 
 
   constructor( public  moviesService  : MoviesService,
-               private activatedRoute : ActivatedRoute ) {
+               private activatedRoute : ActivatedRoute, 
+               private buttonService  : ButtonService ) {
     this.moviesService.showMainSlider = true;
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( params => {
-      this.title    = params.genreType;
       this.genreId  = Number( params.genreId );
+      this.title    = params.genreType;
       this.moviesService.loadGenres( this.movies = [], this.genreId );
+      this.buttonService.seeMoviesPages();
     });
+  }
+
+  public loadMovies() {
+    this.moviesService.loadMoreMovies(this.movies, '',this.genreId);
+    this.buttonService.seeMoviesPages();
   }
 }

@@ -1,4 +1,4 @@
-<div class="movies-grid-container">
+<div class="movies-grid-container" *ngIf="movies?.length > 0">
   <app-film *ngFor="let movie of movies" [film]="movie" (click)="showDetails( movie )"></app-film>
 </div>
 
@@ -9,7 +9,3 @@
 <div class="movies-grid-container" *ngIf="films?.length > 0">
   <app-film *ngFor="let film of films" [film]="film" (click)="showDetails( film )"></app-film>
 </div>
-
-<button class="button" (click)="loadMoreFilms()" *ngIf="quedanPages">
-  {{ button | buttonText }}
-</button>

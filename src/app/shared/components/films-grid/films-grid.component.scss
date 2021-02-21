@@ -1,20 +1,9 @@
-@import "../../../../assets/scss/global-mixins";
-
 .movies-grid-container {
   display: grid;
   column-gap: 15px;
   row-gap: 15px;
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(330px, 1fr);
-}
-
-.button {
-  @include button(16px);
-  display: block;
-  width: 100%;
-  margin: 70px auto;
-  padding: 10px 0;
-  &:hover { transform: scale(1); }
 }
 
 // media queries

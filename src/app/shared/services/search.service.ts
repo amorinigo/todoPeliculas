@@ -3,8 +3,8 @@ import { Injectable }           from '@angular/core';
 import { Params }               from '@angular/router';
 import { url, params }          from 'environments/environment.prod';
 import { Observable }           from 'rxjs';
-import { map }                  from 'rxjs/operators';
 import { Film, SearchResponse } from '@shared/interfaces/search-response.interface';
+import { ButtonService } from './button.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,8 @@ export class SearchService {
   public page: number = 1;
   private get params(): Params { return { ...params, page: String( this.page ) } };
 
-  constructor( private http: HttpClient ) {}
+  constructor( private http: HttpClient,
+               private buttonSvc: ButtonService ) {}
 
   public getSearch( query: string ): Observable<SearchResponse> {
     const params: Params = { ... this.params, query, include_adult: 'false' };
@@ -29,7 +30,13 @@ export class SearchService {
   }
 
   public loadMoreFilms( films: Film[], query: string ): void {
-    this.getSearch( query ).subscribe( resp => films.push( ... resp.results ) );
+    this.getSearch( query ).subscribe( resp => {
+      films.push( ... resp.results );
+
+      (this.page >= resp.total_pages) ? 
+        this.buttonSvc.quedanPages = false : 
+        this.buttonSvc.quedanPages = true;
+    });
     this.page++;
   }
 

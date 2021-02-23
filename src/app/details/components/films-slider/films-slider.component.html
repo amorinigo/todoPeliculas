@@ -1,0 +1,51 @@
+<h4 class="title" *ngIf="films?.length > 0"> Recomendaciones </h4>
+
+
+<section class="swiper-container films-swiper" *ngIf="films[0].title">
+  <div class="swiper-wrapper">
+    <div 
+      class="swiper-slide slide animate__animated animate__fadeIn" 
+      (click)="showDetails( film.id )" 
+      *ngFor="let film of films"
+    >
+
+      <div class="swiper-movie-img-ctn">
+
+        <img #img1 [src]="film.poster_path | posterImage" [alt]="film.title" class="img">
+        <app-spinner *ngIf="!img1?.complete" [container]="false"></app-spinner>
+
+        <div class="movie-info-ctn">
+          <span class="type"> Película </span>
+          <span class="date"> {{ film.release_date | slice:0:4 }} </span>
+        </div>
+
+      </div>
+
+      <h5 class="swiper-movie-title"> {{ film.title }} </h5>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="swiper-container films-swiper" *ngIf="films[0].name">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide slide" (click)="showDetails( film.id )" *ngFor="let film of films">
+
+      <div class="swiper-movie-img-ctn">
+
+        <img #img2 [src]="film.poster_path | posterImage" [alt]="film.name" class="img">
+        <app-spinner *ngIf="!img2?.complete" [container]="false"></app-spinner>
+
+        <div class="movie-info-ctn">
+          <span class="type"> Serie </span>
+          <span class="date"> {{ film.first_air_date | slice:0:4 }} </span>
+        </div>
+
+      </div>
+
+      <h5 class="swiper-movie-title"> {{ film.name }} </h5>
+
+    </div>
+  </div>
+</section>

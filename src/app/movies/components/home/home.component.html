@@ -1,0 +1,15 @@
+<!-- SERIES SLIDER 1 -->
+<app-series-slider-1></app-series-slider-1>
+
+<!-- FILMS GRID -->
+<div> <app-selector [isMovieTitle]="true" (sendEvent)="getMovies( $event )"></app-selector> </div>
+
+<app-spinner *ngIf="movies.length == 0" [container]="true"></app-spinner>
+
+<app-films-grid *ngIf="movies.length > 0" [movies]="movies"></app-films-grid>
+
+<app-grid-btn [type]="'movies'" [length]="movies.length" (click)="loadMovies()"></app-grid-btn>
+
+<!-- SERIES SLIDER 2 -->
+<div> <app-selector [isMovieTitle]="false" (sendEvent)="getSeries( $event )"></app-selector> </div>
+<app-series-slider-2 *ngIf="series.length > 0" [series]="series"></app-series-slider-2>

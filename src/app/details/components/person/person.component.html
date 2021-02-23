@@ -1,0 +1,56 @@
+<section class="person-details-ctn animate__animated animate__fadeIn" *ngIf="person">
+
+  <div class="main-info">
+    <figure class="person-img-ctn">
+      <img #img [src]="person.profile_path | posterImage" [alt]="person.name" class="person-img">
+      <app-spinner *ngIf="!img?.complete" [container]="false"></app-spinner>
+    </figure>
+
+    <h3 class="actor-name"> {{ person.name }} </h3>
+
+    <div class="person-biography" *ngIf="person.biography">
+      <h5 class="biography-title"> Biografía </h5>
+
+      <p class="biography-paragraph" [ngClass]="{'visible': readMore}">
+        {{ person.biography }}
+      </p>
+
+      <div class="button-ctn">
+        <button
+          type="button"
+          class="button"
+          (click)="this.readMore = true"
+          [ngClass]="{'none': readMore}"
+        >
+          Leer más
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="secondary-info">
+    <h5 class="personal-info-title"> Información personal </h5>
+
+    <div class="personal-info-section">
+      <h6 class="personal-info-h6"> Sexo </h6>
+      <p> {{ person.gender | gender }} </p>
+    </div>
+
+    <div class="personal-info-section">
+      <h6 class="personal-info-h6"> Fecha de nacimiento </h6>
+      <p> {{ person.birthday }}</p>
+    </div>
+
+    <div class="personal-info-section">
+      <h6 class="personal-info-h6"> Lugar de nacimiento </h6>
+      <p> {{ person.place_of_birth }} </p>
+    </div>
+
+    <div class="personal-info-section" *ngIf="person.also_known_as.length > 0">
+      <h6 class="personal-info-h6"> También conocido como </h6>
+      <p *ngFor="let alias of person.also_known_as"> {{ alias }} </p>
+    </div>
+  </div>
+
+  <app-back-button></app-back-button>
+</section>

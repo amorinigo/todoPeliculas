@@ -1,0 +1,14 @@
+<div class="selector-ctn animate__animated animate__fadeIn">
+    <h4 class="title"> {{ showTitle() }} </h4>
+
+    <div #menu class="menu">
+      <a 
+        #item 
+        class="item" 
+        *ngFor="let rating of moviesService.ratings" 
+        (click)="activateItem( item, rating )"
+      >
+        {{ rating | rating }}
+      </a>
+    </div>
+</div>

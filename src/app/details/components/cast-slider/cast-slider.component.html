@@ -1,0 +1,21 @@
+<h4 class="cast-title" *ngIf="credits?.cast.length > 0"> Reparto principal </h4>
+
+<div class="swiper-container swiper-cast-container">
+  <div class="swiper-wrapper">
+    <div
+      class="swiper-slide swiper-cast-slide animate__animated animate__fadeIn"
+      *ngFor="let actor of credits?.cast"
+      (click)="showActor( actor.id )"
+    >
+      <figure class="actor-img-ctn">
+        <img #img [src]="actor.profile_path | posterImage" [alt]="actor.name" class="actor-img">
+        <app-spinner *ngIf="!img.complete" [container]="false"></app-spinner>
+      </figure>
+
+      <div class="actor-info-ctn">
+        <h5 class="actor-name"> {{ actor.name }} </h5>
+        <h6 class="actor-character"> {{ actor.character | slice:0:30 }} </h6>
+      </div>
+    </div>
+  </div>
+</div>

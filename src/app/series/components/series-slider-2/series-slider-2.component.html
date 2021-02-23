@@ -1,0 +1,22 @@
+<div class="swiper-container swiper-series-2">
+  <div class="swiper-wrapper">
+      <div 
+        class="swiper-slide slide animate__animated animate__fadeIn" 
+        *ngFor="let serie of series" (click)="showDetails( serie.id )"
+      >
+
+        <figure class="img-ctn">
+          <img #img [src]="serie.poster_path | posterImage" [alt]="serie.name" class="img">
+          <app-spinner *ngIf="!img.complete" [container]="false"></app-spinner>
+        </figure>
+
+        <div class="data">
+          <span class="type">Serie</span>
+          <span class="date"> {{ serie.first_air_date | slice:0:4 }} </span>
+        </div>
+
+        <h6 class="serie-name"> {{ serie.name }} </h6>
+
+      </div>
+  </div>
+</div>

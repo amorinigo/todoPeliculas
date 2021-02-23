@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Genre } from '@shared/interfaces/genres-response.interface';
+import { Genre }               from 'app/movies/interfaces/genres-response.interface';
 
 @Pipe({ name: 'genres' })
 export class GenresPipe implements PipeTransform {

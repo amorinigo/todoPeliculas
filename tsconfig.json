@@ -17,10 +17,13 @@
       "dom"
     ],
     "paths": {
-      "@assets": ["assets/*"],
-      "@core/*": ["app/core/*"],
-      "@pages/*": ["app/pages/*"],
-      "@shared/*": ["app/shared/*"]
+      "@assets"    : ["assets/*"],
+      "@details/*" : ["app/details/*"],
+      "@films/*"   : ["app/films/*"],
+      "@movies/*"  : ["app/movies/*"],
+      "@search/*"  : ["app/search/*"],
+      "@series/*"  : ["app/series/*"],
+      "@shared/*"  : ["app/shared/*"]
     }
   }
 }

@@ -1,0 +1,155 @@
+<section class="film-details-ctn animate__animated animate__fadeIn" *ngIf="movieDetails && credits">
+  <img #imgBgMovie [src]="movieDetails.backdrop_path | originalImage" [alt]="movieDetails.title">
+  <app-spinner *ngIf="!imgBgMovie.complete" [container]="false"></app-spinner>
+
+  <div class="container">
+    <figure class="film-img-ctn">
+      <img #imgMovie [src]="movieDetails.poster_path | posterImage" [alt]="movieDetails.title">
+      <app-spinner *ngIf="!imgMovie.complete" [container]="false"></app-spinner>
+    </figure>
+
+    <div class="film-info">
+      <div>
+        <h3 class="title-info">
+          {{ movieDetails.title }}
+          <span class="year"> ({{ movieDetails.release_date | slice:0:4 }}) </span>
+        </h3>
+      </div>
+      
+      <div class="general-info-ctn">
+        <span> {{ movieDetails.release_date | date: 'dd/MM/yyyy' }} </span>
+        <span> {{ movieDetails.genres | genres }} </span>
+        <span *ngIf="movieDetails.runtime !== 0"> {{ movieDetails.runtime | minutesToHour }} </span>
+      </div>
+
+      <div *ngIf="movieDetails.vote_average !== 0">
+        <circle-progress
+          [percent]= "movieDetails.vote_average * 10"
+          [radius]= "20"
+          [backgroundColor]="'#032541'"
+          [toFixed]= "0"
+          [maxPercent]= "100"
+          [outerStrokeWidth]= "4"
+          [innerStrokeWidth]= "4"
+          [outerStrokeColor]= "'orange'"
+          [innerStrokeColor]= "'grey'"
+          [animation]= "true"
+          [animationDuration]= "0"
+          [space]= "-4"
+          [titleFontSize]= "15"
+          [unitsFontSize]= "9"
+          [titleColor]= "'orange'"
+          [unitsColor]= "'orange'"
+          [showSubtitle]= "false"
+          [showBackground]= "true"
+          [startFromZero]= "false"
+        >
+        </circle-progress>
+
+        <span class="punctuation"> Puntuación </span>
+      </div>
+
+      <h5 class="tagline"> {{ movieDetails.tagline }} </h5>
+    </div>
+  </div>
+
+  <div class="extra-info-container">
+
+    <div class="overview-ctn" *ngIf="movieDetails.overview">
+      <h4 class="overview-title"> Vista general </h4>
+      <p class="overview"> {{ movieDetails.overview }} </p>
+    </div>
+
+    <div class="crew-ctn">
+
+      <div class="director" *ngIf="thereIsADirector()">
+        <h5> {{ credits.crew | director }} </h5>
+        <h6> Director </h6>
+      </div>
+
+      <div class="writters" *ngFor="let writer of credits.crew | writers">
+        <h5> {{ writer.name }} </h5>
+        <h6> Escritor </h6>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="film-details-ctn animate__animated animate__fadeIn" *ngIf="serieDetails && credits">
+  <img #imgBgSerie [src]="serieDetails.backdrop_path | originalImage" [alt]="serieDetails.name">
+
+  <app-spinner *ngIf="!imgBgSerie.complete" [container]="false"></app-spinner>
+
+  <div class="container">
+    <figure class="film-img-ctn">
+      <img #imgSerie [src]="serieDetails.poster_path | posterImage" [alt]="serieDetails.name">
+      <app-spinner *ngIf="!imgSerie.complete" [container]="false"></app-spinner>
+    </figure>
+
+    <div class="film-info">
+      <div>
+        <h3 class="title-info">
+          {{ serieDetails.name }}
+          <span class="year"> ({{ serieDetails.first_air_date | slice:0:4 }}) </span>
+        </h3>
+      </div>
+
+      <div class="general-info-ctn">
+        <span> {{ serieDetails.first_air_date | date: 'dd/MM/yyyy' }} </span>
+        <span> {{ serieDetails.genres | genres }} </span>
+        <span *ngIf="serieDetails.episode_run_time[0] !== 0">
+          {{ serieDetails.episode_run_time[0] | minutesToHour }}
+        </span>
+      </div>
+
+      <div *ngIf="serieDetails.vote_average !== 0">
+        <circle-progress
+        [percent]= "serieDetails.vote_average * 10"
+        [radius]= "20"
+        [backgroundColor]="'#032541'"
+        [toFixed]= "0"
+        [maxPercent]= "100"
+        [outerStrokeWidth]= "4"
+        [innerStrokeWidth]= "4"
+        [outerStrokeColor]= "'orange'"
+        [innerStrokeColor]= "'grey'"
+        [animation]= "true"
+        [animationDuration]= "0"
+        [space]= "-4"
+        [titleFontSize]= "15"
+        [unitsFontSize]= "9"
+        [titleColor]= "'orange'"
+        [unitsColor]= "'orange'"
+        [showSubtitle]= "false"
+        [showBackground]= "true"
+        [startFromZero]= "false"
+      >
+        </circle-progress>
+
+        <span class="punctuation"> Puntuación </span>
+      </div>
+
+      <h5 class="tagline"> {{ serieDetails.tagline }} </h5>
+    </div>
+  </div>
+
+  <div class="extra-info-container">
+
+    <div class="overview-ctn" *ngIf="serieDetails.overview">
+      <h4 class="overview-title"> Vista general </h4>
+      <p class="overview"> {{ serieDetails.overview }} </p>
+    </div>
+
+    <div class="crew-ctn">
+      <div class="writters" *ngFor="let creator of credits.crew | creators">
+        <h5> {{ creator.name }} </h5>
+        <h6> Creador </h6>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<app-back-button></app-back-button>

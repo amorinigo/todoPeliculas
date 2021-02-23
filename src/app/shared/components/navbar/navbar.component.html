@@ -6,10 +6,12 @@
   </div>
 
   <nav class="topbar" [ngClass]="{'topbar-active': menuActivated}">
-    <div class="search">
+    <form class="search" #form="ngForm">
 
       <input
         #input
+        ngModel
+        name="input"
         type="text" class="search-input"
         placeholder="Buscar..."
         (keyup.enter)="search()"
@@ -19,7 +21,7 @@
         <i class="fas fa-search"></i>
       </label>
 
-    </div>
+    </form>
 
     <ul class="menu">
 

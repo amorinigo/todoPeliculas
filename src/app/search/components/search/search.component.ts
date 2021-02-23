@@ -7,7 +7,7 @@ import { Film }              from 'app/search/interfaces/search-response.interfa
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styles: [ 'h6 { text-align: center; }' ]
+  styles: [ 'h6 { text-align: center; min-height: 200px; margin-top: 120px; }' ]
 })
 export class SearchComponent implements OnInit {
   public films: Film[] = [];

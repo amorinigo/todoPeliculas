@@ -54,6 +54,7 @@ export class NavbarComponent implements OnInit {
 
   public search(): void {
     if( !this.input.nativeElement.value ) return;
+    console.log( this.input.nativeElement );
     this.router.navigate(["búsqueda", this.input.nativeElement.value]);
     this.menuOnOff();
     this.input.nativeElement.value = '';

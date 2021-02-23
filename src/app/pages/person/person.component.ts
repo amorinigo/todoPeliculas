@@ -16,7 +16,8 @@ export class PersonComponent implements OnInit {
   constructor( private activatedRoute : ActivatedRoute,
                private moviesService  : MoviesService,
                private moviesHttpSvc  : MoviesHttpService ) {
-    this.moviesService.showMainSlider, this.readMore = false;
+    this.moviesService.showMainSlider = false;
+    this.readMore = false;
   }
 
   ngOnInit(): void {

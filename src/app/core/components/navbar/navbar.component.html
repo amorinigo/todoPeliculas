@@ -12,10 +12,10 @@
         #input
         type="text" class="search-input"
         placeholder="Buscar..."
-        (keyup.enter)="search( input )"
+        (keyup.enter)="search()"
       >
 
-      <label for="search" class="search-label" (click)="search( input )">
+      <label for="search" class="search-label" (click)="search()">
         <i class="fas fa-search"></i>
       </label>
 
@@ -25,20 +25,14 @@
 
       <li class="menu__item">
         <a
-          class="menu__link"
-          (click)="menuOnOff()"
-          routerLink="inicio"
-          routerLinkActive="link-active"
+          class="menu__link" (click)="menuOnOff()" routerLink="inicio" routerLinkActive="link-active"
         >
           Inicio
         </a>
       </li>
 
       <li class="menu__item sub-menu-li" [ngClass]="{'sub-menu--active': gendersActivated}">
-        <a
-          class="menu__link"
-          (click)="gendersOnOff()"
-        >
+        <a class="menu__link" (click)="gendersOnOff()">
           Géneros
         </a>
         <i class="fas fa-chevron-right"></i>
@@ -64,7 +58,7 @@
         <i class="fas fa-chevron-right"></i>
         <ul class="sub-menu movies-ul animate__animated animate__pulse">
 
-          <li class="sub-menu__item" *ngFor="let rating of ratings">
+          <li class="sub-menu__item" *ngFor="let rating of moviesService.ratings">
             <a
               class="sub-menu__link"
               (click)="menuOnOff()"
@@ -80,10 +74,7 @@
 
       <li class="menu__item">
         <a
-          class="menu__link"
-          (click)="menuOnOff()"
-          routerLink="series"
-          routerLinkActive="link-active"
+          class="menu__link" (click)="menuOnOff()" routerLink="series" routerLinkActive="link-active"
         >
           Series & TV
         </a>

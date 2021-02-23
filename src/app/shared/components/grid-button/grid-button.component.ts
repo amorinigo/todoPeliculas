@@ -1,15 +1,14 @@
-import { Component, OnInit }      from '@angular/core';
-import { ButtonService }  from '@shared/services/button.service';
+import { Component, Input }  from '@angular/core';
+import { MoviesService }     from '@shared/services/movies.service';
 
 @Component({
-  selector: 'app-grid-button',
+  selector: 'app-grid-btn',
   templateUrl: './grid-button.component.html',
   styleUrls: ['./grid-button.component.scss']
 })
-export class GridButtonComponent implements OnInit {
-  constructor( public buttonSvc: ButtonService ) {}
+export class GridButtonComponent {
+  @Input() type: string;
+  @Input() length: number;
 
-  ngOnInit() {
-    // console.log('HOLA SOY EL BOTÓN');
-  }
+  constructor( public moviesService: MoviesService ) {}
 }

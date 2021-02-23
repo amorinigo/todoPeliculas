@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription }      from 'rxjs';
 import { MoviesService }     from '@shared/services/movies.service';
+import { SeriesHttpService } from '@shared/services/series-http.service';
 import { Movie }             from '@shared/interfaces/movies-response.interface';
 import { Serie }             from '@shared/interfaces/series-response.interface';
-import { Subscription }      from 'rxjs';
-import { SeriesHttpService } from '@shared/services/series-http.service';
 
 @Component({
   selector: 'app-home',

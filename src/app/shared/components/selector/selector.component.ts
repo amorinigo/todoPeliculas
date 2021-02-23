@@ -1,6 +1,7 @@
 import {
   Component, Input, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter
 } from '@angular/core';
+import { MoviesService } from '@shared/services/movies.service';
 
 @Component({
   selector: 'app-selector',
@@ -11,13 +12,10 @@ export class SelectorComponent implements AfterViewInit {
   @Input()  isMovieTitle: boolean;
   @Output() sendEvent = new EventEmitter<string>();
   @ViewChild( "menu" ) private menu: ElementRef;
-
-  public  ratings       : string[];
   private currentRating : string;
 
-  constructor() {
-    this.ratings = ['nowPlaying', 'upcoming', 'topRated', 'popular'];
-    this.currentRating = this.ratings[0];
+  constructor( public moviesService: MoviesService ) {
+    this.currentRating = this.moviesService.ratings[0];
   }
 
   ngAfterViewInit(): void {

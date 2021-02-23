@@ -1,4 +1,7 @@
 <h2 *ngIf="rating" [ngStyle]="moviesService.style"> {{ rating | title }} </h2>
+
 <app-spinner *ngIf="movies?.length == 0" [container]="true"></app-spinner>
+
 <app-films-grid *ngIf="movies?.length > 0" [movies]="movies"></app-films-grid>
-<app-grid-button (click)="loadMovies()"></app-grid-button>
+
+<app-grid-btn [type]="'movies'" [length]="movies?.length" (click)="loadMovies()"></app-grid-btn>

@@ -13,8 +13,7 @@ export class CastSliderComponent implements AfterViewInit {
   @Input() credits: Credits;
 
   constructor( private moviesService  : MoviesService,
-               private swipersService : SwipersService ) {
-  }
+               private swipersService : SwipersService ) {}
 
   ngAfterViewInit(): void {
     const swiper = new Swiper( '.swiper-cast-container', this.swipersService.configThree );

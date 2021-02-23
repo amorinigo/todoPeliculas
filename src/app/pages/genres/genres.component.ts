@@ -28,6 +28,6 @@ export class GenresComponent implements OnInit {
   }
 
   public loadMovies() {
-    this.moviesService.loadMoreMovies(this.movies, '',this.genreId);
+    this.moviesService.loadMoreMovies(this.movies, undefined, this.genreId);
   }
 }

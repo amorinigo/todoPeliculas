@@ -1,12 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Cast } from '@shared/interfaces/credits.interface';
 
-@Pipe({
-  name: 'creators'
-})
+@Pipe({ name: 'creators' })
 export class CreatorsPipe implements PipeTransform {
 
-  transform(crew: Cast[]): Cast[] {
+  transform( crew: Cast[] ): Cast[] {
     return crew.filter(
       person =>
         person.job == "Executive Producer" &&

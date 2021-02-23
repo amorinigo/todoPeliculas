@@ -1,4 +1,9 @@
 <h2 [ngStyle]="moviesService.style"> Búsquedas relacionadas </h2>
-<app-spinner *ngIf="films.length == 0" [container]="true"></app-spinner>
+
+<app-spinner *ngIf="searchService.showSpinner" [container]="true"></app-spinner>
+
 <app-films-grid *ngIf="films?.length > 0" [films]="films"></app-films-grid>
-<app-grid-button (click)="loadSearches()"></app-grid-button>
+
+<app-grid-btn [type]="'films'" [length]="films?.length" (click)="loadSearches()"></app-grid-btn>
+
+<h6 *ngIf="!searchService.areMovies"> ¡No hay resultados! </h6>

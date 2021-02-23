@@ -47,6 +47,5 @@
   $margin: 0 0 10px 0;
   $border-radius: 8px 8px 0 0;
   @include img-ctn-format(100%, 70%, $margin, $border-radius);
-  .actor-img { transition: transform .3s; }
   z-index: 0;
 }

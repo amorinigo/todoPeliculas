@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { combineLatest }     from 'rxjs';
 import { MoviesHttpService } from '@shared/services/movies-http.service';
+import { MoviesService }     from '@shared/services/movies.service';
 import { Movie }             from '@shared/interfaces/movies-response.interface';
 
 @Component({
@@ -12,11 +14,20 @@ export class SidebarComponent implements OnInit {
   public populars   : Movie[];
   public upcoming   : Movie[];
 
-  constructor( private moviesHttpSvc: MoviesHttpService ) {}
+  constructor( private moviesHttpSvc: MoviesHttpService,
+               private moviesService: MoviesService ) {}
 
   ngOnInit(): void {
-    this.moviesHttpSvc.getNowPlaying().subscribe(resp => this.nowPlaying = resp.results.splice(5,5));
-    this.moviesHttpSvc.getUpcoming().subscribe(resp => this.upcoming = resp.results.splice(5,5));
-    this.moviesHttpSvc.getPopular().subscribe(resp => this.populars = resp.results.splice(5,5));
+
+    combineLatest([
+      this.moviesHttpSvc.getNowPlaying(),
+      this.moviesHttpSvc.getUpcoming(),
+      this.moviesHttpSvc.getPopular()
+    ])
+      .subscribe( ([ resp1 , resp2, resp3 ]) => {
+        this.nowPlaying = this.moviesService.filterAndCut( resp1.results, 5, 5 );
+        this.upcoming   = this.moviesService.filterAndCut( resp2.results, 5, 5 );
+        this.populars   = this.moviesService.filterAndCut( resp3.results, 5, 5 );
+      });
   }
 }

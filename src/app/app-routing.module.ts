@@ -1,7 +1,7 @@
 import { NgModule }               from '@angular/core';
 import { Routes, RouterModule }   from '@angular/router';
 
-import { GenresComponent }         from '@pages/genres/genres.component';
+import { GenresComponent }        from '@pages/genres/genres.component';
 import { HomeComponent }          from '@pages/home/home.component';
 import { MovieDetailsComponent }  from '@pages/movie-details/movie-details.component';
 import { MoviesComponent }        from '@pages/movies/movies.component';
@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: "película-detalles/:id",       component: MovieDetailsComponent},
   {path: "serie-detalles/:id",          component: SerieDetailsComponent },
   {path: "persona/:id",                 component: PersonComponent},
-  {path: "**", pathMatch: "full", redirectTo: "inicio"}
+  {path: "**", pathMatch: "full",       redirectTo: "inicio"}
 ];
 
 @NgModule({

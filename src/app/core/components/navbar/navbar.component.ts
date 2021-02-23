@@ -1,7 +1,8 @@
-import { Component, OnInit, HostListener }  from '@angular/core';
-import { Router }                           from '@angular/router';
-import { MoviesHttpService }                from '@shared/services/movies-http.service';
-import { Genre }                            from '@shared/interfaces/genres-response.interface';
+import { Component, OnInit, HostListener, ViewChild, ElementRef }  from '@angular/core';
+import { Router }            from '@angular/router';
+import { MoviesHttpService } from '@shared/services/movies-http.service';
+import { MoviesService }     from '@shared/services/movies.service';
+import { Genre }             from '@shared/interfaces/genres-response.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -9,12 +10,12 @@ import { Genre }                            from '@shared/interfaces/genres-resp
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public  genres            : Genre[];
-  public  menuActivated     : boolean;
-  public  gendersActivated  : boolean;
-  public  moviesActivated   : boolean;
-  public  scrollActivated   : boolean;
-  public  ratings           : string[];
+  public  genres              : Genre[];
+  public  menuActivated       : boolean;
+  public  gendersActivated    : boolean;
+  public  moviesActivated     : boolean;
+  public  scrollActivated     : boolean;
+  @ViewChild( 'input' ) input : ElementRef<HTMLInputElement>;
 
   @HostListener("window: scroll")
   onScroll() {
@@ -24,9 +25,12 @@ export class NavbarComponent implements OnInit {
   }
 
   constructor( private router        : Router,
-               private moviesHttpSvc : MoviesHttpService ) {
-    this.ratings = ['nowPlaying', 'topRated', 'popular', 'upcoming'];
-    this.menuActivated, this.gendersActivated, this.moviesActivated, this.scrollActivated = false;
+               private moviesHttpSvc : MoviesHttpService,
+               public  moviesService : MoviesService ) {
+    this.menuActivated    = false; 
+    this.gendersActivated = false;
+    this.moviesActivated  = false;
+    this.scrollActivated  = false;
   }
 
   ngOnInit(): void {
@@ -44,14 +48,14 @@ export class NavbarComponent implements OnInit {
 
   public menuOnOff(): void {
     this.menuActivated    = !this.menuActivated;
-    this.gendersActivated, this.moviesActivated = false;
+    this.gendersActivated = false;
+    this.moviesActivated  = false;
   }
 
-  public search( input ): void {
-    if( !input.value ) return;
-
-    this.router.navigate(["búsqueda", input.value]);
-    // input.value = "";
+  public search(): void {
+    if( !this.input.nativeElement.value ) return;
+    this.router.navigate(["búsqueda", this.input.nativeElement.value]);
     this.menuOnOff();
+    this.input.nativeElement.value = '';
   }
 }

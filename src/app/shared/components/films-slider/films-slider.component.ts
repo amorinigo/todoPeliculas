@@ -16,14 +16,13 @@ export class FilmsSliderComponent implements AfterViewInit {
 
   constructor( private moviesService  : MoviesService,
                private seriesService  : SeriesService,
-               private swipersService : SwipersService ) {
-  }
+               private swipersService : SwipersService ) {}
 
   ngAfterViewInit(): void {
     const swiper = new Swiper( '.films-swiper', this.swipersService.configThree );
   }
 
-  public showDetails(id: number): void {
+  public showDetails( id: number ): void {
     (this.films[0].title) ? this.moviesService.showDetails(id) : this.seriesService.showDetails(id);
   }
 }

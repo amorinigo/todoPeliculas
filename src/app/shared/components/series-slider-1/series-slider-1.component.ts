@@ -17,11 +17,12 @@ export class SeriesSlider1Component implements OnInit, AfterViewInit {
 
   constructor( private seriesService  : SeriesService,
                private swipersService : SwipersService,
-               private seriesHttpSvc  : SeriesHttpService ) {
-  }
+               private seriesHttpSvc  : SeriesHttpService ) {}
 
   ngOnInit(): void {
-    this.seriesHttpSvc.getPopular().subscribe( resp => this.series = resp.results.splice(0, 10) );
+    this.seriesHttpSvc.getPopular().subscribe( 
+      resp => this.series = resp.results.filter( serie => serie.backdrop_path ).splice(0, 10) 
+    );
   }
 
   ngAfterViewInit(): void {

@@ -1,3 +1,5 @@
+@import '../assets/scss/global-mixins';
+
 .content-ctn {
   max-width: 100%;
   margin: 120px 20px;
@@ -14,6 +16,7 @@
   z-index: -1;
   height: 100px;
   background: var(--navbar-bg);
+  @include display-flex();
 
   .copyright { margin: 0; }
 }

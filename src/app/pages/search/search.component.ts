@@ -7,15 +7,16 @@ import { Film }              from '@shared/interfaces/search-response.interface'
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styles: []
+  styles: [ 'h6 { text-align: center; }' ]
 })
 export class SearchComponent implements OnInit {
   public films: Film[] = [];
   public query: string;
 
+
   constructor( public  moviesService  : MoviesService,
                private activatedRoute : ActivatedRoute,
-               private searchService  : SearchService ) {
+               public  searchService  : SearchService ) {
     this.moviesService.showMainSlider = false;
   }
 

@@ -2,7 +2,12 @@
     <h4 class="title"> {{ showTitle() }} </h4>
 
     <div #menu class="menu">
-      <a #item class="item" (click)="activateItem( item, rating )" *ngFor="let rating of ratings">
+      <a 
+        #item 
+        class="item" 
+        *ngFor="let rating of moviesService.ratings" 
+        (click)="activateItem( item, rating )"
+      >
         {{ rating | rating }}
       </a>
     </div>

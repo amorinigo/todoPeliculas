@@ -1,4 +1,3 @@
-<button class="button" *ngIf="buttonSvc.quedanPages">
-    <!-- {{ button | buttonText }} -->
-    Cargar más películas
-  </button>
+<button class="button" *ngIf="moviesService.arePages && length > 0"> 
+    {{ type | buttonText }}
+</button>

@@ -36,12 +36,12 @@
       <p> {{ person.gender | gender }} </p>
     </div>
 
-    <div class="personal-info-section">
+    <div class="personal-info-section" *ngIf="person.birthday">
       <h6 class="personal-info-h6"> Fecha de nacimiento </h6>
       <p> {{ person.birthday }}</p>
     </div>
 
-    <div class="personal-info-section">
+    <div class="personal-info-section" *ngIf="person.place_of_birth">
       <h6 class="personal-info-h6"> Lugar de nacimiento </h6>
       <p> {{ person.place_of_birth }} </p>
     </div>

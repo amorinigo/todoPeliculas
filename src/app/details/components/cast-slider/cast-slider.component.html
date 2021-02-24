@@ -4,7 +4,7 @@
   <div class="swiper-wrapper">
     <div
       class="swiper-slide swiper-cast-slide animate__animated animate__fadeIn"
-      *ngFor="let actor of credits?.cast"
+      *ngFor="let actor of credits?.cast | filterCast"
       (click)="showActor( actor.id )"
     >
       <figure class="actor-img-ctn">

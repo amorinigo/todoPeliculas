@@ -16,6 +16,7 @@ import { DirectorPipe }           from './pipes/director.pipe';
 import { GenderPipe }             from './pipes/gender.pipe';
 import { MinutesToHourPipe }      from './pipes/minutes-to-hour.pipe';
 import { WritersPipe }            from './pipes/writers.pipe';
+import { FilterCastPipe }         from './pipes/filter-cast.pipe';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { WritersPipe }            from './pipes/writers.pipe';
     DirectorPipe,
     GenderPipe,
     MinutesToHourPipe,
-    WritersPipe
+    WritersPipe,
+    FilterCastPipe
   ],
   imports: [
     CommonModule,
